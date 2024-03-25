@@ -1,0 +1,277 @@
+#toBeReviewed {
+    width: 100%;
+    height: 100%;
+
+    #toBeReviewed-top {
+        width: 100%;
+        display: flex;
+        background: #fff;
+
+        .toBeReviewed-top-left {
+            width: 70%;
+            display: flex;
+            justify-content: space-around;
+
+            .toBeReviewed-img {
+                text-align: center;
+            }
+        }
+
+        .toBeReviewed-top-right {
+            width: 30%;
+            margin-left: 20px;
+
+            .gradeT {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    border-radius: 50%;
+                    width: 100px;
+                    height: 100px;
+                    margin-top: 0px;
+                    margin-right: 10px;
+                }
+            }
+
+            .orthdergrade {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .gradelabel {
+                    display: flex;
+                    border-radius: 50%;
+                    justify-content: center;
+                    margin-right: 10px;
+                    font-size: 20px;
+                    font-weight: 700;
+                    align-items: center;
+                    width: 100px;
+                    height: 100px;
+                    background-color: #d7d7d7;
+                }
+            }
+
+            p {
+                margin-left: 20px;
+                margin-top: 75px;
+            }
+
+            .p {
+               min-width: 90px;
+               height: 30px;
+               border: solid 1px;
+               text-align: center;
+               margin: 74px 10px;
+               border-radius: 5px;
+               font-size: 15px;
+               padding: 5px;
+           }
+
+           .selectActive {
+               min-width: 90px;
+               height: 30px;
+               text-align: center;
+               margin: 74px 10px;
+               border-radius: 5px;
+               font-size: 15px;
+               background: #69e949;
+               border: solid 1px #676967;
+               padding: 5px;
+
+           }
+            //  .infinite-list {
+            //      width: 95%;
+            //      height: 140px;
+            //      background: #fff;
+            //      padding: 10px;
+            //      overflow-y: auto;
+
+            //      div {
+            //          padding: 5px 0;
+            //      }
+            //  }
+            display: flex;
+            justify-content: flex-start;
+
+            img {
+                width: 150px;
+                height: 150px;
+                margin-top: 20px;
+            }
+        }
+    }
+
+    #toBeReviewed-center {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        background: #f2f2f2;
+
+        .toBeReviewed-center-div1 {
+            width: 370px;
+            height: 590px;
+            margin: 10px 20px;
+            position: relative;
+            box-shadow: 0 0 5px #ccc;
+
+            video {
+                width: 370px;
+                height: 590px;
+                border: solid 1px #cfcdcd;
+
+
+            }
+
+            video::-webkit-media-controls-panel {
+                position: absolute !important;
+                width: 100% !important;
+            }
+
+            video::-webkit-media-controls-timeline {
+                position: absolute;
+                top: 4px;
+                width: 90%;
+            }
+
+            button {
+                width: 369px;
+                height: 40px;
+                margin-top: 10px;
+            }
+
+            .fill {
+                object-fit: fill;
+            }
+
+            .mengceng {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 300px;
+                background: rgba(255, 255, 255, 0.1);
+                z-index: 1;
+                backdrop-filter: blur(26px);
+            }
+
+        }
+
+        .toBeReviewed-center-div2 {
+            width: 65%;
+            display: flex;
+            justify-content: flex-start;
+
+            .div2-options {
+                height: auto;
+
+
+            }
+
+            figure {
+                margin-top: 20px;
+
+                figcaption div {
+                    display: -webkit-box;
+                    justify-content: flex-start;
+                    margin: 10px 0;
+
+                    .p1 {
+                        margin-top: 13px;
+                        width: 120px;
+                        text-align: left;
+                    }
+
+                    .p {
+                        min-width: 90px;
+                        height: 30px;
+                        border: solid 1px;
+                        text-align: center;
+                        margin: 9px 10px;
+                        border-radius: 5px;
+                        font-size: 15px;
+                        padding: 5px;
+                    }
+
+                    .selectActive {
+                        min-width: 90px;
+                        height: 30px;
+                        text-align: center;
+                        margin: 9px 10px;
+                        border-radius: 5px;
+                        font-size: 15px;
+                        background: #69e949;
+                        border: solid 1px #676967;
+                        padding: 5px;
+
+                    }
+                }
+            }
+            .rightBtn{
+                position: relative;
+                // display: flex;
+                // justify-content: center;
+                // align-items: center;
+            }
+            .div2-button {
+                position: absolute;
+                top: 50%;
+                left: 0px;
+                transform: translateY(-50%);
+                div {
+                    width: 225px;
+                    height: 100px;
+                    text-align: center;
+                    line-height: 100px;
+                    border: none;
+                    border-radius: 5px;
+                    background: rgba(236, 128, 141, 1);
+                    color: #fff;
+                    margin-left: 20%;
+
+                }
+
+                p {
+                    width: auto;
+                    cursor: pointer; // 手指
+                    color: #ec808d;
+                    display: block;
+                    margin-left: 20%;
+                }
+            }
+
+        }
+
+        .el-checkbox-group {
+            .el-checkbox-button {
+                border-radius: 5px !important;
+            }
+
+            .is-checked {
+                background: red !important;
+            }
+        }
+
+
+    }
+
+    /* 设置滚动条的样式 */
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    /* 滚动槽 */
+    ::-webkit-scrollbar-track {
+        border-radius: 10px;
+    }
+
+    /* 滚动条滑块 */
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+
+
+}
