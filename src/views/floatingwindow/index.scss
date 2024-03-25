@@ -1,0 +1,109 @@
+#maskedlayer {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0, 0);
+    position: relative;
+    overflow: hidden;
+  
+    .floatingwindowbox {
+      width: 100%;
+      height: 346px;
+      background: linear-gradient(117deg, #24C1FF 0%, #7048FF 59%, #FF3BDE 89%);
+      box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.5), inset 0px 1px 2px 0px rgba(255, 255, 255, 0.20000000298023224);
+      border-radius: 40px 40px 0 0;
+      position: absolute;
+      bottom: 0;
+  
+      .countdown {
+        width: 100px;
+        height: 100px;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        margin-top: 20px;
+        z-index: 99;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+  
+      .copywriting {
+        width: 183px;
+        height: 39px;
+        font-size: 14px;
+        font-family: 'PingFang SC-粗体, PingFang SC';
+        font-weight: 400;
+        color: #FFFFFF;
+        line-height: 20px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        margin-top: 16px;
+      }
+  
+      .commodity {
+        width: 275px;
+        height: 65px;
+        background: #ffffff;
+        border-radius: 20px 20px 20px 20px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        margin-top: 13px;
+  
+        img {
+          width: 83px;
+          height: 65px;
+        }
+  
+        .commodity-name {
+          width: 100px;
+          height: 23px;
+          font-size: 20px;
+          font-family: "Arial-Bold, Arial";
+          font-weight: 700;
+          color: #ffb83e;
+          line-height: 23px;
+          margin-top: 21px;
+        }
+  
+        .commodity-price {
+          width: 85px;
+          height: 33px;
+          background: linear-gradient(166deg, #6fb5ff 0%, #924de6 49%, #ef3d9d 100%);
+          border-radius: 12px 12px 12px 5px;
+          opacity: 1;
+          border: 2px solid;
+          margin-top: 16px;
+          font-size: 12px;
+          line-height: 33px;
+          color: #fff;
+          text-align: center;
+        }
+      }
+  
+      .button {
+        width: 170px;
+        height: 43px;
+        background: linear-gradient(155deg, #F1C068 12%, #D04256 83%);
+        box-shadow: inset 0px 2px 5px 0px rgba(247.40100055933, 131.09647661447525, 114.96724650263786, 1), 0px 5px 5px 0px rgba(173.00000488758087, 64.00000378489494, 64.00000378489494, 0.30000001192092896);
+        border-radius: 25px 25px 25px 25px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        margin-top: 22px;
+        font-size: 14px;
+        font-family: 'Source Han Sans CN-Regular, Source Han Sans CN';
+        font-weight: bold;
+        color: #FFFFFF;
+        line-height: 43px;
+        text-align: center;
+      }
+  
+      #demoCanvas {
+        position: absolute;
+        bottom: 210px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }

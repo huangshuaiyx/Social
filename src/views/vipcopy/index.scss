@@ -1,0 +1,513 @@
+#member {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    // background:red;
+    background: linear-gradient(180deg, #12121A 70%, #1C1F29 100%);
+    position: relative;
+
+    //  box-sizing: border-box;
+    .content {
+        height: 100%;
+        // box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    .isloading {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .walletloading {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background: rgba(0, 0, 0, 0.5);
+        top: 0;
+
+        .walletloadingimg {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .banner {
+        width: 100%;
+        height: 220px;
+        border-radius: 10px;
+        margin-top: 12px;
+        // position: absolute;
+        // top: (147px/2);
+        // left: 50%;
+        // transform: translateX(-50%);
+        // margin-left: 50%;
+
+        .van-swipe {
+            color: #fff;
+            font-size: 20px;
+            text-align: center;
+            height: 220px;
+            width: 100%;
+
+            .van-swipe-item {
+                height: 220px !important;
+                width: 100%;
+
+                .noanchorimg {
+                    width: 240px;
+                    height: 125px;
+                }
+
+                .vipanchorbj {
+                    width: 240px;
+                    height: 125px;
+                    margin: 0 auto;
+                    position: relative;
+                    background: url('../../assets/vipanchorbj@2x.png') no-repeat;
+                    background-size: 100%, 100%;
+
+                    .anchorimg {
+                        width: 86px;
+                        height: 86px;
+                        border-radius: 60%;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+
+                .anchortext {
+                    width: 100%;
+                    padding: 0px 30px;
+                    box-sizing: border-box;
+                    text-align: center;
+
+                }
+
+                .imgTexttop {
+                    // width: 192px;
+                    margin: 0 auto;
+                    font-size: 17px;
+                    font-weight: 400;
+                    color: #FFFFFF;
+                    margin-top: 2px;
+                    margin-bottom: 4px;
+                }
+
+                .imgText {
+                    margin: 0 auto;
+                    // height: 34px;
+                    font-size: 14px;
+                    font-family: PingFang SC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: #666666;
+                }
+            }
+        }
+
+    }
+
+    .vipsmax {
+        height: calc(100% - 324px);
+        min-height: 436px !important;
+    }
+
+    .vipsmin {
+        height: calc(100% - 324px);
+        min-height: 390px !important;
+    }
+
+    .vips {
+        width: 100%;
+        background: #1C1F29;
+        border-radius: 25px 25px 0px 0px;
+        background: url("../../assets/vip/vipbanner@2x.png") no-repeat;
+        background-size: 100% 100%;
+        // border-top: solid 0.1px rgba($color: #fff, $alpha: 0.2);
+        margin-bottom: 50px;
+        padding-top: 40px;
+        position: relative;
+        // box-sizing: border-box;
+        border: 0px;
+
+        /**vip商品*/
+
+        .vipShop {
+            position: relative;
+            width: 100%;
+            height: 190px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 10px;
+            box-sizing: border-box;
+            color: #fff;
+
+            .vipShop-div {
+                width: 113px;
+                height: 190px;
+                box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+                border-radius: 20px;
+                position: relative;
+
+                .shoplabel {
+                    padding: 6px 0px;
+                    font-weight: 700;
+                    font-size: 16px;
+                    text-align: center;
+                    text-shadow: 0px 1.5px 0px rgba(0, 0, 0, 0.302);
+
+                }
+
+                .symbol {
+                    font-size: 16px;
+                    text-align: center;
+                    text-shadow: 0px 1.5px 0px rgba(0, 0, 0, 0.302);
+                }
+
+                .vipicon {
+                    width: 100%;
+                    height: 85px;
+                    top: 30px;
+                    display: block;
+                    position: absolute;
+                }
+
+                .station {
+                    height: 50px;
+                }
+
+                .itemtext {
+                    font-size: 12px;
+                    text-align: center;
+                    margin-top: 5px;
+                    margin-bottom: 27px;
+                    text-shadow: 0px 1.5px 0px rgba(0, 0, 0, 0.302);
+                }
+
+                .conisInfo {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    span {
+                        font-size: 20px;
+                        margin-right: 3px;
+                        text-shadow: 0px 1.5px 0px rgba(0, 0, 0, 0.302);
+                    }
+
+                    img {
+                        width: 18px;
+                        height: 18px;
+                        display: block;
+                    }
+                }
+
+                .labelborder {
+                    opacity: 0.3;
+                    height: 1px;
+                    background: #fff;
+                }
+
+                .itemmonth {
+                    text-align: center;
+                    font-size: 14px;
+                    margin: 5px 0px;
+                    text-shadow: 0px 1.5px 0px rgba(0, 0, 0, 0.302);
+                }
+
+                .vipShopprice {
+                    width: 108px;
+                    height: 40px;
+                    margin: 0 auto;
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0px;
+                    // transform: translateY(50%);
+                    margin-bottom: -32px;
+                    color: #222222;
+                    text-align: center;
+                    font-size: 14px;
+                    font-weight: 700;
+                    background: #FFFFFF;
+                    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3019607961177826);
+                    border-radius: 25px 25px 25px 25px;
+                    opacity: 1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .vipShopprice0 {
+                    border: 2px solid rgba(66, 95, 191, 0.3);
+                }
+
+                .vipShopprice1 {
+                    border: 2px solid rgba(253, 144, 7, 0.3);
+                }
+
+                .vipShopprice2 {
+                    border: 2px solid rgba(221, 86, 76, 0.3);
+                }
+
+                .vipShop-div-p2 {
+                    width: 100%;
+                    text-align: center;
+                    font-size: 30px;
+                    font-family: Arial Rounded MT Bold-Regular, Arial Rounded MT Bold;
+                    font-weight: 600;
+                    color: #FF8150;
+                    line-height: (48px/2);
+                    margin-top: (58px/2);
+                }
+
+                .vipShop-div-p3 {
+                    width: 100%;
+                    height: auto;
+                    margin: 8px auto 0;
+                    font-size: 12px;
+                    font-family: "PingFangSC-Regular, PingFang SC";
+                    font-weight: bold;
+                    color: #3D3D3D;
+                    text-align: center;
+                    table-layout: fixed; // 字母换行
+                    word-break: break-all;
+                }
+
+
+                .vipShop-div-p4 {
+                    width: 100%;
+                    line-height: (46px/2);
+                    text-align: center;
+                    font-size: 10px;
+                    font-family: Arial-Regular, Arial;
+                    color: #999DB9;
+                }
+
+                .vipShop-div-p5 {
+                    width: 100%;
+                    line-height: (46px/2);
+                    text-align: center;
+                    font-size: 10px;
+                    font-family: Arial Rounded MT Bold-Regular, Arial Rounded MT Bold;
+                    font-weight: 600;
+                    color: #999DB9;
+                    text-decoration: line-through; // 删除线
+                }
+
+                .vipShop-div-p6 {
+                    width: (202px/2);
+                    height: (74px/2);
+                    background: #fff;
+                    border-radius: 12px;
+                    line-height: (74px/2);
+                    text-align: center;
+                    font-size: 14px;
+                    font-family: Arial Rounded MT Bold-Regular, Arial Rounded MT Bold;
+                    font-weight: 600;
+                    color: #222;
+                    margin-left: 3px;
+                    margin-top: 8px;
+                }
+            }
+
+            .vipShop0 {
+                background: linear-gradient(180deg, #707E9B 0%, #C1D6FF 100%);
+            }
+
+            .vipShop1 {
+                background: linear-gradient(180deg, #FF8E03 0%, #E8D262 100%);
+            }
+
+            .vipShop2 {
+                background: linear-gradient(180deg, #FF4F4A 0%, #FC9E9B 100%);
+            }
+
+
+            #vants {
+                margin-left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+            }
+        }
+
+        .p-tips {
+            text-align: center;
+            height: (39px/2);
+            font-size: 14px;
+            font-family: "PingFang SC-粗体, PingFang SC";
+            font-weight: normal;
+            color: #FFFFFF;
+            line-height: (33px/2);
+            // margin-left: 50%;
+            // transform: translateX(-50%);
+            margin: 0 auto;
+            margin-top: 103px;
+        }
+
+        .p-tipsd {
+            width: 300px;
+            height: auto;
+            margin: 0 auto;
+            font-size: 10px;
+            font-family: "PingFang SC-常规, PingFang SC";
+            font-weight: normal;
+            color: #666666;
+            margin-top: (17px/2);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .tipsd {
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+        }
+
+        .p-img {
+            width: 30px;
+            height: 30px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .continue {
+            width: 295px;
+            height: 63px;
+            background: url("../../assets/vip/button.png") no-repeat;
+            background-size: cover;
+            border-radius: 25px;
+            font-size: 14px;
+            font-family: "PingFangSC-Regular, PingFang SC";
+            font-weight: bold;
+            color: #fff;
+            line-height: 63px;
+            text-align: center;
+            border: none;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            margin-top: 35px;
+        }
+
+    }
+
+    .but-title {
+        margin: 5px 0;
+        width: 100%;
+        height: 15px;
+        font-size: 14px;
+        font-family: "PingFang SC-粗体, PingFang SC";
+        font-weight: normal;
+        color: #FFFFFF;
+        line-height: (33px/2);
+    }
+
+
+
+    .privileges {
+        width: calc(100% - 20px);
+        height: (82px/2);
+        background: rgba(0, 0, 0, 0.699999988079071);
+        font-size: 15px;
+        font-family: Arial-Bold, Arial;
+        font-weight: bold;
+        color: #FFFFFF;
+        line-height: 42px;
+        padding: 0 0 0 20px;
+    }
+
+
+
+    /**蒙层*/
+    .mengceng {
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.30000001192092896);
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .coinsfew {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.5);
+
+        .coinsfew-div {
+            width: 315px;
+            height: 273px;
+            background: url('../../assets/vip/coinsfewBg.png') no-repeat;
+            background-size: cover;
+            position: relative;
+
+            .closeImg {
+                width: 23px;
+                height: 23px;
+                position: absolute;
+                top: 12px;
+                right: 12px;
+            }
+
+            .crown {
+                width: 90px;
+                height: 90px;
+                margin: 20px auto 0;
+                display: block;
+            }
+
+            p {
+                width: 187px;
+                height: 45px;
+                font-size: 14px;
+                font-family: PingFang SC-粗体, PingFang SC;
+                font-weight: normal;
+                color: #FFFFFF;
+                margin: 25px auto 0;
+                line-height: 20px;
+                text-align: center;
+
+                .numtext {
+                    font-size: 18px;
+                    color: #ffb83e;
+                }
+            }
+
+            .successok {
+                width: 270px;
+                height: 43px;
+                background: #FFFFFF;
+                border-radius: 25px 25px 25px 25px;
+                text-align: center;
+                line-height: 43px;
+                font-weight: bold;
+                font-size: 14px;
+                margin: 36px auto 0;
+                position: relative;
+
+                span {
+                    position: absolute;
+                    font-size: 14px;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+    }
+
+}

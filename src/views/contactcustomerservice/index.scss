@@ -1,0 +1,260 @@
+.contactcustomerservice {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    background: #1d1f29;
+    // background: url('../../assets/meng.png') no-repeat #1d1f29;
+    background-size: contain;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+
+    .nametext {
+        // height: 150px;
+        border-radius: 10px;
+        margin: 0 auto 0;
+        margin-top: 0px;
+        position: relative;
+
+        textarea {
+            position: relative;
+            width: 90%;
+            height: 110px;
+            border: 2px solid #63656C;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 15px 15px 15px 15px;
+            font-size: 14px;
+            color: #fff;
+            margin: 15px 16px 0;
+            -webkit-user-select: text !important;
+            background: #21242e;
+        }
+
+        .leng {
+            font-size: (24px/2);
+            font-weight: 400;
+            color: rgba(255,255,255,0.5);
+            position: absolute;
+            bottom: 16px;
+            right: 30px;
+        }
+    }
+
+    .email {
+        width: (696px/2);
+        height: 44px;
+        background: #F5F4FA;
+        border-radius: 10px;
+        margin: 35px auto 0;
+
+        span {
+            font-size: 15px;
+            font-family: Arial;
+            font-weight: 400;
+            color: #282E5E;
+            line-height: 44px;
+            margin-left: 10px;
+        }
+
+        input {
+            width: 80%;
+            height: 75%;
+            margin-left: 5px;
+            border: none;
+            background: #F5F4FA;
+            font-size: 15px;
+        }
+    }
+
+    .album {
+        width: 100%;
+        height: auto;
+        position: relative;
+        margin-top: 15px;
+
+        .album-div {
+            width: 100%;
+            height: auto;
+            display: flex;
+            overflow-x: auto;
+
+            p:nth-child(1) {
+                width: (170px/2);
+                height: (170px/2);
+
+                position: relative;
+                flex-shrink: 0;
+                border-radius: 10px;
+            }
+
+            p {
+                width: (170px/2);
+                height: (170px/2);
+                margin: 0px 0 0 16px;
+                position: relative;
+                flex-shrink: 0;
+                overflow: hidden;
+                border-radius: 15px !important;
+
+                /deep/ .van-image {
+                    width: 100%;
+                    height: (170px/2);
+                    .van-image__img {
+                        border-radius: 15px !important;
+                    }
+                }
+
+                .img {
+                    width: 100%;
+                    height: (170px/2);
+                }
+
+                .delImg {
+                    width: 20px;
+                    height: 20px;
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                }
+            }
+        }
+    }
+
+    .title {
+        width: 343px;
+        height: auto;
+        background: #F5F4FA;
+        border-radius: (15px/2);
+        opacity: 1;
+        border: 1px solid #D3D4E5;
+        margin-top: 20px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        padding-bottom: 5px;
+
+        div {
+            width: 110px;
+            height: 25px;
+            background: linear-gradient(270deg, #F748B5 0%, #4E38E6 100%);
+            border-radius: 5px 5px 5px 5px;
+            transform: skewX(-10deg);
+            font-size: 14px;
+            font-family: 'PingFang SC-粗体, PingFang SC';
+            font-weight: 400;
+            color: #FFFFFF;
+            line-height: 20px;
+            text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            line-height: 25px;
+            margin: 10px auto 0;
+        }
+
+        .title-p1 {
+            width: 309px;
+            font-size: 12px;
+            font-family: 'PingFang SC-中等, PingFang SC';
+            font-weight: 400;
+            color: #282E5E;
+            margin: 10px auto 0;
+
+            span {
+                color: #FF5486;
+            }
+        }
+
+        .title-p2 {
+            width: 309px;
+            font-size: 12px;
+            font-family: 'PingFang SC-中等, PingFang SC';
+            font-weight: 400;
+            color: #282E5E;
+            margin: 0 auto;
+        }
+    }
+
+    .titles {
+        width: 343px;
+        height: 131px;
+        background: #F5F4FA;
+        border-radius: (15px/2);
+        opacity: 1;
+        border: 1px solid #D3D4E5;
+        margin-top: 20px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+
+        div {
+            width: 110px;
+            height: 25px;
+            background: linear-gradient(270deg, #F748B5 0%, #4E38E6 100%);
+            border-radius: 5px 5px 5px 5px;
+            transform: skewX(-10deg);
+            font-size: 14px;
+            font-family: 'PingFang SC-粗体, PingFang SC';
+            font-weight: 400;
+            color: #FFFFFF;
+            line-height: 20px;
+            text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            line-height: 25px;
+            margin: 10px auto 0;
+        }
+
+        .title-p1 {
+            width: 309px;
+            font-size: 12px;
+            font-family: 'PingFang SC-中等, PingFang SC';
+            font-weight: 400;
+            color: #282E5E;
+            margin: 10px auto 0;
+
+            // direction:rtl;unicode-bidi: bidi-override;
+            span {
+                color: #FF5486;
+            }
+        }
+
+        .title-p2 {
+            width: 309px;
+            font-size: 12px;
+            font-family: 'PingFang SC-中等, PingFang SC';
+            font-weight: 400;
+            color: #282E5E;
+            margin: 0 auto;
+            // direction:rtl;unicode-bidi: bidi-override;
+        }
+    }
+
+    .buttons {
+        width: 295px;
+        height: 63px;
+        background: url('../../assets/submitdisabled@2x.png') no-repeat center;
+        background-size: 100% 100%;
+        border-radius: 25px;
+        color: #fff;
+        border: none;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        font-size: 15px;
+        position: absolute;
+        font-weight: 700;
+        bottom: 10px;
+    }
+
+    .button {
+        width: 295px;
+        height: 63px;
+        background: url('../../assets/submit@2x.png') no-repeat center;
+        background-size: 100% 100%;
+        border-radius: 25px;
+        color: #fff;
+        font-weight: 700;
+        border: none;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        font-size: 15px;
+        position: absolute;
+        bottom: 10px;
+    }
+}

@@ -1,0 +1,195 @@
+#paychannelcountry {
+  width: 100%;
+  height: 100%;
+  background: #1D1F29;
+  position: relative;
+}
+#paychannelcountry .chaChanAmountwallet {
+  padding-top: 42px;
+  padding: 42px 16px 0px 16px;
+  box-sizing: border-box;
+  font-size: 17px;
+  width: 100%;
+}
+#paychannelcountry .chaChanAmountwallet .topitem {
+  display: flex;
+  height: 50px;
+  border-bottom: 1px solid #353535;
+  line-height: 50px;
+  justify-content: space-between;
+}
+#paychannelcountry .chaChanAmountwallet .topitem .name {
+  color: #fff;
+}
+#paychannelcountry .chaChanAmountwallet .topitem .price {
+  color: #FFAF37;
+}
+#paychannelcountry .chaChanAmountwallet .topitem .product {
+  color: rgba(255, 255, 255, 0.3);
+}
+#paychannelcountry .chaChanTitle {
+  height: auto;
+  display: flex;
+  color: #fff;
+  padding: 27px 16px 0px 16px;
+  justify-content: space-between;
+}
+#paychannelcountry .chaChanTitle .payment {
+  font-size: 17px;
+  font-weight: 400;
+}
+#paychannelcountry .chaChanTitle .chaChanTitle-tops {
+  height: 34px;
+  background: #f5f4fa;
+  border-radius: 10px;
+  line-height: 35px;
+  padding: 0 10px;
+  max-width: 152px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+}
+#paychannelcountry .chaChanTitle .chaChanTitle-tops .img {
+  width: 10px;
+  height: 10px;
+  margin-left: 5px;
+  margin: 12px 5px 0 2px;
+}
+#paychannelcountry .chaChanTitle .chaChanTitle-tops img {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin: 10px 5px 0 0;
+}
+#paychannelcountry .chaChanTitle .chaChanTitle-tops span {
+  font-size: 14px;
+  font-family: Arial;
+  font-weight: 400;
+  max-width: 115px;
+  color: #222222;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+#paychannelcountry .chaChanList {
+  width: 100%;
+  height: calc(100% - 250px);
+  overflow: auto;
+}
+#paychannelcountry .chaChanList .van-loading {
+  margin-top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+#paychannelcountry .chaChanList .payListitem {
+  padding: 0px 16px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  margin: 19px auto;
+}
+#paychannelcountry .chaChanList .payListitem .itemLeft {
+  display: flex;
+  align-items: center;
+}
+#paychannelcountry .chaChanList .payListitem .itemLeft .payListimg {
+  width: 50px;
+  height: 50px;
+  background: #ffffff;
+  border: 1px solid #efefef;
+  border-radius: 25px;
+  position: relative;
+}
+#paychannelcountry .chaChanList .payListitem .itemLeft .payListimg img {
+  position: absolute;
+  top: 0px;
+  width: 50px;
+  height: 50px;
+  display: block;
+  border-radius: 50%;
+  z-index: 999;
+}
+#paychannelcountry .chaChanList .payListitem .payList-name {
+  margin-left: 12px;
+  font-size: 14px;
+  font-family: Arial;
+  font-weight: 400;
+  color: #FFFFFF;
+  word-break: break-all;
+}
+#paychannelcountry .chaChanList .payListitem .payList-p4 {
+  width: 17.5px;
+  height: 17.5px;
+  margin: auto 10px;
+}
+#paychannelcountry .chaChanList .payListitem .payList-p4 img {
+  width: 17.5px;
+  height: 17.5px;
+  vertical-align: middle;
+}
+#paychannelcountry .chaChanList .payList-div:nth-last-child(1) {
+  margin-bottom: 80px;
+}
+#paychannelcountry .paysbtn {
+  width: 100%;
+  height: 75px;
+  position: absolute;
+  bottom: 0;
+}
+#paychannelcountry .paysbtn .button {
+  width: 280px;
+  height: 63px;
+  background: url("../../assets/submit@2x.png") no-repeat center;
+  background-size: 100% 100%;
+  border-radius: 25px;
+  font-size: 15px;
+  font-family: Arial;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 50px;
+  text-align: center;
+  border: none;
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+}
+#paychannelcountry .paysbtn .button div {
+  width: 100%;
+  position: absolute;
+  font-size: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#paychannelcountry .paysbtn .buttons {
+  width: 280px;
+  height: 63px;
+  background: url("../../assets/submitdisabled@2x.png") no-repeat center;
+  background-size: 100% 100%;
+  border-radius: 25px;
+  font-size: 15px;
+  font-family: Arial;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 50px;
+  text-align: center;
+  border: none;
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+}
+#paychannelcountry .paysbtn .buttons div {
+  width: 100%;
+  position: absolute;
+  font-size: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}/*# sourceMappingURL=index.css.map */

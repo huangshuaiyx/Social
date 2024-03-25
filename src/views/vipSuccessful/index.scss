@@ -1,0 +1,225 @@
+.vip_successful {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: #12121A;
+    background-size: contain;
+    overflow-y: auto;
+
+    .vip_successful_top {
+        width: 355px;
+        height: 75px;
+        background: linear-gradient(225deg, #F5B263 0%, #E0285B 100%);
+        border-radius: 15px 15px 15px 15px;
+        display: flex;
+        margin: 18px auto 0;
+
+        img {
+            width: 60px;
+            height: 60px;
+            display: block;
+            margin: 8px 0 0 13px;
+        }
+
+        p {
+            font-size: 14px;
+            font-family: PingFang SC-Regular, PingFang SC;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin: 16px 0 0 22px;
+            line-height: 22px;
+
+            span {
+                font-size: 12px;
+                font-family: PingFang SC-Regular, PingFang SC;
+                font-weight: 700;
+                color: #FFFFFF;
+            }
+        }
+    }
+
+    .vip_successful_banner {
+        width: 100%;
+        height: 232px;
+        border-radius: 10px;
+        margin-top: 24px;
+
+        .walletloadingimgloading {
+            height: 232px;
+            position: relative;
+        }
+
+        .walletloadingimg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -16px;
+            width: 33px;
+            height: 33px;
+            animation: rotation 1.5s linear infinite;
+
+            img {
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .van-swipe {
+            color: #fff;
+            font-size: 20px;
+            text-align: center;
+            height: 232px;
+            width: 100%;
+
+            .van-swipe-item {
+                height: 232px !important;
+                width: 100%;
+
+                img {
+                    width: 240px;
+                    height: 125px;
+                    display: block;
+                    margin: 0 auto;
+                }
+
+                .imgTexttop {
+                    // width: 80%;
+                    padding: 0px 40px;
+                    margin: 0 auto;
+                    // height: 24px;
+                    font-size: 17px;
+                    font-weight: 400;
+                    color: #FFFFFF;
+                    line-height: 24px;
+                    margin-top: 2px;
+                }
+
+                .imgText {
+                    // width: 80%;
+                    margin: 0 auto;
+                    padding: 0px 50px;
+                    height: 40px;
+                    font-size: 14px;
+                    font-family: PingFang SC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: #666666;
+                    line-height: 20px;
+                    // overflow: hidden;
+                    // text-overflow: ellipsis;
+                    // // 只要超过宽度就换行，不论中文还是英文
+                    // word-break: break-all;
+                    // //最多展示两行
+                    // display: -webkit-box;
+                    // -webkit-box-orient: vertical;
+                    // -webkit-line-clamp: 2;
+                }
+            }
+        }
+
+    }
+
+    .vip_successful_button {
+        div:nth-child(1) {
+            width: 190px;
+            height: 63px;
+            background: url("../../assets/vip/button2.png") no-repeat;
+            background-size: cover;
+            margin: 0 auto;
+            line-height: 63px;
+            color: #fff;
+            font-size: 14px;
+            font-family: Arial-Bold, Arial;
+            font-weight: 700;
+            text-align: center;
+            position: relative;
+
+            span {
+                width: 100%;
+                position: absolute;
+                font-size: 14px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        div:nth-child(2) {
+            text-align: center;
+            color: #666666;
+            font-size: 14px;
+            font-family: Arial-Regular, Arial;
+            font-weight: 700;
+            margin-top: 12px;
+        }
+    }
+
+    .vip_successful_text {
+        width: 100%;
+        height: auto;
+        margin-bottom: 50px;
+
+        p:nth-child(1) {
+            font-size: 14px;
+            font-family: PingFang SC-Bold, PingFang SC;
+            font-weight: 400;
+            color: #FFFFFF;
+            text-align: center;
+            margin-top: 130px;
+        }
+
+        .copywriting {
+            width: 300px;
+            height: auto;
+            margin: 0 auto;
+            font-size: 10px;
+            font-family: PingFang SC-Regular, PingFang SC;
+            font-weight: normal;
+            color: #666666;
+            margin-top: (17px/2);
+            overflow: hidden;
+            text-align: center;
+            line-height: 14px;
+        }
+        .btntipsd {
+            width: 300px;
+            height: auto;
+            margin: 0 auto;
+            font-size: 10px;
+            font-family: PingFang SC-Regular, PingFang SC;
+            font-weight: normal;
+            overflow: hidden;
+            text-align: center;
+            line-height: 14px;
+            color: #666666;
+        }
+
+        .btntipsduser {
+            color: #937E56;
+        }
+
+        .tipsd {
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+
+        img {
+            width: 30px;
+            height: 30px;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+}
