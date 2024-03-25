@@ -1,0 +1,631 @@
+#editData {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: #0E061E;
+
+    .title {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        z-index: 99;
+
+        .div_title {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            background: #211837;
+            padding-top: 40px;
+
+
+            .title-img {
+                width: 30px;
+                height: 30px;
+            }
+            .title-imgar{
+                transform: rotateY(180deg);
+            }
+
+            p {
+                width: calc(100% - 150px);
+                height: 50px;
+                text-align: center;
+                line-height: 40px;
+                // margin-left: (230px/2);
+                font-size: 18px;
+                font-family: Arial;
+                font-weight: bold;
+                color: #FFFFFF;
+            }
+
+            .title-imgs {
+                width: auto;
+                height: 35px;
+                font-size: 17px;
+                font-family: Arial-Regular, Arial;
+                font-weight: 400;
+                color: #FFFFFF;
+                line-height: 35px;
+            }
+        }
+    }
+
+
+    .left {
+        border: solid 0.1px #0E061E;
+        padding: 0 16px;
+
+
+        .sculpture {
+            width: 75px;
+            height: 75px;
+            border-radius: 10px;
+            margin-top: 115px;
+
+
+            .avatar-p2 {
+                width: 75px;
+                height: 75px;
+                border-radius: 10px;
+                // border: solid 1px #eee;
+
+                .van-image {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .nickname {
+            width: 100%;
+            height: auto;
+            margin-top: 25px;
+
+            p {
+                width: 100%;
+                font-size: 17px;
+                font-family: Arial-Bold, Arial;
+                font-weight: 700;
+                color: #FFFFFF;
+                line-height: 20px;
+
+                input {
+                    width: 100%;
+                    height: 35px;
+                    background: none;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+                    border-left: none;
+                    border-top: none;
+                    border-right: none;
+                }
+            }
+        }
+
+        .language {
+            width: 100%;
+            height: auto;
+            margin-top: 25px;
+
+            p {
+                width: 100%;
+                font-size: 17px;
+                font-family: Arial-Bold, Arial;
+                font-weight: 700;
+                color: #FFFFFF;
+                line-height: 20px;
+            }
+
+            .language_div {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+
+                .language_div_p {
+                    width: 93px;
+                    height: 33px;
+                    background: rgba(179, 165, 216, 0.1);
+                    border-radius: 25px 25px 25px 25px;
+                    text-align: center;
+                    line-height: 33px;
+                    font-size: 14px;
+                    font-family: Arial-Regular, Arial;
+                    font-weight: 400;
+                    color: #FFFFFF;
+                    margin-left: 10px;
+                    margin-top: 10px;
+                }
+
+                .language_div_p1 {
+                    width: 93px;
+                    height: 33px;
+                    background: linear-gradient(135deg, #E4F8BB 0%, #81FAF3 100%);
+                    border-radius: 25px 25px 25px 25px;
+                    text-align: center;
+                    line-height: 33px;
+                    font-size: 14px;
+                    font-family: Arial-Regular, Arial;
+                    font-weight: 400;
+                    color: #222222;
+                    margin-left: 10px;
+                    margin-top: 10px;
+                }
+
+            }
+        }
+
+        .signature {
+            width: 100%;
+            height: auto;
+            margin-top: 25px;
+
+            p {
+                width: 100%;
+                font-size: 17px;
+                font-family: Arial-Bold, Arial;
+                font-weight: 700;
+                color: #FFFFFF;
+                line-height: 20px;
+
+                .van-field {
+                    background: rgba(179, 165, 216, 0.1);
+
+                    /deep/.van-field__control{
+                        color: #fff;
+                    }
+                }
+
+                
+            }
+        }
+
+        .age {
+            width: 100%;
+            height: auto;
+            margin-top: 25px;
+            margin-bottom: 20px;
+
+            p {
+                width: 100%;
+                height: 20px;
+                font-size: 17px;
+                font-family: Arial-Bold, Arial;
+                font-weight: 700;
+                color: #FFFFFF;
+                line-height: 20px;
+
+            }
+
+            .age_p {
+                position: relative;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+                img {
+                    width: 12px;
+                    height: 12px;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+            }
+        }
+
+    }
+
+    .right {
+        .avatar {
+            width: 100%;
+            height: auto;
+
+            .avatar-p {
+                height: (23px/2);
+                font-size: 15px;
+                font-weight: bold;
+                color: #222222;
+                line-height: (23px/2);
+                margin: (39px/2) (34px/2) 0 0;
+                text-align: right;
+
+            }
+
+
+            .avatar-p2 {
+                width: (177px/2);
+                height: (177px/2);
+                // background: #F5F4FA;
+                margin: 18px 10px 5px 278px;
+                display: flex;
+                flex-direction: row-reverse; // 反向排序
+
+                img {
+                    width: (177px/2);
+                    height: (177px/2);
+                }
+
+                .van-image {
+                    width: 100%;
+                    height: (170px/2);
+                }
+            }
+        }
+
+        .poster {
+            width: 100%;
+            height: auto;
+
+            .poster-p1 {
+                height: (23px/2);
+                font-size: 15px;
+                font-weight: bold;
+                color: #222222;
+                line-height: (23px/2);
+                margin: (39px/2) (34px/2) 0 0;
+                text-align: right;
+            }
+
+            .poster-div {
+                width: auto;
+                height: 100%;
+                display: flex;
+                margin: (38px/2) 10px 0 10px;
+
+                p:nth-child(3) {
+                    margin-left: 15px;
+
+                    .van-image {
+                        width: (150px/2);
+                        height: 100px;
+                        background: #F5F4FA;
+                    }
+                }
+
+                p:nth-child(2) {
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #999999;
+                    line-height: (39px/2);
+                    margin-left: (26px/2);
+                    width: 72%;
+                    table-layout: fixed; // 字母换行
+                    word-break: break-all;
+                    text-align: right;
+                }
+
+                p:nth-child(1) {
+                    margin-top: 10px;
+                    width: (35px/2);
+                    height: (24px/2);
+
+                    img {
+                        height: 100%;
+                    }
+                }
+
+                div {
+                    height: 100px;
+                    background: #EFEFEF;
+                    margin-left: 5px;
+
+                    img {
+                        width: (150px/2);
+                        height: auto;
+                        background: #F5F4FA;
+                        margin-top: 12px;
+                    }
+                }
+
+            }
+        }
+
+        .album {
+            width: 100%;
+            height: auto;
+
+            .album-p {
+                height: (23px/2);
+                font-size: 15px;
+                font-weight: bold;
+                color: #222222;
+                line-height: (23px/2);
+                margin: (39px/2) (34px/2) 0 0;
+                text-align: right;
+            }
+
+            .album-div {
+                width: 100%;
+                height: auto;
+                display: flex;
+                overflow-x: auto;
+                flex-direction: row-reverse; // 反向排序
+
+                p:nth-child(1) {
+                    width: (172px/2);
+                    height: (172px/2);
+                    background: #F5F4FA;
+                    margin: 18px 9px 0 0;
+                    position: relative;
+                    flex-shrink: 0;
+
+                }
+
+                p {
+                    width: (170px/2);
+                    height: (170px/2);
+                    background: #F5F4FA;
+                    margin: 18px 5px 0 0;
+                    position: relative;
+                    flex-shrink: 0;
+                    overflow: hidden;
+
+                    .van-image {
+                        width: 100%;
+                        height: (170px/2);
+                    }
+
+                    .img {
+                        width: 100%;
+                        height: (170px/2);
+                    }
+
+                    .delImg {
+                        width: 20px;
+                        height: 20px;
+                        position: absolute;
+                        top: 5px;
+                        right: 5px;
+                    }
+                }
+            }
+        }
+
+        .video {
+            width: 100%;
+            height: auto;
+
+            .video-p {
+                height: (23px/2);
+                font-size: 15px;
+                font-weight: bold;
+                color: #222222;
+                line-height: (23px/2);
+                margin: (39px/2) (34px/2) 0 0;
+                text-align: right;
+            }
+
+            .video-p2 {
+                height: (177px/2);
+                margin: 18px 10px 5px;
+                display: flex;
+                overflow-x: auto;
+                flex-direction: row-reverse; // 反向排序
+
+                video {
+                    width: (177px/2);
+                    height: (177px/2);
+                    margin-right: 10px;
+                }
+
+                img {
+                    width: (177px/2);
+                    height: (177px/2);
+                }
+
+                .van-image {
+                    width: (170px/2);
+                    height: (170px/2);
+                }
+            }
+        }
+
+        .introduction {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+
+
+            .introduction-p1 {
+                height: (23px/2);
+                font-size: 15px;
+                font-weight: bold;
+                color: #222222;
+                line-height: (23px/2);
+                margin: (39px/2) (34px/2) (39px/2) 0;
+            }
+
+            .introduction-p2 {
+                font-size: 15px;
+                font-weight: 500;
+                color: #999999;
+                line-height: (39px/2);
+                width: 150px;
+                text-align: left;
+                display: flex;
+                justify-content: flex-start;
+                margin-left: 10px;
+
+                span {
+                    margin-right: 10px;
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #999999;
+                    line-height: 50px;
+                    display: block;
+                    width: 150px;
+                    height: 35px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                img {
+                    width: (12px/2);
+                    height: (22px/2);
+                    margin-top: 20px;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .identity {
+            width: 94%;
+            height: 55px;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            line-height: 55px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #222222;
+            border-bottom: solid 1px #EFEFEF;
+
+            p:nth-child(2) {
+                font-size: 15px;
+                font-weight: 500;
+                color: #222222;
+            }
+
+            p:nth-child(1) {
+                span {
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #999999;
+                    line-height: 20px;
+                    margin-left: 10px;
+                }
+
+                img {
+                    width: (12px/2);
+                    height: (22px/2);
+                }
+            }
+        }
+
+
+        .popup {
+            width: (630px/2);
+            height: 200px;
+            background: #FFFFFF;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 0 auto;
+
+            div:nth-child(1) {
+                margin: (101px/2) auto 50px;
+            }
+
+            div {
+                width: 40%;
+                margin: 0 auto 25px;
+                display: flex;
+                justify-content: space-around;
+
+                p {
+                    display: flex;
+                    justify-content: flex-start;
+                    margin-right: 10px;
+
+                    img {
+                        width: (40px/2);
+                        height: (40px/2);
+                        vertical-align: middle;
+                        border-radius: 50%;
+                    }
+
+                    span {
+                        width: 100px;
+                        font-size: (28px/2);
+                        font-weight: bold;
+                        color: #333333;
+                        margin: 4.5px 10px 0 0;
+                        text-align: right;
+                    }
+                }
+
+                .paymentmethodimg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            .button {
+                width: 120px;
+                height: 50px;
+                background: #FFFFFF;
+                border-radius: 25px;
+                font-size: (28px/2);
+                font-weight: bold;
+                color: #999DB9;
+            }
+
+            .buttons {
+                width: 120px;
+                height: 50px;
+                background: linear-gradient(90deg, #F032E1, #FE905D);
+                border: none;
+                border-radius: 25px;
+                font-size: (28px/2);
+                font-weight: bold;
+                color: #fff;
+                margin: 0 25px 20px;
+
+            }
+        }
+
+        // 生日选择器
+        /deep/.van-picker__columns {
+            flex-direction: row-reverse; // 反向排序
+        }
+    }
+
+    .action {
+        overflow: hidden;
+        table-layout: fixed; // 字母换行
+        word-break: break-all;
+
+        div:nth-child(1) {
+            width: 94%;
+            font-size: 15px;
+            font-weight: bold;
+            color: #000000;
+            line-height: (46px/2);
+            margin: 30px auto 0;
+        }
+
+        div:nth-child(2) {
+            width: 95%;
+            margin: (123px/2) auto 60px;
+            display: flex;
+            justify-content: space-around;
+
+            img {
+                width: 90px;
+                height: 120px;
+            }
+        }
+    }
+
+    .van-action-sheet__cancel {
+        font-size: 18px;
+        font-weight: bold;
+        color: #FF5486;
+        line-height: (56px/2);
+
+    }
+
+
+    /deep/ .van-action-sheet {
+        width: 90%;
+        height: 300px;
+        margin: 20px auto;
+        border-radius: 15px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+
+    }
+
+}

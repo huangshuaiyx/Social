@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="pragram" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- 禁止uc横屏生效 -->
+  <meta name="screen-orientation" content="portrait">
+  <script src='./js/jquery.min.js'></script>
+
+  <script>
+    (function () {
+      if (window.socailNR) {
+        return;
+      }
+      var callbacks = {};
+      var callbackIndex = 1;
+      window.socailNR = {
+        call: function (name, params, callback) {
+          
+          var message = {
+            back: callback ? '[' + (callbackIndex++) + ']' : undefined,
+            action: name,
+            data: params
+          };
+          console.log(message, 'call')
+          if (callback) {
+            callbacks[message.back] = callback;
+          }
+          window.ReactNativeWebView.postMessage(JSON.stringify(message));
+        },
+        onComplete: function (callbackId, data) {
+          var callback = callbacks[callbackId];
+          if (typeof callback === 'function') {
+            callback(data);
+            delete callbacks[callbackId];
+          }
+        }
+      };
+      window.addEventListener('message', function (e) {
+        console.log('执行111111111')
+        var message = JSON.parse(e.data);
+        var result = {};
+        console.log(e, 'message')
+        try {
+          if (message.back != undefined) {
+            if (message.back == "back") {
+              delClick();
+            } else {
+              window.socailNR.onComplete(message.back, message.data);
+            }
+          }
+        } catch (e) {
+          result = {
+            message: 'error',
+            data: e.message
+          };
+        }
+      });
+    })();
+
+  </script>
+
+  <title>Native</title>
+</head>
+
+<style type="text/css">
+  body {
+    height: 100%;
+  }
+</style>
+
+<body>
+  <noscript>
+    <strong>.</strong>
+  </noscript>
+  <div id="app">
+  </div>
+</body>
+
+<script>
+  window.onload = function () {
+    function IEVersion() {
+      var userAgent = navigator.userAgent; //取得浏览器的userAgent字 符串  
+      var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器  
+      var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器  
+      var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
+      if (isIE) {
+        var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+        reIE.test(userAgent);
+        var fIEVersion = parseFloat(RegExp["$1"]);
+        if (fIEVersion == 7) {
+          return 7;
+        } else if (fIEVersion == 8) {
+          return 8;
+        } else if (fIEVersion == 9) {
+          return 9;
+        } else if (fIEVersion == 10) {
+          return 10;
+        } else {
+          return 6; //IE版本<=7
+        }
+      } else if (isEdge) {
+        return 'edge'; //edge
+      } else if (isIE11) {
+        return 11; //IE11  
+      } else {
+        return -1; //不是ie浏览器
+      }
+    }
+    var a = IEVersion();
+
+    if (a != -1) {
+      alert("Please upgrade your browser")
+    }
+
+  }
+
+
+</script>
+
+</html>
