@@ -1,0 +1,119 @@
+@charset "UTF-8";
+#aboutme {
+  width: 100%;
+  height: 100%;
+  background: #1D1F29;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+#aboutme .title {
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+}
+#aboutme .title img {
+  width: 40px;
+  height: 40px;
+  margin: 57px 0 0 15px;
+}
+#aboutme .title p {
+  margin: 66px 0 0 95.5px;
+  font-size: 17px;
+  font-family: "PingFang SC-粗体, PingFang SC";
+  font-weight: normal;
+  color: #ffffff;
+}
+#aboutme .record-top {
+  width: 100%;
+  height: 44px;
+  display: flex;
+  justify-content: flex-start;
+}
+#aboutme .record-top img {
+  width: 40px;
+}
+#aboutme .record-top p {
+  font-size: 17px;
+  font-weight: 500;
+  color: #222222;
+  line-height: 17.5px;
+  margin-left: 110px;
+  line-height: 44px;
+}
+#aboutme .edition {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  margin-top: 38px;
+}
+#aboutme .edition div {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+#aboutme .edition div img {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+}
+#aboutme .edition p:nth-child(2) {
+  width: 100%;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 10px;
+  text-align: center;
+}
+#aboutme .edition p:nth-child(3) {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  color: #999DB9;
+  text-align: center;
+  margin-top: 10px;
+}
+#aboutme .btnagreement {
+  padding: 0px 20px;
+  padding-top: 50px;
+}
+#aboutme .btnagreement .agreement {
+  width: 100%;
+  height: 47px;
+  line-height: 47px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  margin-top: 200px;
+  padding: 0 10px;
+  background: rgba(21, 22, 26, 0.85);
+  box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.5), inset 0px 1px 2px 0px rgba(255, 255, 255, 0.200000003);
+  border-radius: 15px 15px 15px 15px;
+  opacity: 1;
+}
+#aboutme .btnagreement .agreement div {
+  color: #fff;
+  font-size: 12px;
+  height: 47px;
+  line-height: 47px;
+}
+#aboutme .btnagreement .agreement img {
+  width: 13px;
+  height: 13px;
+}
+#aboutme .btnagreement .agreement:nth-child(2) {
+  margin-top: 10px;
+}
+#aboutme .company {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: #999999;
+  position: absolute;
+  bottom: 24px;
+}
+#aboutme .company p {
+  width: 100%;
+  margin-top: 5px;
+}/*# sourceMappingURL=index.css.map */

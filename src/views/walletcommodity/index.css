@@ -1,0 +1,697 @@
+@charset "UTF-8";
+#walletcommodity {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #12121A;
+}
+#walletcommodity .bannerwallt {
+  padding-top: 14px;
+}
+#walletcommodity .walletloading {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+}
+#walletcommodity .walletloading .walletloadingimg {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#walletcommodity .top {
+  width: 100%;
+  height: 40px;
+  justify-content: space-around;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  box-sizing: border-box;
+  background: url("../../assets/walletcommodity/topmeng.png") no-repeat #12121A;
+  background-size: cover;
+}
+#walletcommodity .top .title-img {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#walletcommodity .top .title {
+  width: 100%;
+  font-size: 18px;
+  line-height: 40px;
+  font-family: Arial;
+  color: #FFFFFF;
+  text-align: center;
+}
+#walletcommodity .top .walletTitle {
+  display: flex;
+  align-items: center;
+  height: 27px;
+  line-height: 27px;
+  justify-content: center;
+  background: #25202B;
+  font-size: 12px;
+  font-family: "PingFang SC-常规, PingFang SC";
+  font-weight: normal;
+  border-radius: 25px;
+  padding: 8px 12px 8px 15px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 6px;
+  right: 12px;
+}
+#walletcommodity .top .walletTitle .num {
+  width: auto;
+  box-sizing: border-box;
+  margin-right: 30px;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.7);
+}
+#walletcommodity .top .walletTitle img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: -2px;
+  right: -2px;
+}
+#walletcommodity .top-title2 {
+  margin: 15px 20px;
+  width: 165.5px;
+  height: 25px;
+  font-size: 14px;
+  font-family: "PingFang SC-粗体, PingFang SC";
+  font-weight: normal;
+  color: #FFFFFF;
+  line-height: 16.5px;
+}
+#walletcommodity .walletBanner {
+  position: relative;
+  box-sizing: border-box;
+  width: 343px;
+  height: 63px;
+  margin: 0 auto;
+  background: url("../../assets/walletcommodity/topbanner@2x.png");
+  background-size: 100% 100%;
+  border-radius: 18px;
+  display: flex;
+  padding: 5px 0px 5px 56px;
+}
+#walletcommodity .walletBanner .walletBannerleft img {
+  display: block;
+  width: 60px;
+  height: 60px;
+}
+#walletcommodity .walletBanner .walletBannerright {
+  flex: 1;
+}
+#walletcommodity .walletBanner .walletBannerright .vipconis {
+  width: 104px;
+  color: #FFAF37;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 7px 0px 0px 26px;
+  font-size: 15px;
+}
+#walletcommodity .walletBanner .walletBannerright .vipconis img {
+  width: 19px;
+  height: 19px;
+  display: block;
+}
+#walletcommodity .walletBanner .walletBannerright .text {
+  padding-left: 26px;
+  color: #fff;
+  font-size: 12px;
+  margin-top: 3px;
+}
+#walletcommodity .walletBanner .walletBannerright .text span {
+  color: #FFAF37;
+}
+#walletcommodity .walletBanner .viplabel {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 11px;
+  color: #fff;
+  text-align: center;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75px;
+  height: 20px;
+  background: linear-gradient(180deg, #FB6A94 0%, #E32E60 100%);
+  border-radius: 0px 14px 0px 14px;
+  opacity: 1;
+}
+#walletcommodity .center-title {
+  width: 125.5px;
+  height: 19.5px;
+  font-size: 14px;
+  font-family: "PingFang SC-粗体, PingFang SC";
+  font-weight: normal;
+  color: #FFFFFF;
+  line-height: 16.5px;
+  margin: 15px 0 0 20px;
+}
+#walletcommodity .shopload {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#walletcommodity .walletCommodity {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-bottom: 50px;
+}
+#walletcommodity .walletCommodity .saveText {
+  margin: 8px 0px;
+  font-size: 12px;
+  color: #666666;
+  font-weight: 400;
+}
+#walletcommodity .walletCommodity .saveTextno {
+  margin: 29px 0px;
+}
+#walletcommodity .walletCommodity .walletCommodityNum {
+  font-size: 18px;
+  font-family: Arial;
+  font-weight: 600;
+  color: #ffffff;
+}
+#walletcommodity .walletCommodity .walletCommodityvip {
+  width: 164px;
+  height: 205px;
+  background: #1C1F29;
+  border-radius: 18px;
+  position: relative;
+  margin: 0 0 12px 15px;
+  text-align: center;
+  border: 0.5px solid #4b4b4b;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #DC534C 0%, #F0BD44 100%);
+}
+#walletcommodity .walletCommodity .walletCommodityvip .coinslable {
+  margin: 0 auto;
+  margin-top: 7px;
+  font-size: 11px;
+  width: 75px;
+  height: 20px;
+  background: linear-gradient(180deg, #FFE1AA 0%, #FA9146 100%);
+  border-radius: 10px 10px 10px 10px;
+  opacity: 1;
+  color: #6A1D00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#walletcommodity .walletCommodity .walletCommodityvip .nocoinslable {
+  margin: 0 auto;
+  margin-top: 7px;
+  width: 75px;
+  height: 20px;
+  line-height: 20px;
+}
+#walletcommodity .walletCommodity .walletCommodityvip .walletCommodityimg {
+  width: 75px;
+  height: 75px;
+}
+#walletcommodity .walletCommodity .walletCommodityvip .walletCommodityprice {
+  width: 144px;
+  height: 35px;
+  background: #FFFFFF;
+  border-radius: 18px;
+  font-family: Arial;
+  margin: 0 auto;
+  margin-top: 27px;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#walletcommodity .walletCommodity .walletCommodityvip .walletCommodityprice .priceitem {
+  width: 144px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#walletcommodity .walletCommodity .walletCommodityvip .walletCommodityprice span {
+  font-size: 14px;
+  color: #222222;
+}
+#walletcommodity .walletCommodity .walletCommodityvip .walletCommodityprice .discountPrice {
+  font-size: 10px;
+  font-weight: 400;
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.5);
+}
+#walletcommodity .walletCommodity .walletCommoditycoins {
+  width: 164px;
+  box-sizing: border-box;
+  background: #1C1F29;
+  border-radius: 18px;
+  position: relative;
+  margin: 0 0 12px 15px;
+  padding-bottom: 10px;
+  text-align: center;
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+}
+#walletcommodity .walletCommodity .walletCommoditycoins .coinslable {
+  margin: 0 auto;
+  margin-top: 7px;
+  font-size: 11px;
+  width: 75px;
+  height: 20px;
+  background: linear-gradient(180deg, #FB6A94 0%, #E32E60 100%);
+  border-radius: 10px 10px 10px 10px;
+  opacity: 1;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#walletcommodity .walletCommodity .walletCommoditycoins .nocoinslable {
+  margin: 0 auto;
+  margin-top: 7px;
+  width: 75px;
+  height: 20px;
+  line-height: 20px;
+}
+#walletcommodity .walletCommodity .walletCommoditycoins .discountcoinslable {
+  margin: 0 auto;
+  margin-top: 7px;
+  font-size: 11px;
+  width: 75px;
+  height: 20px;
+  background: linear-gradient(180deg, #7040FF 0%, #5DABFF 100%);
+  border-radius: 10px 10px 10px 10px;
+  opacity: 1;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#walletcommodity .walletCommodity .walletCommoditycoins .walletCommodity-img1 {
+  width: 96px;
+  height: 96px;
+  animation: load 6s linear infinite;
+}
+#walletcommodity .walletCommodity .walletCommoditycoins .walletCommodityimg {
+  width: 75px;
+  height: 75px;
+}
+#walletcommodity .walletCommodity .walletCommoditycoins .walletCommodity-img3 {
+  width: 72px;
+  height: 24px;
+  position: absolute;
+  top: -10px;
+  right: 0;
+}
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#walletcommodity .walletCommodity .walletCommoditycoins .walletCommodityprice {
+  width: 144px;
+  height: 35px;
+  background: linear-gradient(170deg, #F1C068 12%, #D04256 66%);
+  box-shadow: inset 0px 4px 10px 0px #F78372, 0px 5px 5px 0px rgba(173, 64, 64, 0.3);
+  border-radius: 18px;
+  color: #fff;
+  font-family: Arial;
+  margin: 0 auto;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#walletcommodity .walletCommodity .walletCommoditycoins .walletCommodityprice span {
+  font-size: 14px;
+  color: #FFFFFF;
+  font-family: PingFang SC-Bold, PingFang SC;
+}
+#walletcommodity .walletCommodity .walletCommoditycoins .walletCommodityprice .discountPrice {
+  font-size: 10px;
+  font-weight: 400;
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.5);
+}
+#walletcommodity .walletCommodity .walletCommoditycoins .walletCommodity-p {
+  width: 90px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 12px;
+  font-family: "PingFang SC-特粗, PingFang SC";
+  font-weight: normal;
+  color: #FFFFFF;
+  line-height: 28px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 9px;
+}
+#walletcommodity .walletCommodity .walletCommoditycoins .walletCommodity-p3 {
+  width: 100%;
+  height: 25px;
+  font-size: 12px;
+  font-family: "PingFang SC-粗体, PingFang SC";
+  font-weight: normal;
+  color: #666666;
+  line-height: 28px;
+}
+#walletcommodity .walletCommodity .freeinfo {
+  background: linear-gradient(180deg, #7040FF 0%, #5DABFF 100%);
+  border: 1px solid #494c54;
+  width: 164px;
+  height: 205px;
+  box-sizing: border-box;
+  border-radius: 18px;
+  position: relative;
+  margin: 0 0 12px 15px;
+  text-align: center;
+}
+#walletcommodity .walletCommodity .freeinfo .freeinfohead {
+  color: #fff;
+}
+#walletcommodity .walletCommodity .freeinfo .freeinfohead .freelable {
+  margin: 0 auto;
+  margin-top: 7px;
+  font-size: 11px;
+  width: 75px;
+  height: 20px;
+  line-height: 20px;
+  background: linear-gradient(180deg, #FB6A94 0%, #E32E60 100%);
+  border-radius: 10px 10px 10px 10px;
+  opacity: 1;
+}
+#walletcommodity .walletCommodity .freeinfo .freeinfohead .freeNum {
+  font-size: 18px;
+  font-weight: 600;
+}
+#walletcommodity .walletCommodity .freeinfo .freeinfohead img {
+  width: 75px;
+  height: 75px;
+}
+#walletcommodity .walletCommodity .freeinfo .free {
+  width: 144px;
+  height: 35px;
+  background: #fff;
+  border-radius: 25px;
+  color: #000;
+  font-family: Arial;
+  margin: 0 auto;
+  margin-top: 28px;
+  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 33px;
+}
+#walletcommodity .backoff {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2002;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#walletcommodity .backoff .redfsa {
+  width: 315px;
+  height: 275px;
+  text-align: center;
+  border-radius: 20px;
+  background: #fff;
+}
+#walletcommodity .backoff .redfsa .jihe {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 35.5px;
+}
+#walletcommodity .backoff .redfsa .jihe .butsd {
+  width: 130px;
+  height: 50px;
+  background: #ffffff;
+  border: 2px solid #efefef;
+  border-radius: 25px;
+  color: #999db9;
+  font-size: 14px;
+  line-height: 50px;
+  margin-left: 20px;
+}
+#walletcommodity .backoff .redfsa .jihe .butok {
+  width: 130px;
+  height: 50px;
+  background: linear-gradient(90deg, #f032e1, #fe905d);
+  border-radius: 25px;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 50px;
+  margin-left: 15px;
+}
+#walletcommodity .bottom-title {
+  width: 100%;
+  height: 17px;
+  text-align: center;
+  font-size: 12px;
+  font-family: "PingFang SC-常规, PingFang SC";
+  font-weight: normal;
+  color: #666666;
+  line-height: 28px;
+  padding: 5px 0;
+}
+#walletcommodity .coinsfew {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  height: 100%;
+  overflow: hidden;
+  z-index: 9999;
+}
+#walletcommodity .coinsfew .coinsfewialog {
+  width: 100%;
+  height: 273px;
+  padding: 0px 38px;
+  position: absolute;
+  box-sizing: border-box;
+  text-align: center;
+  top: calc(50% - 30px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfo {
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  height: 100%;
+  background: url("../../assets/coinsfew@2x.png") no-repeat center;
+  background-size: 100% 100%;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfo .close {
+  width: 23px;
+  height: 23px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfo .close img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfo .speciesbgc {
+  background: url("../../assets/coinsfewbgc@2x.png") no-repeat center;
+  background-size: 100% 100%;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  animation: identifier 8s linear infinite;
+}
+@keyframes identifier {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfo .speciesimg {
+  position: absolute;
+  top: 18px;
+  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfo .speciesimg .species {
+  width: 102px;
+  height: 102px;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfo .speciesimg .breatheRight {
+  width: 21px;
+  height: 21px;
+  position: absolute;
+  right: -4px;
+  top: 25px;
+  animation: mymove1 8s ease-in-out infinite alternate;
+}
+@keyframes mymove1 {
+  0% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+  25% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+  75% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfo .speciesimg .breatheTop {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  left: 0px;
+  top: 14px;
+  animation: mymove1 6s ease-in-out infinite alternate;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfo .speciesimg .breatheBottom {
+  width: 19px;
+  height: 19px;
+  position: absolute;
+  left: 5px;
+  bottom: 13px;
+  animation: mymove1 3s ease-in-out infinite alternate;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfo .meorynum {
+  width: 100%;
+  font-size: 14px;
+  font-family: PingFang SC-Bold, PingFang SC;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfo .meorynum span {
+  color: #FFB83E;
+  font-size: 16px;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfo .getcoins {
+  margin: 0 auto;
+  width: 270px;
+  height: 43px;
+  line-height: 43px;
+  font-size: 14px;
+  color: #222;
+  font-weight: 600;
+  background: #fff;
+  background-size: 100% 100%;
+  border-radius: 25px;
+  margin-top: 20px;
+  font-weight: bold;
+  position: relative;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfo .getcoins span {
+  position: absolute;
+  font-size: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfovip {
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  height: 100%;
+  background: url("../../assets/vip/coinsfewBg.png") no-repeat center;
+  background-size: 100% 100%;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfovip .close {
+  width: 23px;
+  height: 23px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfovip .close img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfovip .speciesimg {
+  margin: 0 auto;
+  padding-top: 15px;
+  width: 120px;
+  height: 120px;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfovip .speciesimg .species {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfovip .meorynum {
+  width: 100%;
+  font-size: 14px;
+  font-family: PingFang SC-Bold, PingFang SC;
+  font-weight: bold;
+  color: #FFFFFF;
+  line-height: 18px;
+  margin: 5px auto 0;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfovip .meorynum span {
+  color: #FFB83E;
+  font-size: 16px;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfovip .meorynumVip {
+  padding: 0px 60px;
+  box-sizing: border-box;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfovip .getcoins {
+  margin: 0 auto;
+  width: 270px;
+  height: 43px;
+  line-height: 43px;
+  font-size: 14px;
+  color: #222;
+  font-weight: 600;
+  background: #fff;
+  background-size: 100% 100%;
+  border-radius: 25px;
+  margin-top: 36px;
+  font-weight: bold;
+  position: relative;
+}
+#walletcommodity .coinsfew .coinsfewialog .coinsfewInfovip .getcoins span {
+  position: absolute;
+  font-size: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,429 @@
+@charset "UTF-8";
+#member {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #12121A 70%, #1C1F29 100%);
+  position: relative;
+  /**蒙层*/
+}
+#member .content {
+  height: 100%;
+  overflow-x: hidden;
+}
+#member .isloading {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#member .walletloading {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+}
+#member .walletloading .walletloadingimg {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#member .banner {
+  width: 100%;
+  height: 220px;
+  border-radius: 10px;
+  margin-top: 12px;
+}
+#member .banner .van-swipe {
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  height: 220px;
+  width: 100%;
+}
+#member .banner .van-swipe .van-swipe-item {
+  height: 220px !important;
+  width: 100%;
+}
+#member .banner .van-swipe .van-swipe-item .noanchorimg {
+  width: 240px;
+  height: 125px;
+}
+#member .banner .van-swipe .van-swipe-item .vipanchorbj {
+  width: 240px;
+  height: 125px;
+  margin: 0 auto;
+  position: relative;
+  background: url("../../assets/vipanchorbj@2x.png") no-repeat;
+  background-size: 100%, 100%;
+}
+#member .banner .van-swipe .van-swipe-item .vipanchorbj .anchorimg {
+  width: 86px;
+  height: 86px;
+  border-radius: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#member .banner .van-swipe .van-swipe-item .anchortext {
+  width: 100%;
+  padding: 0px 30px;
+  box-sizing: border-box;
+  text-align: center;
+}
+#member .banner .van-swipe .van-swipe-item .imgTexttop {
+  margin: 0 auto;
+  font-size: 17px;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+#member .banner .van-swipe .van-swipe-item .imgText {
+  margin: 0 auto;
+  font-size: 14px;
+  font-family: PingFang SC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+}
+#member .vipsmax {
+  height: calc(100% - 324px);
+  min-height: 436px !important;
+}
+#member .vipsmin {
+  height: calc(100% - 324px);
+  min-height: 390px !important;
+}
+#member .vips {
+  width: 100%;
+  background: #1C1F29;
+  border-radius: 25px 25px 0px 0px;
+  background: url("../../assets/vip/vipbanner@2x.png") no-repeat;
+  background-size: 100% 100%;
+  margin-bottom: 50px;
+  padding-top: 40px;
+  position: relative;
+  border: 0px;
+  /**vip商品*/
+}
+#member .vips .vipShop {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  color: #fff;
+}
+#member .vips .vipShop .vipShop-div {
+  width: 113px;
+  height: 190px;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  position: relative;
+}
+#member .vips .vipShop .vipShop-div .shoplabel {
+  padding: 6px 0px;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  text-shadow: 0px 1.5px 0px rgba(0, 0, 0, 0.302);
+}
+#member .vips .vipShop .vipShop-div .symbol {
+  font-size: 16px;
+  text-align: center;
+  text-shadow: 0px 1.5px 0px rgba(0, 0, 0, 0.302);
+}
+#member .vips .vipShop .vipShop-div .vipicon {
+  width: 100%;
+  height: 85px;
+  top: 30px;
+  display: block;
+  position: absolute;
+}
+#member .vips .vipShop .vipShop-div .station {
+  height: 50px;
+}
+#member .vips .vipShop .vipShop-div .itemtext {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 27px;
+  text-shadow: 0px 1.5px 0px rgba(0, 0, 0, 0.302);
+}
+#member .vips .vipShop .vipShop-div .conisInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#member .vips .vipShop .vipShop-div .conisInfo span {
+  font-size: 20px;
+  margin-right: 3px;
+  text-shadow: 0px 1.5px 0px rgba(0, 0, 0, 0.302);
+}
+#member .vips .vipShop .vipShop-div .conisInfo img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+#member .vips .vipShop .vipShop-div .labelborder {
+  opacity: 0.3;
+  height: 1px;
+  background: #fff;
+}
+#member .vips .vipShop .vipShop-div .itemmonth {
+  text-align: center;
+  font-size: 14px;
+  margin: 5px 0px;
+  text-shadow: 0px 1.5px 0px rgba(0, 0, 0, 0.302);
+}
+#member .vips .vipShop .vipShop-div .vipShopprice {
+  width: 108px;
+  height: 40px;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  margin-bottom: -32px;
+  color: #222222;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3019607961);
+  border-radius: 25px 25px 25px 25px;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#member .vips .vipShop .vipShop-div .vipShopprice0 {
+  border: 2px solid rgba(66, 95, 191, 0.3);
+}
+#member .vips .vipShop .vipShop-div .vipShopprice1 {
+  border: 2px solid rgba(253, 144, 7, 0.3);
+}
+#member .vips .vipShop .vipShop-div .vipShopprice2 {
+  border: 2px solid rgba(221, 86, 76, 0.3);
+}
+#member .vips .vipShop .vipShop-div .vipShop-div-p2 {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  font-family: Arial Rounded MT Bold-Regular, Arial Rounded MT Bold;
+  font-weight: 600;
+  color: #FF8150;
+  line-height: 24px;
+  margin-top: 29px;
+}
+#member .vips .vipShop .vipShop-div .vipShop-div-p3 {
+  width: 100%;
+  height: auto;
+  margin: 8px auto 0;
+  font-size: 12px;
+  font-family: "PingFangSC-Regular, PingFang SC";
+  font-weight: bold;
+  color: #3D3D3D;
+  text-align: center;
+  table-layout: fixed;
+  word-break: break-all;
+}
+#member .vips .vipShop .vipShop-div .vipShop-div-p4 {
+  width: 100%;
+  line-height: 23px;
+  text-align: center;
+  font-size: 10px;
+  font-family: Arial-Regular, Arial;
+  color: #999DB9;
+}
+#member .vips .vipShop .vipShop-div .vipShop-div-p5 {
+  width: 100%;
+  line-height: 23px;
+  text-align: center;
+  font-size: 10px;
+  font-family: Arial Rounded MT Bold-Regular, Arial Rounded MT Bold;
+  font-weight: 600;
+  color: #999DB9;
+  text-decoration: line-through;
+}
+#member .vips .vipShop .vipShop-div .vipShop-div-p6 {
+  width: 101px;
+  height: 37px;
+  background: #fff;
+  border-radius: 12px;
+  line-height: 37px;
+  text-align: center;
+  font-size: 14px;
+  font-family: Arial Rounded MT Bold-Regular, Arial Rounded MT Bold;
+  font-weight: 600;
+  color: #222;
+  margin-left: 3px;
+  margin-top: 8px;
+}
+#member .vips .vipShop .vipShop0 {
+  background: linear-gradient(180deg, #707E9B 0%, #C1D6FF 100%);
+}
+#member .vips .vipShop .vipShop1 {
+  background: linear-gradient(180deg, #FF8E03 0%, #E8D262 100%);
+}
+#member .vips .vipShop .vipShop2 {
+  background: linear-gradient(180deg, #FF4F4A 0%, #FC9E9B 100%);
+}
+#member .vips .vipShop #vants {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+#member .vips .p-tips {
+  text-align: center;
+  height: 19.5px;
+  font-size: 14px;
+  font-family: "PingFang SC-粗体, PingFang SC";
+  font-weight: normal;
+  color: #FFFFFF;
+  line-height: 16.5px;
+  margin: 0 auto;
+  margin-top: 103px;
+}
+#member .vips .p-tipsd {
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+  font-size: 10px;
+  font-family: "PingFang SC-常规, PingFang SC";
+  font-weight: normal;
+  color: #666666;
+  margin-top: 8.5px;
+  overflow: hidden;
+  text-align: center;
+}
+#member .vips .tipsd {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+#member .vips .p-img {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  display: block;
+}
+#member .vips .continue {
+  width: 295px;
+  height: 63px;
+  background: url("../../assets/vip/button.png") no-repeat;
+  background-size: cover;
+  border-radius: 25px;
+  font-size: 14px;
+  font-family: "PingFangSC-Regular, PingFang SC";
+  font-weight: bold;
+  color: #fff;
+  line-height: 63px;
+  text-align: center;
+  border: none;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 35px;
+}
+#member .but-title {
+  margin: 5px 0;
+  width: 100%;
+  height: 15px;
+  font-size: 14px;
+  font-family: "PingFang SC-粗体, PingFang SC";
+  font-weight: normal;
+  color: #FFFFFF;
+  line-height: 16.5px;
+}
+#member .privileges {
+  width: calc(100% - 20px);
+  height: 41px;
+  background: rgba(0, 0, 0, 0.6999999881);
+  font-size: 15px;
+  font-family: Arial-Bold, Arial;
+  font-weight: bold;
+  color: #FFFFFF;
+  line-height: 42px;
+  padding: 0 0 0 20px;
+}
+#member .mengceng {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3000000119);
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#member .coinsfew {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+#member .coinsfew .coinsfew-div {
+  width: 315px;
+  height: 273px;
+  background: url("../../assets/vip/coinsfewBg.png") no-repeat;
+  background-size: cover;
+  position: relative;
+}
+#member .coinsfew .coinsfew-div .closeImg {
+  width: 23px;
+  height: 23px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+#member .coinsfew .coinsfew-div .crown {
+  width: 90px;
+  height: 90px;
+  margin: 20px auto 0;
+  display: block;
+}
+#member .coinsfew .coinsfew-div p {
+  width: 187px;
+  height: 45px;
+  font-size: 14px;
+  font-family: PingFang SC-粗体, PingFang SC;
+  font-weight: normal;
+  color: #FFFFFF;
+  margin: 25px auto 0;
+  line-height: 20px;
+  text-align: center;
+}
+#member .coinsfew .coinsfew-div p .numtext {
+  font-size: 18px;
+  color: #ffb83e;
+}
+#member .coinsfew .coinsfew-div .successok {
+  width: 270px;
+  height: 43px;
+  background: #FFFFFF;
+  border-radius: 25px 25px 25px 25px;
+  text-align: center;
+  line-height: 43px;
+  font-weight: bold;
+  font-size: 14px;
+  margin: 36px auto 0;
+  position: relative;
+}
+#member .coinsfew .coinsfew-div .successok span {
+  position: absolute;
+  font-size: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}/*# sourceMappingURL=index.css.map */
