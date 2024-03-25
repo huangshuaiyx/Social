@@ -2,37 +2,7 @@
   width: 100%;
   height: 100%;
   position: relative;
-  background: #0E061E;
-}
-#chaChan .title {
-  width: 100%;
-  height: 50px;
-  display: flex;
-  justify-content: space-around;
-  background: #211837;
-  padding-top: 20px;
-}
-#chaChan .title .title-img {
-  width: 30px;
-  height: 30px;
-}
-#chaChan .title p {
-  width: calc(100% - 120px);
-  height: 50px;
-  text-align: center;
-  line-height: 40px;
-  font-size: 18px;
-  font-family: Arial;
-  font-weight: bold;
-  color: #fff;
-}
-#chaChan .title .title-imgs {
-  width: 30px;
-  height: 30px;
-}
-#chaChan .title .title-imgs img {
-  width: 100%;
-  height: 100%;
+  overflow: hidden;
 }
 #chaChan .div_paro {
   width: 90%;
@@ -44,8 +14,8 @@
   font-size: 17px;
   font-family: Arial-Regular, Arial;
   font-weight: 400;
-  color: #fff;
-  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+  color: #222;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
 }
 #chaChan .div_paro .div_paro_p2 {
   font-size: 17px;
@@ -63,7 +33,7 @@
   width: 90%;
   height: auto;
   position: absolute;
-  top: 130px;
+  top: 227px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -74,7 +44,7 @@
   font-size: 17px;
   font-family: Arial;
   font-weight: 400;
-  color: #fff;
+  color: #222;
   line-height: 33px;
 }
 #chaChan .chaChanTitle .chaChanTitle-tops {
@@ -107,7 +77,7 @@
   font-family: Arial;
   font-weight: 400;
   max-width: 115px;
-  color: #222222;
+  color: #fff;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -163,7 +133,7 @@
   width: 100%;
   height: calc(100% - 250px);
   position: absolute;
-  top: 190px;
+  top: 270px;
   overflow: auto;
 }
 #chaChan .chaChanPayList .van-loading {
@@ -180,22 +150,21 @@
   margin: 19px auto;
 }
 #chaChan .chaChanPayList .payList-div .payList-p1 {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 25px;
 }
 #chaChan .chaChanPayList .payList-div .payList-p1 img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: #222222;
 }
 #chaChan .chaChanPayList .payList-div .payList-divP {
   width: 190px;
   font-size: 17px;
   font-family: Arial;
   font-weight: 400;
-  color: #fff;
+  color: #222;
   margin: auto 21px;
   word-break: break-all;
 }
@@ -204,7 +173,7 @@
   font-size: 17px;
   font-family: Arial;
   font-weight: 400;
-  color: #fff;
+  color: #222;
   margin: auto 20px;
   word-break: break-all;
 }
@@ -219,18 +188,18 @@
   vertical-align: middle;
 }
 #chaChan .chaChanPayList .payList-div:nth-last-child(1) {
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 #chaChan .button {
   width: 280px;
   height: 50px;
-  background: url("../../assets/channelCountry/button.png") no-repeat;
+  background: url("../../assets/public/button.png") no-repeat;
   background-size: cover;
   border-radius: 25px;
   font-size: 15px;
   font-family: Arial;
   font-weight: bold;
-  color: #ffffff;
+  color: #fff;
   line-height: 50px;
   text-align: center;
   border: none;
@@ -243,12 +212,13 @@
 #chaChan .buttons {
   width: 280px;
   height: 50px;
-  background: #D3D4E5;
+  background: url("../../assets/public/button.png") no-repeat;
+  background-size: cover;
   border-radius: 25px;
   font-size: 15px;
   font-family: Arial;
   font-weight: bold;
-  color: #ffffff;
+  color: #fff;
   line-height: 50px;
   text-align: center;
   border: none;
@@ -257,6 +227,7 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 99;
+  opacity: 0.5;
 }
 #chaChan .markbox {
   width: 100%;
@@ -283,7 +254,7 @@
   width: 32px;
   height: 32px;
   animation: sunLoading 1s steps(12, end) infinite;
-  background: transparent url("../../assets/jiazai.png");
+  background: url("../../assets/jiazai.png");
   background-size: 100%;
   animation: load 2s linear infinite;
   margin: auto;

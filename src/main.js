@@ -9,6 +9,7 @@ Vue.prototype.bus = new Vue();
 // Vue.prototype.pay = new Vue();
 import "default-passive-events"; //添加事件管理者'passive'，来阻止'touchstart'事件，
 
+Vue.prototype.dsBridge = require("dsbridge");
 // 清除默认样式
 import "../src/assets/style/index.scss";
 // 引入rem依赖
@@ -39,28 +40,16 @@ const i18n = new VueI18n({
     ar: require("../src/i18n/lang/ar"),
     hi: require("../src/i18n/lang/hi"),
     es: require("../src/i18n/lang/es"),
-    // ru: require("../src/i18n/lang/ru"),
-    // vi: require("../src/i18n/lang/vi"),
+    ru: require("../src/i18n/lang/ru"),
+    vi: require("../src/i18n/lang/vi"),
     pt: require("../src/i18n/lang/pt"),
-    // ur: require("../src/i18n/lang/ur"),
-    // ta: require("../src/i18n/lang/ta"),
+    ur: require("../src/i18n/lang/ur"),
+    ta: require("../src/i18n/lang/ta"),
     id: require("../src/i18n/lang/id"),
   },
   silentTranslationWarn: true, // 去除警告
 });
-// 防抖
-let timerID = null
-// app.config.globalProperties.preReClick = preReClick
-const preReClick = function (fn, code = 500) {
-    if (timerID) {
-        clearTimeout(timerID)
-    }
-    timerID = setTimeout(() => {
-        fn()
-    }, code)
 
-}
-window.preReClick = preReClick
 // 防重复点击
 Vue.directive("preventReClick", {
   inserted(el, binding) {

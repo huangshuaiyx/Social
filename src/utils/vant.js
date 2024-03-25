@@ -13,9 +13,7 @@ import {
   Swipe,
   SwipeItem,
   List,
-  Image,
-  Field,
-  Toast
+  Image
 } from "vant";
 
 Vue.use(Button)
@@ -31,6 +29,4 @@ Vue.use(Button)
   .use(Swipe)
   .use(SwipeItem)
   .use(List)
-  .use(Image)
-  .use(Toast)
-  .use(Field);
+  .use(Image);

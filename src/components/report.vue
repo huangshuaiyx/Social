@@ -1,6 +1,8 @@
 <template>
-    <div class="redorfd">
-        <div class="left" v-if="$i18n.locale != 'ar'">
+    <div style="overflow: hidden;height: 100%;" :style="{ 'background': style.bg }">
+        <Title :titlecen="titlecen"></Title>
+
+        <div class="left">
             <p class="p">{{ this.$t("report.chooseText") }}</p>
             <div class="optionClass">
                 <div clickable @click="dicClick(x, i)" v-for="(x, i) in formData" :key="i" class="radioClass">
@@ -12,53 +14,35 @@
                 </div>
             </div>
 
-            <div class="nametext">
-                <textarea @focus="reportinp" v-model="text" rows="10" maxlength="100" @change="textarea" placeholder=""></textarea>
+            <div class="nametext" :style="{ 'background': style.textareabg }">
+                <textarea @focus="reportinp" v-model="text" rows="10" maxlength="100" @change="textarea"
+                    placeholder=""></textarea>
                 <p>{{ text.length }}/100</p>
             </div>
             <div class="img">
-                <van-image :src="images[0]" v-show="images.length != 0" fit="cover">
+                <!-- <img v-if="images != ''" :src="images[0]" alt="" /> -->
+                <van-image :src="images[0]" v-show="images != ''" fit="cover">
                     <template v-slot:loading>
-                        <img src="../assets/report/default.png" alt="">
+                        <van-loading type="spinner" size="20" />
                     </template>
                 </van-image>
-                <img @click="tianjia" src="../assets/report/repotAdd.png" alt="" />
+                <img @click="tianjia" src="../assets/public/add.png" alt="" />
             </div>
+            <button @click="but()" :disabled="!display" :class="display == true ? 'button' : 'buttons'">
+                {{ this.$t("report.submit") }}
+            </button>
         </div>
-        <div class="right" v-else>
-            <p class="p par">{{ this.$t("report.chooseText") }}</p>
-            <div class="optionClass">
-                <div clickable @click="dicClick(x, i)" v-for="(x, i) in formData" :key="i" class="radioClass">
-                    <div class="radioClass_img">
-                        <img v-if="radioIndex == i" src="../assets/report/selected.png" alt="">
-                        <img v-else src="../assets/report/notselected.png" alt="">
-                    </div>
-                    <div class="radioClass_text">{{ x.dictLabel }}</div>
-                </div>
-            </div>
-            <div class="nametext">
-                <textarea @focus="reportinp" v-model="text" rows="10" maxlength="100" @change="textarea" placeholder=""></textarea>
-                <p>{{ text.length }}/100</p>
-            </div>
-            <div class="img">
-                <img @click="tianjia" src="../assets/report/repotAdd.png" alt="" />
-                <van-image :src="images[0]" fit="cover" v-show="images.length != 0">
-                    <template v-slot:loading>
-                        <img src="../assets/report/default.png" alt="">
-                    </template>
-                </van-image>
-            </div>
-        </div>
-        <button @click="but()" :disabled="radioIndex == -1 || !text" :class="(radioIndex != -1 && text) ? 'button' : 'buttons'">
-            {{ this.$t("report.submit") }}
-        </button>
+
+
     </div>
 </template>
 
 <script>
-import { Cell, CellGroup, Image, Loading, Radio, RadioGroup } from 'vant'
-import { chooseAndUpload, close, networkRequest, notice, reportSuccess, setTitleBars } from '../api/inedx'
+import { Toast, RadioGroup, Radio, Cell, CellGroup, Image, Loading } from 'vant'
+import { networkRequest, chooseAndUpload, setTitleBar, close, notice } from '../api/inedx'
 import { getQueryString } from '../utils/index'
+import Title from "../components/title.vue"
+
 export default {
     components: {
         [RadioGroup.name]: RadioGroup,
@@ -67,8 +51,9 @@ export default {
         [CellGroup.name]: CellGroup,
         [Image.name]: Image,
         [Loading.name]: Loading,
+        Title
     },
-    data () {
+    data() {
         return {
             radio: '',
             text: '',
@@ -79,26 +64,28 @@ export default {
             saveUrl: '/ums/report/save',
             display: false, // 是否可以点击
             time: null,
-            radioIndex: -1
+            radioIndex: -1,
+            titlecen: 'Report',
+            style: {}
         }
     },
-    async created () {
+    async created() {
         await this.$store.dispatch('appLanguages')
         this.$i18n.locale = this.$store.state.appLanguage
         this.time = new Date().getTime()
+        let asd = require('../JSON/public.json')
+        this.style = asd
     },
-    mounted () {
-        setTimeout(() => {
-            setTitleBars(this.$t('agree.report'))
-            networkRequest("v2", this.queryDictListByLanguageUrl, {
-                dictType: 'report_reason_v2',
-            }).then((res) => {
-                console.log(res,'举报选项');
-                if (typeof (res.code) != undefined) {
-                    this.formData = res
-                }
-            })
-        }, 200);
+    mounted() {
+        setTitleBar(this.$t('agree.report'))
+        networkRequest("v2", this.queryDictListByLanguageUrl, {
+            dictType: 'report_reason_v2',
+        }).then((res) => {
+            console.log(res, '举报选项');
+            if (res.code == 200) {
+                this.formData = res.data
+            }
+        })
 
         let totalTmie = new Date().getTime();
         let obj = {
@@ -111,16 +98,16 @@ export default {
     },
     methods: {
         // 输入内容
-        reportinp () {
+        reportinp() {
             let obj = {
                 event: "HE0006001",
                 type: 'click',
             }
             this.$store.dispatch("onStatistics", obj)
         },
-        textarea () { },
+        textarea() { },
         // 提交
-        but () {
+        but() {
             networkRequest("v1", this.saveUrl, {
                 bizType: getQueryString('reportType') != undefined ? getQueryString('reportType') : 2,
                 bizId: getQueryString('toUserId'),
@@ -131,16 +118,15 @@ export default {
                 toUserId: getQueryString('toUserId'),
             }).then((res) => {
                 notice(2, getQueryString('toUserId'))
-                // Toast('ok')
+                Toast(res.msg)
                 let obj = {
                     toUserId: getQueryString('toUserId'),
                     name: 'block_ok'
                 }
                 console.log(obj, '举报拉黑');
-                reportSuccess(obj)
                 setTimeout(() => {
                     close()
-                }, 500);
+                }, 200);
             })
             let obj = {
                 event: "HE0006003",
@@ -150,7 +136,7 @@ export default {
             this.$store.dispatch("onStatistics", obj)
         },
         // 举报原因
-        dicClick (x, i) {
+        dicClick(x, i) {
             let obj = {
                 event: "HE0006004",
                 type: 'click',
@@ -165,17 +151,23 @@ export default {
             }
         },
         // 添加图片
-        tianjia () {
+        tianjia() {
+            console.log('1111111111', window.socailNR)
             let obj = {
                 event: "HE0006002",
                 type: 'click',
             }
             this.$store.dispatch("onStatistics", obj)
             chooseAndUpload({}).then((res) => {
-                this.images.unshift(res[0].fileUrl)
+                if (res.code == 200) {
+                    this.images.unshift(res.data[0].fileUrl)
+                } else {
+                    Toast(res.msg)
+                }
             })
+
         },
-        goBacks () {
+        goBacks() {
             close()
         }
     },
@@ -196,283 +188,212 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.redorfd {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
+.left {
+
+    height: calc(100% - 70px);
+    margin-top: 80px;
     overflow-y: auto;
-    position: relative;
-    background: #0e061e;
+    overflow-x: hidden;
 
-    .title {
-        width: 100%;
-        height: 50px;
-        display: flex;
-        justify-content: space-around;
-        background: #5d3ab8;
-        padding-top: 20px;
-        position: fixed;
-        top: 0;
-        z-index: 99;
+    .p {
+        width: 92%;
+        margin: 20px auto;
+        font-size: 15px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #999DB9;
+    }
 
-        .title-img {
-            width: 30px;
-            height: 30px;
+    .optionClass {
+        width: 343px;
+        height: auto;
+        border-top: solid 1px rgba(255, 255, 255, 0.1);
+        margin: 0 auto;
+
+        .radioClass {
+            width: 100%;
+            height: 50px;
+            border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+
+            .radioClass_text {
+                font-size: 14px;
+                font-family: Arial-Regular, Arial;
+                font-weight: 400;
+                color: #222;
+                line-height: 50px;
+            }
+
+            .radioClass_img {
+                width: 22px;
+                height: 22px;
+                margin-top: 15px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    .nametext {
+        width: (686px/2);
+        height: 150px;
+        border-radius: 10px;
+        margin: 20px auto 0;
+        background: #F5F4FA;
+        border-radius: 10px;
+        border: solid 1px #D3D4E5;
+
+        textarea {
+            width: 90%;
+            height: 110px;
+            border: none;
+            font-size: 15px;
+            color: #222;
+            margin: 15px 16px 0;
+            -webkit-user-select: text !important;
+            background: rgba($color: #fff, $alpha: 0.0);
         }
 
         p {
-            width: calc(100% - 120px);
-            height: 50px;
-            text-align: center;
-            line-height: 40px;
-            // margin-left: (230px/2);
-            font-size: 18px;
-            font-family: Arial;
+            font-size: (24px/2);
             font-weight: bold;
-            color: #ffffff;
-        }
-
-        .title-imgs {
-            width: 30px;
-            height: 30px;
-
-            img {
-                width: 100%;
-                height: 100%;
-            }
+            color: #999db9;
+            margin-left: (600px/2);
         }
     }
 
-    .left {
-        height: auto;
-        overflow-y: auto;
+    .img {
+        width: 100%;
+        height: (150px/2);
+        margin: 40px 0 10px;
 
-        .p {
-            width: 90%;
-            margin: 20px auto;
-            font-size: 15px;
-            font-family: PingFang SC;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        .optionClass {
-            width: 343px;
-            height: auto;
-            border-top: solid 1px rgba(255, 255, 255, 0.1);
-            margin: 0 auto;
-
-            .radioClass {
-                width: 100%;
-                height: 50px;
-                border-bottom: solid 1px rgba(255, 255, 255, 0.1);
-                display: flex;
-                justify-content: space-between;
-
-                .radioClass_text {
-                    font-size: 14px;
-                    font-family: Arial-Regular, Arial;
-                    font-weight: 400;
-                    color: #ffffff;
-                    line-height: 50px;
-                }
-
-                .radioClass_img {
-                    width: 22px;
-                    height: 22px;
-                    margin-top: 15px;
-
-                    img {
-                        width: 100%;
-                        height: 100%;
-                    }
-                }
-            }
-        }
-
-        .nametext {
-            width: (686px/2);
-            height: 150px;
-            border-radius: 15px;
-            margin: 0px auto 0;
-            position: relative;
-            top: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-
-            textarea {
-                width: 90%;
-                height: 110px;
-                border: none;
-                font-size: 15px;
-                color: #fff;
-                margin: 15px 16px 0;
-                -webkit-user-select: text !important;
-                background: rgba(255, 255, 255, 0);
-            }
-
-            p {
-                font-size: (24px/2);
-                font-weight: bold;
-                color: #999db9;
-                margin-left: (600px/2);
-            }
-        }
-
-        .img {
-            width: 100%;
+        .van-image {
+            margin: 0 0 0 15px;
+            width: (150px/2);
             height: (150px/2);
-            margin: 40px 0 10px;
-            border-radius: 10px;
+        }
 
-            .van-image {
-                margin: 0 0 0 15px;
-                width: (150px/2);
-                height: (150px/2);
-                border-radius: 10px;
-            }
-
-            img {
-                width: (150px/2);
-                height: (150px/2);
-                margin: 0 14px;
-                border-radius: 10px;
-            }
+        img {
+            width: (150px/2);
+            height: (150px/2);
+            margin: 0 14px;
         }
     }
+}
 
-    .right {
-        .p {
-            width: 92%;
-            margin: 20px auto;
-            font-size: 15px;
-            font-family: PingFang SC;
-            font-weight: 500;
-            color: #282e5e;
-        }
-        .par{
-            text-align: end !important;
-        }
+.right {
+    .p {
+        width: 92%;
+        margin: 20px auto;
+        font-size: 15px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #999DB9;
+    }
 
-        .optionClass {
-            width: 343px;
-            height: auto;
-            border-top: solid 1px rgba(255, 255, 255, 0.1);
-            margin: 0 auto;
+    /deep/ .van-radio-group {
+        /deep/ .van-hairline--top-bottom {
+            /deep/ .van-cell {
+                border: none;
+                flex-direction: row-reverse; // 反向排序
 
-            .radioClass {
-                width: 100%;
-                height: 50px;
-                border-bottom: solid 1px rgba(255, 255, 255, 0.1);
-                display: flex;
-                justify-content: space-between;
-
-                .radioClass_text {
-                    font-size: 14px;
-                    font-family: Arial-Regular, Arial;
-                    font-weight: 400;
-                    color: #ffffff;
-                    line-height: 50px;
-                    // transform: scaleX(-1); // 字体反向
+                /deep/ .van-cell__title {
                     text-align: right;
-                }
 
-                .radioClass_img {
-                    width: 22px;
-                    height: 22px;
-                    margin-top: 15px;
-
-                    img {
-                        width: 100%;
-                        height: 100%;
+                    span {
+                        font-size: 15px;
+                        color: #282e5e;
                     }
                 }
             }
         }
+    }
 
-        .nametext {
-            width: (686px/2);
-            height: 150px;
-            margin: 0px auto 0;
-            position: relative;
-            top: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+    .nametext {
+        width: (686px/2);
+        height: 150px;
+        border-radius: 10px;
+        margin: 0px auto 0;
+        position: relative;
+        top: 20px;
+        border-radius: 10px;
+        border: solid 1px #fff;
 
-            textarea {
-                width: 90%;
-                height: 110px;
-                border: none;
-                font-size: 15px;
-                color: #000;
-                margin: 15px 16px 0;
-                -webkit-user-select: text !important;
-                background: rgba(255, 255, 255, 0);
-                text-align: right;
-                direction: rtl;
-            }
-
-            p {
-                font-size: (24px/2);
-                font-weight: bold;
-                color: #999db9;
-                margin-left: (50px/2);
-            }
+        textarea {
+            width: 90%;
+            height: 110px;
+            border: none;
+            font-size: 15px;
+            color: #fff;
+            margin: 15px 16px 0;
+            -webkit-user-select: text !important;
+            text-align: right;
+            direction: rtl;
+            background: rgba($color: #fff, $alpha: 0.0);
         }
 
-        .img {
-            width: 100%;
+        p {
+            font-size: (24px/2);
+            font-weight: bold;
+            color: #999db9;
+            margin-left: (50px/2);
+        }
+    }
+
+    .img {
+        width: 100%;
+        height: (150px/2);
+        margin: 40px 0 10px;
+        display: flex;
+        flex-direction: row-reverse; // 反向排序
+
+        img:nth-child(1) {
+            margin: 0 15px 0 0;
+        }
+
+        img {
+            width: (150px/2);
             height: (150px/2);
-            margin: 40px 0 10px;
-            display: flex;
-            flex-direction: row-reverse; // 反向排序
-
-            img {
-                width: (150px/2);
-                height: (150px/2);
-                margin: 0 14px;
-                border-radius: 10px;
-            }
-
-            .van-image {
-                width: (150px/2);
-                height: (150px/2);
-                border-radius: 10px;
-            }
+            border: solid 1px #f5f4fa;
+            margin: 0 14px;
         }
     }
+}
 
-    .button {
-        width: 275px;
-        height: 44px;
-        background: url('../assets/report/button.png') no-repeat;
-        background-size: cover;
-        border-radius: (55px/2);
-        font-size: (34px/2);
-        font-weight: bold;
-        color: #222222;
-        border: none;
-        margin-left: 50%;
-        transform: translateX(-50%);
-        margin-top: 30px;
-        margin-bottom: 20px;
-    }
+.button {
+    width: 275px;
+    height: 44px;
+    background: url('../assets/report/button.png') no-repeat;
+    background-size: cover;
+    border-radius: (55px/2);
+    font-size: (34px/2);
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 45px;
+    margin-bottom: 20px;
+}
 
-    .buttons {
-        width: 275px;
-        height: 44px;
-        background: url('../assets/report/buttonNo.png') no-repeat;
-        background-size: cover;
-        border-radius: (55px/2);
-        font-size: (34px/2);
-        font-weight: bold;
-        color: #222222;
-        border: none;
-        margin-left: 50%;
-        transform: translateX(-50%);
-        margin-top: 30px;
-        margin-bottom: 20px;
-    }
+.buttons {
+    width: 275px;
+    height: 44px;
+    background: url('../assets/public/button.png') no-repeat;
+    background-size: cover;
+    border-radius: (55px/2);
+    font-size: (34px/2);
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 45px;
+    margin-bottom: 20px;
+    opacity: 0.5;
 }
 </style>

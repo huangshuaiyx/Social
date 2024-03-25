@@ -12,6 +12,8 @@ export const getTarget = (params) => {
 
 // 查询商品布局
 export const getProductlayout= params => {
+  // if (!dsBridge.call("nativeEnv")) return
+  // let formData = JSON.parse(dsBridge.call("nativeEnv"));
   let formData = {
     appId: '300007' 
   }

@@ -42,7 +42,7 @@ module.exports = {
         Nickname: "اسم مستعار",
         Gender: "الجنس",
         Age: "العمر",
-        Region: "الدولة",
+        Region: "آي دي",
         Language: "اللغة",
         Second: "اللغة الثانية",
         Sure: "تأكيد",

@@ -1,25 +1,31 @@
-import { setTitleBars, close, JumpH5 } from "../../../api/inedx";
+import { setTitleBar, close, JumpH5 } from "../../../api/inedx";
+// var dsBridge = require("dsbridge");
+// import 'dsbridge_flutter'
+import Title from "../../../components/title.vue"
+
 export default {
     name: "doddess",
-    data () {
+    components: {
+        Title
+    },
+    data() {
         return {
             formData: {},
             time: null,
+            titlecen: 'About Us',
+            style: {}
         };
     },
-    async created () {
-        await this.$store.dispatch("appLanguages");
-        // console.log(params, '语言');params.language
-        this.$i18n.locale = this.$store.state.appLanguage
+    created() {
         this.time = new Date().getTime()
-        setTitleBars(this.$t("about.title"), false, false);
-        window.socailNR.call("nativeEnv", {}, (res) => {
-            console.log(JSON.parse(JSON.stringify(res)), 'app信息')
-            this.formData = JSON.parse(JSON.stringify(res))
-        })
+        let asd = require('../../../JSON/public.json')
+        this.style = asd
     },
-    mounted () {
-        console.log(this.formData, 'nativeEnv');
+    mounted() {
+        setTitleBar(this.$t("About Us"), false, false);
+        if (!dsBridge.call("nativeEnv")) return
+        this.formData = JSON.parse(dsBridge.call("nativeEnv"));
+        console.log(this.formData, '参数');
         let totalTmie = new Date().getTime()
         let obj = {
             event: "HP1901000",
@@ -30,16 +36,16 @@ export default {
         this.$store.dispatch("onStatistics", obj)
     },
     methods: {
-        goBacks () {
+        goBacks() {
             close()
         },
         // 用户 
-        serviceClick () {
-            JumpH5("/subscriberagreement")
+        serviceClick() {
+            JumpH5("/consumer")
         },
         // 隐私
-        PrivacyClick () {
-            JumpH5("/concealagreement")
+        PrivacyClick() {
+            JumpH5("/secret")
         }
     },
 };

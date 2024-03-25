@@ -14,65 +14,13 @@
   <meta name="screen-orientation" content="portrait">
   <script src='./js/jquery.min.js'></script>
 
-  <script>
-    (function () {
-      if (window.socailNR) {
-        return;
-      }
-      var callbacks = {};
-      var callbackIndex = 1;
-      window.socailNR = {
-        call: function (name, params, callback) {
-          
-          var message = {
-            back: callback ? '[' + (callbackIndex++) + ']' : undefined,
-            action: name,
-            data: params
-          };
-          console.log(message, 'call')
-          if (callback) {
-            callbacks[message.back] = callback;
-          }
-          window.ReactNativeWebView.postMessage(JSON.stringify(message));
-        },
-        onComplete: function (callbackId, data) {
-          var callback = callbacks[callbackId];
-          if (typeof callback === 'function') {
-            callback(data);
-            delete callbacks[callbackId];
-          }
-        }
-      };
-      window.addEventListener('message', function (e) {
-        console.log('执行111111111')
-        var message = JSON.parse(e.data);
-        var result = {};
-        console.log(e, 'message')
-        try {
-          if (message.back != undefined) {
-            if (message.back == "back") {
-              delClick();
-            } else {
-              window.socailNR.onComplete(message.back, message.data);
-            }
-          }
-        } catch (e) {
-          result = {
-            message: 'error',
-            data: e.message
-          };
-        }
-      });
-    })();
-
-  </script>
-
-  <title>Native</title>
+  <title>08Kotlin</title>
 </head>
 
 <style type="text/css">
   body {
     height: 100%;
+    
   }
 </style>
 
@@ -121,7 +69,6 @@
     }
 
   }
-
 
 </script>
 

@@ -36,7 +36,7 @@ module.exports = {
         album: "Editar Perfil",
         video: "Mi video de auto presentación",
         Self: "Auto Presentación",
-        ID: "ID",
+        ID: "My ID",
         Nickname: "Apodo",
         Gender: "Género",
         Age: "Edad",

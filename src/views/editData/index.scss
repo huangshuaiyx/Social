@@ -1,75 +1,24 @@
 #editData {
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background: #0E061E;
-
-    .title {
-        width: 100%;
-        height: auto;
-        position: fixed;
-        top: 0;
-        z-index: 99;
-
-        .div_title {
-            width: 100%;
-            height: 50px;
-            display: flex;
-            justify-content: space-around;
-            background: #211837;
-            padding-top: 40px;
-
-
-            .title-img {
-                width: 30px;
-                height: 30px;
-            }
-            .title-imgar{
-                transform: rotateY(180deg);
-            }
-
-            p {
-                width: calc(100% - 150px);
-                height: 50px;
-                text-align: center;
-                line-height: 40px;
-                // margin-left: (230px/2);
-                font-size: 18px;
-                font-family: Arial;
-                font-weight: bold;
-                color: #FFFFFF;
-            }
-
-            .title-imgs {
-                width: auto;
-                height: 35px;
-                font-size: 17px;
-                font-family: Arial-Regular, Arial;
-                font-weight: 400;
-                color: #FFFFFF;
-                line-height: 35px;
-            }
-        }
-    }
-
+    padding-bottom: 5px;
+    overflow: hidden;
 
     .left {
-        border: solid 0.1px #0E061E;
-        padding: 0 16px;
-
+        height: calc(100% - 70px);
+        margin-top: 80px;
 
         .sculpture {
-            width: 75px;
-            height: 75px;
-            border-radius: 10px;
-            margin-top: 115px;
-
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin: 40px auto 0;
 
             .avatar-p2 {
-                width: 75px;
-                height: 75px;
-                border-radius: 10px;
-                // border: solid 1px #eee;
+                width: 90px;
+                height: 90px;
+                border-radius: 50%;
+                border: solid 1px #eee;
 
                 .van-image {
                     width: 100%;
@@ -78,141 +27,291 @@
             }
         }
 
-        .nickname {
+        // 相册
+        .photo {
             width: 100%;
             height: auto;
-            margin-top: 25px;
+            position: relative;
 
-            p {
-                width: 100%;
-                font-size: 17px;
-                font-family: Arial-Bold, Arial;
-                font-weight: 700;
-                color: #FFFFFF;
-                line-height: 20px;
-
-                input {
-                    width: 100%;
-                    height: 35px;
-                    background: none;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-                    border-left: none;
-                    border-top: none;
-                    border-right: none;
-                }
-            }
-        }
-
-        .language {
-            width: 100%;
-            height: auto;
-            margin-top: 25px;
-
-            p {
-                width: 100%;
-                font-size: 17px;
-                font-family: Arial-Bold, Arial;
-                font-weight: 700;
-                color: #FFFFFF;
-                line-height: 20px;
+            .album-p {
+                height: (23px/2);
+                font-size: 15px;
+                font-weight: bold;
+                color: #222222;
+                line-height: (23px/2);
+                margin: (39px/2) 0 0 (34px/2);
             }
 
-            .language_div {
+            .album-div {
                 width: 100%;
                 height: auto;
                 display: flex;
-                justify-content: flex-start;
-                flex-wrap: wrap;
+                overflow-x: auto;
 
-                .language_div_p {
-                    width: 93px;
-                    height: 33px;
-                    background: rgba(179, 165, 216, 0.1);
-                    border-radius: 25px 25px 25px 25px;
-                    text-align: center;
-                    line-height: 33px;
-                    font-size: 14px;
-                    font-family: Arial-Regular, Arial;
-                    font-weight: 400;
-                    color: #FFFFFF;
-                    margin-left: 10px;
-                    margin-top: 10px;
+                p:nth-child(1) {
+                    width: 75px;
+                    height: 75px;
+                    background: #F5F4FA;
+                    margin: 12px 0 0 9px;
+                    position: relative;
+                    flex-shrink: 0;
+
                 }
 
-                .language_div_p1 {
-                    width: 93px;
-                    height: 33px;
-                    background: linear-gradient(135deg, #E4F8BB 0%, #81FAF3 100%);
-                    border-radius: 25px 25px 25px 25px;
-                    text-align: center;
-                    line-height: 33px;
-                    font-size: 14px;
-                    font-family: Arial-Regular, Arial;
-                    font-weight: 400;
-                    color: #222222;
-                    margin-left: 10px;
-                    margin-top: 10px;
-                }
+                p {
+                    width: 75px;
+                    height: 75px;
+                    background: #F5F4FA;
+                    margin: 18px 0 0 5px;
+                    position: relative;
+                    flex-shrink: 0;
+                    overflow: hidden;
+                    border-radius: 15px 15px 15px 15px;
 
-            }
-        }
+                    .van-image {
+                        width: 100%;
+                        height: 75px;
+                    }
 
-        .signature {
-            width: 100%;
-            height: auto;
-            margin-top: 25px;
+                    .img {
+                        width: 100%;
+                        height: 75px;
+                    }
 
-            p {
-                width: 100%;
-                font-size: 17px;
-                font-family: Arial-Bold, Arial;
-                font-weight: 700;
-                color: #FFFFFF;
-                line-height: 20px;
-
-                .van-field {
-                    background: rgba(179, 165, 216, 0.1);
-
-                    /deep/.van-field__control{
-                        color: #fff;
+                    .delImg {
+                        width: 15px;
+                        height: 15px;
+                        position: absolute;
+                        top: 6px;
+                        right: 6px;
                     }
                 }
+            }
 
-                
+            .jianbian {
+                width: 5px;
+                height: (172px/2);
+                background: #fff;
+                position: absolute;
+                top: 28px;
+                right: 0;
+                box-shadow: 0 0 16px 12px #fff;
             }
         }
 
-        .age {
+        // 视频
+        .frequency {
             width: 100%;
             height: auto;
-            margin-top: 25px;
-            margin-bottom: 20px;
 
-            p {
-                width: 100%;
-                height: 20px;
-                font-size: 17px;
-                font-family: Arial-Bold, Arial;
-                font-weight: 700;
-                color: #FFFFFF;
-                line-height: 20px;
-
+            .video-p {
+                height: (23px/2);
+                font-size: 15px;
+                font-weight: bold;
+                color: #222222;
+                line-height: (23px/2);
+                margin: (39px/2) 0 0 (34px/2);
             }
 
-            .age_p {
-                position: relative;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+            .video-p2 {
+                width: 75px;
+                height: 75px;
+                border-radius: 15px 15px 15px 15px;
+                margin: 12px 10px 5px;
+                display: flex;
+                justify-content: flex-start;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 15px 15px 15px 15px;
+                }
+
+                .van-image {
+                    width: 100%;
+                    height: 75px;
+                }
+            }
+        }
+
+
+        .introduction {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+
+            .introduction-p1 {
+                height: (23px/2);
+                font-size: 15px;
+                font-weight: bold;
+                color: #222222;
+                line-height: (23px/2);
+                margin: (39px/2) 0 (39px/2) (34px/2);
+            }
+
+            .introduction-p2 {
+                font-size: 15px;
+                font-weight: 500;
+                color: #999999;
+                line-height: (39px/2);
+                width: 150px;
+                text-align: right;
+                display: flex;
+                justify-content: flex-start;
+
+                span {
+                    margin-right: 10px;
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #999999;
+                    line-height: 50px;
+                    display: block;
+                    width: 150px;
+                    height: 35px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                img {
+                    width: (12px/2);
+                    height: (22px/2);
+                    margin-top: 20px;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+
+        .identity {
+            width: 94%;
+            height: 55px;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            line-height: 55px;
+            font-size: 15px;
+            font-weight: bold;
+            border-bottom: solid 1px rgba($color: #fff, $alpha: 0.3);
+
+            p:nth-child(1) {
+                font-size: 15px;
+                font-weight: 500;
+                color: #222;
+            }
+
+            p:nth-child(2) {
+                width: 200px;
+                text-align: right;
+                display: flex;
+                justify-content: flex-start;
+
+                span {
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #666666;
+                    line-height: 60px;
+                    margin-right: 5px;
+                    display: block;
+                    width: 290px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                    img {
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 50%;
+                        vertical-align: initial;
+                    }
+                }
 
                 img {
                     width: 12px;
                     height: 12px;
-                    position: absolute;
-                    right: 0;
-                    top: 0;
+                    margin-top: 24px;
                 }
             }
         }
 
+
+        .popup {
+            width: 343px;
+            min-height: 200px;
+            background: #FFFFFF;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+
+            // div:nth-child(2) {
+            //     margin: (101px/2) auto 50px;
+            // }
+
+            .region_popup {
+                width: 40%;
+                margin: 41px auto ;
+                display: flex;
+                justify-content: space-around;
+
+                p {
+                    display: flex;
+                    justify-content: flex-start;
+                    margin-left: 10px;
+
+                    img {
+                        width: (40px/2);
+                        height: (40px/2);
+                        vertical-align: middle;
+                        border-radius: 50%;
+                    }
+
+                    span {
+                        width: 100px;
+                        font-size: (28px/2);
+                        font-weight: bold;
+                        color: #333333;
+                        margin: 4.5px 0 0 10px;
+                    }
+                }
+
+                .paymentmethodimg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            .botton_div {
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                text-align: center;
+
+                .button {
+                    width: 120px;
+                    height: auto;
+                    border-radius: 25px;
+                    font-size: (28px/2);
+                    font-weight: bold;
+                    color: #999DB9;
+                }
+
+                .buttons {
+                    width: 120px;
+                    height: auto;
+                    border-radius: 25px;
+                    font-size: (28px/2);
+                    font-weight: bold;
+                    color: #DF45AC;
+                    border: none;
+                }
+            }
+
+        }
     }
 
     .right {
@@ -480,12 +579,12 @@
             font-size: 15px;
             font-weight: bold;
             color: #222222;
-            border-bottom: solid 1px #EFEFEF;
+            border-bottom: solid 1px rgba($color: #fff, $alpha: 0.3);
 
             p:nth-child(2) {
                 font-size: 15px;
                 font-weight: 500;
-                color: #222222;
+                color: #fff;
             }
 
             p:nth-child(1) {
@@ -616,7 +715,6 @@
 
     }
 
-
     /deep/ .van-action-sheet {
         width: 90%;
         height: 300px;
@@ -625,7 +723,6 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-
     }
 
 }

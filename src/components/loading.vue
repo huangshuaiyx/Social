@@ -44,7 +44,7 @@ export default {
   left: 0;
   bottom: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.35);
   border-radius: 15px;
 
   .img {

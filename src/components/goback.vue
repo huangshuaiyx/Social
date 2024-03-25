@@ -1,50 +1,100 @@
 <template>
   <div id="box">
     <div class="box-top">
-      <img class="box-img" src="../assets/retention/top.png" alt="">
-      <img class="box_close" src="../assets/retention/close.png" alt="" @click="withdraw">
+      <img src="../assets/close.png" class="closeImg" alt="" @click="withdraw" />
       <div class="box-text">
-        <p>{{ $t('goback.content') }}</p>
+        <p>Make video chat with friends worldwide!</p>
       </div>
-      <div class="box-bg">
-        <!-- <van-image v-for="(x, i) in faces" :key="i" :src="x.faceUrl" fit="cover"
-          :error-icon="require('../assets/public/defaultavatar.png')"
-          :loading-icon="require('../assets/public/defaultavatar.png')" round>
-          <template v-slot:loading> </template>
-        </van-image> -->
-        <div class="box_bg_div">
-          <img :src="faces[0].faceUrl != '' ? faces[0].faceUrl : require('../assets/public/defaultavatar.png')" alt="">
-        </div>
-        <div class="box_bg_div">
-          <img :src="faces[1].faceUrl != '' ? faces[1].faceUrl : require('../assets/public/defaultavatar.png')" alt="">
-        </div>
-        <div class="box_bg_div">
-          <img :src="faces[2].faceUrl != '' ? faces[2].faceUrl : require('../assets/public/defaultavatar.png')" alt="">
+
+      <div class="container">
+        <div class="slider">
+          <!-- <div class="box1">
+            <img :src="faces[0].faceUrl != '' ? faces[0].faceUrl : require('../assets/public/defaultavatar.png')"
+              alt="" />
+          </div> -->
+          <div class="box1">
+            <img :src="faces[0].faceUrl != '' ? faces[0].faceUrl : require('../assets/public/defaultavatar.png')"
+              alt="" />
+          </div>
+          <div class="box2">
+            <img :src="faces[1].faceUrl != '' ? faces[1].faceUrl : require('../assets/public/defaultavatar.png')"
+              alt="" />
+          </div>
+          <div class="box3">
+            <img :src="faces[2].faceUrl != '' ? faces[2].faceUrl : require('../assets/public/defaultavatar.png')"
+              alt="" />
+          </div>
+          <div class="box4">
+            <img :src="faces[3].faceUrl != '' ? faces[3].faceUrl : require('../assets/public/defaultavatar.png')"
+              alt="" />
+          </div>
+          <div class="box5">
+            <img :src="faces[4].faceUrl != '' ? faces[4].faceUrl : require('../assets/public/defaultavatar.png')"
+              alt="" />
+          </div>
+          <!-- <div class="box7">
+            <img :src="faces[6].faceUrl != '' ? faces[6].faceUrl : require('../assets/public/defaultavatar.png')"
+              alt="" />
+          </div> -->
         </div>
       </div>
       <div class="box-button">
-        <button @click="withdraw">{{ $t('goback.Cancel') }}</button>
-        <button @click="cancel">{{ $t('goback.Continue') }}</button>
+        <button @click="withdraw">Contiune top up</button>
+        <div class="blacklistdiv-button" @click="cancel">
+          <div class="main_in">Go back</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
+
+<script  src="../utils/js/script.js"></script>
+
 <script>
-import { close, closeNative, networkRequest } from "../api/inedx";
+import { close } from "../api/inedx";
 import { getQueryString } from "../utils/index";
+import { closeNative, networkRequest } from "../api/inedx";
 export default {
   data() {
     return {
-      faces: [{ faceUrl: "" }, { faceUrl: "" }, { faceUrl: "" }]
+      faces: [{ faceUrl: "" },{ faceUrl: "" },{ faceUrl: "" },{ faceUrl: "" },{ faceUrl: "" },{ faceUrl: "" },{ faceUrl: "" }],
+      randomNumbers: [],
     };
   },
   mounted() {
-    setTimeout(() => {
-      this.obtainavata()
-    }, 200);
+    this.obtainavata();
+    setInterval(() => {
+      this.rotate();
+    }, 2000);
+
+    // function getRandomNumbers() {
+    //   var numbers = [];
+    //   while (numbers.length < 7) {
+    //     var randomNumber = Math.floor(Math.random() * this.faces.length) + 1;
+    //     if (!numbers.includes(randomNumber)) {
+    //       numbers.push(randomNumber);
+    //     }
+    //   }
+    //   return numbers;
+    // }
+    // this.randomNumbers = getRandomNumbers();
+    // // console.log(this.randomNumbers)
+    //       let rand = this.getRand();
+    //       while (rand.length < 7) {
+    //         rand.push({ faceUrl: "" });
+    //       }
+    //       this.faces = rand
+    // console.log(faces[6].faceUrl,'asdasd')
+
   },
   methods: {
+    getRand() {
+            while (this.faces.length < 7) {
+              this.faces.push({ faceUrl: "" });
+            }
+            return this.faces;
+          },
     cancel() {
       this.$store.dispatch("onStatistics", {
         type: "click",
@@ -68,21 +118,30 @@ export default {
     },
     obtainavata() {
       networkRequest("v1", "/provider/info/recommendList", {
-        "pageCode": "P1204000",
-        "size": 50
-      }).then(res => {
-        console.log(res, "头像")
-        let art = res
-        function getRandomNumbers() {
-          while (art.length < 3) {
-            art.push({ faceUrl: "" });
+        pageCode: "P1204000",
+        size: 50,
+      }).then((res) => {
+        if (res.code == 200) {
+        let art = res.data
+          function getRandomNumbers() {
+            while (art.length < 7) {
+              art.push({ faceUrl: "" });
+            }
+            return art;
           }
-          return art;
+          this.faces = getRandomNumbers()
         }
-        console.log(art, '妆后的数据')
-        this.faces = getRandomNumbers()
-      })
-    }
+
+      });
+    },
+    rotate() {
+      let lastChild = $(".slider div:last-child").clone();
+      /*$('#test').html(lastChild)*/
+      $(".slider div").removeClass("firstSlide");
+      $(".slider div:last-child").remove();
+      $(".slider").prepend(lastChild);
+      $(lastChild).addClass("firstSlide");
+    },
   },
 };
 </script>
@@ -101,178 +160,16 @@ export default {
 
   .box-top {
     width: 290px;
-    height: 290px;
-    background: #211837;
-    border-radius: 20px 20px 20px 20px;
+    height: 350px;
+    background: linear-gradient(135deg, #E233FA 0%, #5137FC 49%, #34D0FF 100%);
+
+    background-size: cover;
+    border-radius: 25px;
     z-index: 100;
     position: relative;
+    overflow: hidden;
 
-    .box_close {
-      width: 23px;
-      height: 23px;
-      position: absolute;
-      top: 12px;
-      right: 12px;
-    }
-
-    .box-text {
-      width: 100%;
-      height: 17px;
-      font-size: 15px;
-      font-family: Arial-Bold, Arial;
-      font-weight: 700;
-      color: #FFFFFF;
-      line-height: 17px;
-      text-align: center;
-      margin-top: 12px;
-    }
-
-    .box-button {
-      width: 90%;
-      height: auto;
-      overflow: hidden;
-      display: flex;
-      justify-content: space-around;
-      margin: 0 auto;
-
-      button:nth-child(1) {
-        width: 110px;
-        height: 43px;
-        background: rgba($color: #2C2441, $alpha: 0.6);
-        background-size: cover;
-        border-radius: 25px;
-        font-size: 15px;
-        font-family: Arial;
-        font-weight: 700;
-        color: #fff;
-        border: none;
-      }
-
-      button:nth-child(2) {
-        width: 110px;
-        height: 43px;
-        border-radius: 25px;
-        font-size: 15px;
-        font-family: Arial;
-        color: #fff;
-        border: none;
-        font-weight: 700;
-        background: linear-gradient(90deg, #37FCEB 0%, #1B5CF4 100%);
-      }
-    }
-
-    .box-img {
-      width: 75px;
-      height: 75px;
-      margin-top: 16px;
-      margin-left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .box-bg {
-      width: 221px;
-      height: auto;
-      background-size: cover;
-      margin: 20px auto;
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-
-      .box_bg_div:nth-child(1) {
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-
-        img {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-        }
-      }
-
-      .box_bg_div:nth-child(2) {
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-
-        img {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-        }
-      }
-
-      .box_bg_div:nth-child(3) {
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-
-        img {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-        }
-      }
-    }
-  }
-
-  .box-top1 {
-    width: 290px;
-    height: 304px;
-    background: linear-gradient(180deg, #8128F5 0%, #4543E5 59%, #211287 100%);
-    border-radius: 20px 20px 20px 20px;
-    z-index: 100;
-    position: relative;
-
-    .box-text {
-      font-family: Arial;
-      font-weight: bold;
-      color: #fff;
-      margin: 38px auto 0;
-      text-align: center;
-      line-height: 21px;
-      font-size: 18px;
-    }
-
-    .box-button {
-      width: 100%;
-      height: auto;
-      display: flex;
-      justify-content: space-around;
-      margin: 15px 0 0 0;
-      overflow: hidden;
-
-      button:nth-child(1) {
-        width: 110px;
-        height: 43px;
-        background: linear-gradient(270deg, #36BBF0 0%, #7F66FF 100%);
-        border-radius: 15px 15px 15px 15px;
-        border: 2px solid #efefef;
-        border-radius: 25px;
-        font-size: 15px;
-        font-family: Arial;
-        font-weight: 700;
-        color: #fff;
-        margin-left: 15px;
-        border: none;
-      }
-
-      button:nth-child(2) {
-        width: 110px;
-        height: 43px;
-        background: none;
-        border-radius: 15px 15px 15px 15px;
-        border-radius: 25px;
-        font-size: 15px;
-        font-family: Arial;
-        font-weight: 700;
-        color: #fff;
-        border: none;
-        margin-right: 15px;
-      }
-    }
-
-    .box-img {
+    .closeImg {
       width: 23px;
       height: 23px;
       position: absolute;
@@ -280,59 +177,296 @@ export default {
       right: 15px;
     }
 
-    .box-bg {
-      width: 251px;
-      height: 104px;
-      background-size: cover;
-      margin: 26px auto 0;
-      display: flex;
-      justify-content: flex-start;
-      position: relative;
+    .box-text {
+      width: 237px;
+      height: 17px;
+      font-size: 16px;
+      font-family: "Arial-Bold, Arial";
+      font-weight: 700;
+      color: #fff;
+      line-height: 20px;
+      text-align: center;
+      margin-top: 38px;
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
 
-      .van-image:nth-child(1) {
-        width: 66px;
-        height: 66px;
-        border-radius: 50%;
-        background: #36BBF0;
-        position: absolute;
-        top: 15px;
-        left: 32px;
+    .box-button {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
 
-        /deep/.van-icon__image {
-          width: 100%;
-          height: 100%;
-        }
+      button:nth-child(1) {
+        width: 240px;
+        height: 43px;
+        background: #222;
+        border-radius: 25px;
+        font-size: 15px;
+        font-family: Arial;
+        font-weight: 700;
+        color: #fff;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        border: none;
+        margin-top: 15px;
       }
 
-      .van-image:nth-child(2) {
-        width: 66px;
-        height: 66px;
-        border-radius: 50%;
-        background: #36BBF0;
-        position: absolute;
-        top: 15px;
-        left: 92px;
+      .blacklistdiv-button {
+        width: 240px;
+        height: 43px;
+        box-sizing: border-box;
+        padding: 2px;
+        border-radius: 25px;
+        line-height: 29px;
+        text-align: center;
+        font-size: 12px;
+        color: #222222;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        border: 2px solid rgba(255,255,255,0.5);
+        margin-top: 15px;
 
-        /deep/.van-icon__image {
+
+
+        .main_in {
           width: 100%;
           height: 100%;
+          border-radius: 25px;
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.5);
+          line-height: 40px;
         }
       }
+    }
+  }
 
-      .van-image:nth-child(3) {
-        width: 66px;
-        height: 66px;
-        border-radius: 50%;
-        background: #36BBF0;
-        position: absolute;
-        top: 15px;
-        left: 152px;
+  .container {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+  }
 
-        /deep/.van-icon__image {
-          width: 100%;
-          height: 100%;
-        }
-      }
+  .slider {
+    height: 110px;
+    width: 100%;
+    display: flex;
+    perspective: 1000px;
+    position: relative;
+    align-items: center;
+    // left: 50%;
+    // transform: translateX(-48%);
+  }
+
+  .box1 {
+    background: url("../assets/public/defaultavatar.png") no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .van-image {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  .box2 {
+    background: url("../assets/public/defaultavatar.png") no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .van-image {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  .box3 {
+    background: url("../assets/public/defaultavatar.png") no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .van-image {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  .box4 {
+    background: url("../assets/public/defaultavatar.png") no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .van-image {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  .box5 {
+    background: url("../assets/public/defaultavatar.png") no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .van-image {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  .box6 {
+    background: url("../assets/public/defaultavatar.png") no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .van-image {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  .box7 {
+    background: url("../assets/public/defaultavatar.png") no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .van-image {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  .slider [class*="box"] {
+    overflow: hidden;
+    border-radius: 20px;
+    transition: all 1.5s cubic-bezier(0.5, 0.5, 0.4, 0.5);
+    position: absolute;
+  }
+
+  .slider [class*="box"]:nth-child(5),
+  .slider [class*="box"]:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    transform: scale(0.6) translate(-50%, -50%);
+    top: 30%;
+    z-index: 1;
+    border-radius: 50%;
+    border: solid 2px #fff;
+  }
+
+  .slider [class*="box"]:nth-child(2),
+  .slider [class*="box"]:nth-child(4) {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    transform: scale(0.8) translate(-50%, -50%);
+    top: 35%;
+    z-index: 2;
+    border: solid 2px #fff;
+  }
+
+  .slider [class*="box"]:nth-child(3) {
+    width: 80px;
+    height: 80px;
+    color: #fff;
+    transform: scale(1) translate(-50%, -50%);
+    top: 45%;
+    z-index: 4;
+    border-radius: 50%;
+    border: solid 2px #fff;
+  }
+
+  .slider [class*="box"]:nth-child(1) {
+    left: 7%;
+  }
+
+  .slider [class*="box"]:nth-child(2) {
+    left: 27%;
+  }
+
+  .slider [class*="box"]:nth-child(3) {
+    left: 50%;
+  }
+
+  .slider [class*="box"]:nth-child(4) {
+    left: 69%;
+  }
+
+  .slider [class*="box"]:nth-child(5) {
+    left: 80%;
+  }
+
+  .slider [class*="box"]:nth-child(6) {
+    left: 80%;
+  }
+
+  .slider [class*="box"]:nth-child(7) {
+    left: 85%;
+  }
+
+  .slider .firstSlide {
+    /* -webkit-animation:  firstChild 1s; */
+    // animation: firstChild 1s;
+  }
+
+  /*Animation for buyers landing page slider*/
+  @-webkit-keyframes firstChild {
+    0% {
+      left: 100%;
+      transform: scale(0.2) translate(-50%, -50%);
+    }
+
+    100% {
+      left: -13%;
+      transform: scale(0.2) translate(-50%, -50%);
+    }
+  }
+
+  @keyframes firstChild {
+    0% {
+      left: 100%;
+      transform: scale(0.2) translate(-50%, -50%);
+    }
+
+    100% {
+      left: -13%;
+      transform: scale(0.2) translate(-50%, -50%);
     }
   }
 }

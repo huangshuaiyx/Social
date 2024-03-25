@@ -1,0 +1,74 @@
+{
+    "diamond": {
+        "type": 4,
+        "leftImg": "https://s3.vchatgood.com/otovideochat/1001/300007/h5/return.png",
+        "customecolor": "#F57B19",
+        "customeBg": "#fff",
+        "goldcoinsBg": "rgba(255,255,255,0.3)",
+        "goldcoinsreColor": "#FFA012",
+        "goldcoinsteColor": "#fff",
+        "commodityBg": "#fff",
+        "bannerBg": "linear-gradient(180deg, #FFCCE7 0%, #FFFFFF 100%)",
+        "bg": "https://s3.vchatgood.com/otovideochat/1001/300007/h5/bg.png",
+        "rightImg": "https://s3.vchatgood.com/otovideochat/1001/300007/h5/record.png",
+        "Background": "linear-gradient(90deg, #964CEB 0%, #4E38E6 100%)"
+    },
+    "bulletFrame": {
+        "type": 4,
+        "backgroundColor": "#fff",
+        "titlefontColor": "#222",
+        "diamondfontColor": "#ffd143"
+    },
+    "retention": {
+        "faceBg": "https://s3.vchatgood.com/otovideochat/1001/300007/h5/face_bg.png",
+        "bugBg": "linear-gradient(90deg, #964CEB 0%, #4E38E6 100%)",
+        "cancelBg": "rgba(255,255,255,0.1)",
+        "bg": "https://s3.vchatgood.com/otovideochat/1001/300007/h5/retention_bg.png",
+        "textColor": "#fff",
+        "closeImg": "https://s3.vchatgood.com/otovideochat/1001/300007/h5/close_img.png",
+        "butColor": "#fff",
+        "butBorder": "",
+        "bugradius": "15px",
+        "cancelradius": "15px",
+        "type": 1,
+        "dialogbg": "https://s3.vchatgood.com/otovideochat/1001/300007/h5/dialog_bg.png",
+        "cancelColor": "rgba(255,255,255,0.5)"
+    },
+    "successful": {
+        "text": "Wow!",
+        "textConter": "Successful! Go chat with beauty!",
+        "butBg": "linear-gradient(90deg, #964CEB 0%, #4E38E6 100%)",
+        "bg": "https://s3.vchatgood.com/otovideochat/1001/300007/h5/successful_bg.png",
+        "butText": "Go Now",
+        "butRadio": "25px",
+        "butColor": "#fff",
+        "butBorder": "",
+        "tColor": "#fff",
+        "tCColor": "#fff"
+    },
+    "vip": {
+        "leftImgs": "https://s3.vchatgood.com/otovideochat/1001/300007/h5/return.png",
+        "type": 3,
+        "borderRadius": "25px",
+        "customecolor": "#F57B19",
+        "customeBg": "#fff",
+        "buttonBg": "linear-gradient(90deg, #FF9A2D 0%, #F06915 100%)",
+        "buttonColor": "#fff",
+        "marginbottom": "15px",
+        "bg": "https://s3.vchatgood.com/otovideochat/1001/300007/h5/bg.png",
+        "bannerBg": "linear-gradient(180deg, #FFCCE7 0%, #FFFFFF 100%)",
+        "Background": "linear-gradient(90deg, #964CEB 0%, #4E38E6 100%)"
+    },
+    "vipStore": {
+        "type": "3",
+        "bg": "https://s3.vchatgood.com/otovideochat/1001/300007/h5/bg.png",
+        "leftImg": "https://s3.vchatgood.com/otovideochat/1001/300007/h5/return.png",
+        "logoColor": "#fff",
+        "topBg": "https://s3.vchatgood.com/otovideochat/1001/300007/h5/logo_bgs.png",
+        "topImg": "",
+        "buttonBg": "https://s3.vchatgood.com/otovideochat/1001/300007/h5/button_bg.png",
+        "buuonColor": "#fff",
+        "butColor": "rgba(255,255,255,0.5)",
+        "buttonradius": "50px"
+    }
+}

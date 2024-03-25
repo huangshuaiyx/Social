@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import { socialApp  } from "../api/inedx";
-import { getQueryString } from "../utils/index";
+import { outerBrowser  } from "../api/inedx";
+// import { getQueryString } from "../../utils/index";
 export default {
   name: "bounceback",
   data() {
@@ -24,12 +24,14 @@ export default {
   },
   mounted() {},
   methods: {
-
+    jiequ(str) {
+      let index = str.lastIndexOf("=");
+      str = str.substring(index + 1, str.length);
+    },
     ok() {
       // /wallet?displayHide=1&payOrderNo=${getQueryString("payOrderNo")}
-      let asd = getQueryString('appId')
-      window.location.href = socialApp(asd);
-      // outerBrowser("https://play.google.com/store/apps/details?id=com.hkfuliao.chamet&referrer=utm_source%3Dtest_source%26utm_medium%3Dtest_medium%26utm_term%3Dtest-term%26utm_content%3Dtest_content%26utm_campaign%3Dtest_name")
+      // window.location.href = socialApp("8008");
+      outerBrowser("https://play.google.com/store/apps/details?id=com.hkfuliao.chamet&referrer=utm_source%3Dtest_source%26utm_medium%3Dtest_medium%26utm_term%3Dtest-term%26utm_content%3Dtest_content%26utm_campaign%3Dtest_name")
     },
   },
 };

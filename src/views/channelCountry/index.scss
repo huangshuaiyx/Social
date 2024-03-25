@@ -2,44 +2,8 @@
     width: 100%;
     height: 100%;
     position: relative;
-    background: #0E061E;
+    overflow: hidden;
 
-
-    .title {
-        width: 100%;
-        height: 50px;
-        display: flex;
-        justify-content: space-around;
-        background: #211837;
-        padding-top: 20px;
-
-        .title-img {
-            width: 30px;
-            height: 30px;
-        }
-
-        p {
-            width: calc(100% - 120px);
-            height: 50px;
-            text-align: center;
-            line-height: 40px;
-            // margin-left: (230px/2);
-            font-size: 18px;
-            font-family: Arial;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .title-imgs {
-            width: 30px;
-            height: 30px;
-
-            img {
-                width: 100%;
-                height: 100%;
-            }
-        }
-    }
 
     .div_paro {
         width: 90%;
@@ -51,14 +15,14 @@
         font-size: 17px;
         font-family: Arial-Regular, Arial;
         font-weight: 400;
-        color: #fff;
-        border-bottom: solid 1px rgba(255,255,255,0.1);
+        color: #222;
+        border-bottom: solid 1px rgba(0,0,0,0.1);
 
         .div_paro_p2 {
             font-size: 17px;
             font-family: Arial-Regular, Arial;
             font-weight: 400;
-            color: #999DB9;
+            color:  #999DB9;
         }
 
         .div_paro_p4 {
@@ -73,7 +37,7 @@
         width: 90%;
         height: auto;
         position: absolute;
-        top: 130px;
+        top: 227px;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
@@ -84,7 +48,7 @@
             font-size: 17px;
             font-family: Arial;
             font-weight: 400;
-            color: #fff;
+            color: #222;
             line-height: 33px;
         }
 
@@ -120,7 +84,7 @@
                 font-family: Arial;
                 font-weight: 400;
                 max-width: 115px;
-                color: #222222;
+                color: #fff;
                 overflow: hidden; //超出的文本隐藏
                 text-overflow: ellipsis; //溢出用省略号显示
                 white-space: nowrap; //溢出不换行
@@ -192,7 +156,7 @@
         width: 100%;
         height: calc(100% - 250px);
         position: absolute;
-        top: (380px/2);
+        top: 270px;
         overflow: auto;
 
         .van-loading {
@@ -212,15 +176,14 @@
 
 
             .payList-p1 {
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
                 border-radius: 25px;
 
                 img {
                     width: 60px;
                     height: 60px;
                     border-radius: 50%;
-                    background: #222222;
                 }
             }
 
@@ -229,7 +192,7 @@
                 font-size: 17px;
                 font-family: Arial;
                 font-weight: 400;
-                color: #fff;
+                color: #222;
                 // border: 2px solid #efefef;
                 // overflow: hidden; //超出的文本隐藏
                 // text-overflow: ellipsis; //溢出用省略号显示
@@ -243,7 +206,7 @@
                 font-size: 17px;
                 font-family: Arial;
                 font-weight: 400;
-                color: #fff;
+                color: #222;
                 margin: auto 20px;
                 word-break: break-all;
             }
@@ -262,20 +225,20 @@
         }
 
         .payList-div:nth-last-child(1) {
-            margin-bottom: 80px;
+            margin-bottom: 100px;
         }
     }
 
     .button {
         width: (560px/2);
         height: 50px;
-        background: url('../../assets/channelCountry/button.png') no-repeat;
+        background: url('../../assets/public/button.png') no-repeat;
         background-size: cover;
         border-radius: 25px;
         font-size: 15px;
         font-family: Arial;
         font-weight: bold;
-        color: #ffffff;
+        color: #fff;
         line-height: 50px;
         text-align: center;
         border: none;
@@ -289,12 +252,13 @@
     .buttons {
         width: (560px/2);
         height: 50px;
-        background: #D3D4E5;
+        background: url('../../assets/public/button.png') no-repeat;
+        background-size: cover;
         border-radius: 25px;
         font-size: 15px;
         font-family: Arial;
         font-weight: bold;
-        color: #ffffff;
+        color: #fff;
         line-height: 50px;
         text-align: center;
         border: none;
@@ -303,6 +267,7 @@
         left: 50%;
         transform: translateX(-50%);
         z-index: 99;
+        opacity: 0.5;
     }
 
     .markbox {
@@ -321,7 +286,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            bottom: 0;
+            bottom: 0; 
             right: 0;
             background: rgba(0, 0, 0, 0.35);
             border-radius: 15px;
@@ -330,7 +295,7 @@
                 width: 32px;
                 height: 32px;
                 animation: sunLoading 1s steps(12, end) infinite;
-                background: transparent url("../../assets/jiazai.png");
+                background: url("../../assets/jiazai.png");
                 background-size: 100%;
                 animation: load 2s linear infinite;
                 margin: auto;

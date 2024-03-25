@@ -1,21 +1,24 @@
 <template>
-    <div id="about">
+    <div id="about" :style="{'background': style.bg}">
+        <Title :titlecen="titlecen"></Title>
+
         <div class="edition">
             <div class="edition_logo">
-                <img src="../../../assets/appLogo.png" alt="" />
+                <img :src="formData.appLogo" alt="" />
             </div>
-            <p>{{ formData.appVersion }}</p>
+            <p>{{ formData.appName }}</p>
+            <p>Make chat borderless</p>
             <p>
-                <!-- {{ formData.appVersion }}.{{ formData.appVersion }} -->
-                <!-- <span v-show="formData.environment">.</span> -->
-                <!-- {{ formData.environment ? formData.environment : "" }} -->
+                {{ formData.verName }}.{{ formData.verCode }}
+                <span v-show="formData.environment">.</span>
+                {{ formData.environment ? formData.environment : "" }}
             </p>
         </div>
 
-        <div class="agreement">
-            <p @click="serviceClick">{{ this.$t("about.service") }}</p>
-            <p @click="PrivacyClick">{{ this.$t("about.Policy") }}</p>
-        </div>
+        <!-- <div class="agreement">
+            <p @click="serviceClick">Terms of service</p>
+            <p @click="PrivacyClick">Privacy Policy</p>
+        </div> --> 
     </div>
 </template>
   <script>

@@ -16,10 +16,10 @@ export const pageRouter = [
 
   // 钻石不足充值
   {
-    path: "/diamondbulletframe",
-    name: "diamondbulletframe",
+    path: "/paymentbox",
+    name: "paymentbox",
     meta: {
-      title: "钻石弹框",
+      title: "钻石购买",
       index: 1,
     },
     component: (resolve) =>
@@ -39,10 +39,10 @@ export const pageRouter = [
   },
   // vip
   {
-    path: "/member",
-    name: "member",
+    path: "/vipStore",
+    name: "vipStore",
     meta: {
-      title: "member-VIP",
+      title: "VIP",
       index: 1,
     },
     component: (resolve) =>
@@ -68,17 +68,17 @@ export const pageRouter = [
     path: "/blacklist",
     name: "blacklist",
     meta: {
-      title: "blacklist-黑名单",
+      title: "设置-黑名单",
       index: 1,
     },
     component: () => import("@/views/setup/blacklist/index.vue")
   },
   // 举报
   {
-    path: "/tipoff",
-    name: "tipoff",
+    path: "/reportList",
+    name: "reportList",
     meta: {
-      title: "tipoff-举报",
+      title: "举报中心",
       index: 1,
     },
     component: () =>
@@ -86,10 +86,10 @@ export const pageRouter = [
   },
   // 关于
   {
-    path: "/apropos",
-    name: "apropos",
+    path: "/regarding",
+    name: "regarding",
     meta: {
-      title: "apropos-关于",
+      title: "设置-关于",
       index: 1,
     },
     component: () => import("@/views/setup/about/index.vue"),
@@ -97,23 +97,22 @@ export const pageRouter = [
   },
   // 用户协议
   {
-    path: "/subscriberagreement",
-    name: "subscriberagreement",
+    path: "/consumer",
+    name: "consumer",
     meta: {
       title: "用户协议",
       index: 1,
     },
-    component: () => import("@/views/setup/about/UserAgreement.vue"),
-    // component: (resolve) =>
-    //   require(/* webpackChunkName: "about" */[
-    //     "@/views/setup/about/UserAgreement.vue",
-    //   ], resolve),
+    component: (resolve) =>
+      require(/* webpackChunkName: "about" */[
+        "@/views/setup/about/UserAgreement.vue",
+      ], resolve),
   },
 
   // 隐私政策
   {
-    path: "/concealagreement",
-    name: "concealagreement",
+    path: "/secret",
+    name: "secret",
     meta: {
       title: "隐私政策",
       index: 1,
@@ -129,11 +128,32 @@ export const pageRouter = [
     path: "/information",
     name: "information",
     meta: {
-      title: "information-资料",
+      title: "用户编辑页",
       index: 1,
       keepAlive: false,
     },
     component: () => import("@/views/editData/index.vue")
+  },
+
+  // 名称编辑
+  {
+    path: "/nickName",
+    name: "nickName",
+    meta: {
+      title: "名称编辑",
+      index: 1,
+    },
+    component: () => import("@/components/nickName/index.vue")
+  },
+  // 个性签名编辑
+  {
+    path: "/introduction",
+    name: "introduction",
+    meta: {
+      title: "个性签名编辑",
+      index: 1,
+    },
+    component: () => import("@/components/introduction/index.vue")
   },
 
   // airwallex
@@ -152,7 +172,7 @@ export const pageRouter = [
     path: "/customerservice",
     name: "customerservice",
     meta: {
-      title: "customerservice-意见反馈",
+      title: "customerservice",
       index: 1,
     },
     component: () => import("@/views/setup/customerservice/index.vue"),
@@ -160,23 +180,42 @@ export const pageRouter = [
 
   // vipopened
   {
-    path: "/vipopened",
-    name: "vipopened",
+    path: "/vipRemove",
+    name: "vipRemove",
     meta: {
       title: "vipopened",
       index: 1,
     },
-    component: () => import("../views/vip/index.vue"),
+    component: () => import("@/views/vipopened/index.vue"),
   },
-
+  // avatar
   {
-    path: "/callback",
-    name: "callback",
+    path: "/avatar",
+    name: "avatar",
     meta: {
-      title: "callback",
+      title: "avatar",
       index: 1,
     },
-    component: () => import("../components/callback.vue"),
+    component: () => import("@/views/avatar/index.vue"),
   },
-
+  // floatingwindow
+  {
+    path: "/floatingwindow",
+    name: "floatingwindow",
+    meta: {
+      title: "floatingwindow",
+      index: 1,
+    },
+    component: () => import("@/views/floatingwindow/index.vue"),
+  },
+      // googleStore
+      {
+        path: "/googleStore",
+        name: "googleStore",
+        meta: {
+          title: "googleStore",
+          index: 1,
+        },
+        component: () => import("@/views/googleStore/index.vue"),
+      },
 ];

@@ -1,21 +1,16 @@
 <template>
-  <div id="chaChan">
-    <!-- <div class="title">
-      <img class="title-img" src="../../assets/channelCountry/return.png" alt="" @click="goBack" />
-      <p>Payment</p>
-      <div class="title-imgs">
-      </div>
-    </div> -->
-    <div class="div_paro">
-      <p>{{ this.$t('channelCountry.Product') }}</p>
+  <div id="chaChan" :style="{ 'background': style.bg }">
+    <Title :titlecen="titlecen"></Title>
+    <div class="div_paro" style="margin-top: 80px;">
+      <p>Product</p>
       <p class="div_paro_p2">{{ priceInfo.name }}</p>
     </div>
     <div class="div_paro">
-      <p>{{ this.$t('channelCountry.Price') }}</p>
+      <p>Price</p>
       <p class="div_paro_p4">{{ priceInfo.price }}</p>
     </div>
     <div class="chaChanTitle">
-      <p>{{ this.$t('channelCountry.Payment') }}</p>
+      <p>Payment</p>
     </div>
 
     <!-- 渠道列表 -->
@@ -24,7 +19,7 @@
       <van-loading type="spinner" color="#FF63C6" v-show="payList.length <= 0" />
       <div class="payList-div" @click="pays(x, i)" v-for="(x, i) in payList" :key="i">
         <p class="payList-p1">
-          <img :src="x.payTypeLogo" alt="" />
+          <img :src="x.payTypeLogo ? x.payTypeLogo : require('../../assets/channelCountry/defaultavatar.png')" alt="" />
         </p>
         <p :class="x.rewardDesc ? 'payList-divP' : 'payList-div-P'">
           {{ x.payTypeFullName }}
@@ -37,8 +32,9 @@
     </div>
 
     <!-- 支付 -->
-    <button @click="Gopay" :class="payRadio != -1 ? 'button' : 'buttons'" :disabled="selestShowData">
-      {{ priceInfo.price }}/{{ priceInfo.name }}
+    <button @click="Gopay" :class="payRadio != -1 ? 'button' : 'buttons'" :disabled="payRadio == -1"
+      v-preventReClick="3000">
+      Confirm
     </button>
     <!-- 遮罩蒙层 -->
     <div class="markbox" v-show="loading">
@@ -47,16 +43,6 @@
       </div>
     </div>
 
-    <!-- 支付成功弹框 -->
-    <div v-show="paymentSuccessful" class="successfu-markbox">
-      <div class="successfu" :style="{ background: `url(${formData.bg}) 0% 0% / cover no-repeat` }">
-        <p :style="{ color: formData.tColor }">{{ formData.text }}</p>
-        <p :style="{ color: formData.tCColor }">{{ formData.textConter }}</p>
-        <button @click="starClick"
-          :style="{ background: formData.butBg, border: formData.butBorder, 'border-radius': formData.butRadio, color: formData.butColor }">{{
-            formData.butText }}</button>
-      </div>
-    </div>
 
   </div>
 </template>

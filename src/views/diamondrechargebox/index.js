@@ -1,12 +1,16 @@
+import { getQueryString } from "../../utils/index";
 import {
+  setTitleBar,
   close,
-  getGoodsListSkus,
   getUserInfos,
   networkRequest,
-  setTitleBars
+  JumpH5,
+  getGoodsListSkus,
+  closeNative
 } from "../../api/inedx";
-import Goback from "../../components/goback.vue";
-import { getQueryString } from "../../utils/index";
+
+import Goback from "../../components/goback.vue"
+// import 'dsbridge_flutter'
 
 export default {
   components: {
@@ -16,12 +20,6 @@ export default {
     return {
       walletamount: 0, // 余额
       DiamondList: [],
-      bgColor: [
-        { url: require('../../assets/wallet/Mostpopular.png'), bg: "linear-gradient(270deg, #37FCEB 0%, #1B5CF4 100%)", title: 'Most popular' },
-        { url: require('../../assets/wallet/Basicone.png'), bg: 'linear-gradient(270deg, #37FCEB 0%, #1B5CF4 100%)', title: 'Basic one' },
-        { url: require('../../assets/wallet/Mediumone.png'), bg: "linear-gradient(270deg, #37FCEB 0%, #1B5CF4 100%)", title: 'Medium one', },
-        { url: "", bg: "linear-gradient(90deg, #4C84FF 0%, #644AFA 100%)", title: '', }
-      ],
       // 我已支付弹框
       // hidedisplay: false,
       /** 挽留弹框 */
@@ -29,44 +27,52 @@ export default {
       /**banner */
       walletImg: "",
       loading: false,
+      dsBridge: require("dsbridge"),
       hidden: 395,
       title: {}, //背景
       goldcoinData: {}, // 余额
       formData: {}, // 商品配置
       time: null,
       userInfos: {},
-      defaultChannelConfig: {},
-      equityList: [
-        {
-          iconActive: require('../../assets/wallet/video.png'),
-          textone: "Video chat",
-          texttwo: "Video chat with sexy girls"
-        },
-        {
-          iconActive: require('../../assets/wallet/gift.png'),
-          textone: "Give gifts to",
-          texttwo: "Someone you like"
-        },
-        {
-          iconActive: require('../../assets/wallet/message.png'),
-          textone: "Enjoy private and",
-          texttwo: "Secure video calls"
-        }
-      ],
+      rechargesource: {
+        source: "",
+        subSource: "",
+        bizId: "",
+        providerId: "",
+        ext: "",
+        orderType: "recharge",
+        pcode: getQueryString("pcode"),
+        closeParentActivity: getQueryString("closeParentActivity")
+      },
+
     };
   },
- async created() {
-    await this.$store.dispatch("appLanguages");
-    // console.log(params, '语言');params.language
-    this.$i18n.locale = this.$store.state.appLanguage
-    window.delClick = this.delClick
+  created() {
+    setTitleBar("", false, true);
+    // 重新加载
+    let that = this;
+    dsBridge.registerAsyn("jsCall", function (url, callback) {
+      //解析url，执行动作
+      if (url == "/intercept") {
+        that.delClick()
+      } else {
+        console.log("不必运行");
+      }
+      callback(""); //返回一个带 code 、msg、data的json
+    });
     this.time = new Date().getTime();
-    setTitleBars("vidiamondrechargeboxp", true, true, { canBack: false });
+    this.rechargesource.source = getQueryString("source")
+    this.rechargesource.subSource = getQueryString("subSource")
+    this.rechargesource.bizId = getQueryString("bizId")
+    this.rechargesource.ext = getQueryString("ext")
+    this.rechargesource.providerId = getQueryString("providerId")
     this.getWallet({ itemType: 1 })
-    this.extInfo()
-
+    this.$store.dispatch("checkthebalance");
+    this.walletamount = this.$store.state.balance.balance != undefined ? this.$store.state.balance.balance : 0;
+    networkRequest("v1", "/wallet/payOrder/source/save", this.rechargesource)
   },
   mounted() {
+    let that = this
     let totalTmie = new Date().getTime()
     this.$store.dispatch("onStatistics", {
       type: "load",
@@ -77,14 +83,6 @@ export default {
         providerId: getQueryString("providerId") || "",
       },
     });
-    function jsCall(res) {
-      console.log(res, '阿萨')
-      if (that.walletamount >= 2000) {
-        close();
-      } else {
-        that.gobackShow = true;
-      }
-    }
 
     getUserInfos().then(res => {
       console.log(res)
@@ -93,9 +91,13 @@ export default {
       }
     })
 
-    this.myInterval = setInterval(() => {
-      this.extInfo()
-    }, 5000);
+    this.dsBridge.register("notify", function (resolve) {
+      let asd = JSON.parse(resolve);
+      console.log(asd, "弹出")
+      if (asd.notifyId == "RECHARGE_SUCCESS") {
+        that.$store.dispatch("checkthebalance");
+      }
+    });
 
   },
   methods: {
@@ -111,24 +113,35 @@ export default {
     delClick() {
       console.log("子元素", this.walletamount);
       if (this.walletamount >= 2000) {
-        close();
+        if (getQueryString("closeParentActivity") == "1") {
+          closeNative(getQueryString("pcode"));
+          setTimeout(() => {
+            close();
+          }, 20);
+        } else {
+          close();
+        }
       } else {
         this.gobackShow = true;
       }
     },
     getWallet(x) {
+      console.log(x, "获取商品");
       networkRequest("v7", "/wallet/pay/items", x)
         .then((resd) => {
-          console.log(typeof (resd), "获取商品");
-          if (typeof (resd.code) != undefined) {
+          if (resd.code == 200) {
             let art = [];
-            this.jumpType = resd.jumpType
-            this.DiamondList = resd.items
-            this.defaultChannelConfig = resd.defaultChannelConfig
+            this.DiamondList = resd.data.items
+            this.jumpType = resd.data.jumpType
             console.log(resd, "服务器数据")
-            resd.items.map((w, i) => {
+            resd.data.items.map((w, i) => {
               let subscribe = {};
-              subscribe.productId = w.productId;
+              subscribe.sku = w.productId;
+              if (w.subscribeType == 1) {
+                subscribe.skuType = "inapp";
+              } else {
+                subscribe.skuType = "subs";
+              }
               art.push(subscribe);
             });
             this.$store.dispatch("onStatistics", {
@@ -136,26 +149,26 @@ export default {
               event: "HC1300001",
               remark: {
                 type: "diamond",
-                // commodity: art
+                commodity: art
               },
             });
             getGoodsListSkus(art).then((res) => {
               console.log(res, "获取谷歌商品");
-              if (typeof (res.code) != undefined) {
+              if (res.code == 200) {
                 let googleArr = [];
                 if (res.data.length != 0) {
                   let arr1 = res.data;
-                  let arr2 = resd.items;
+                  let arr2 = resd.data.items;
                   arr1.map((x) => {
                     googleArr.push(x.productId);
                     arr2.map((c) => {
                       if (c.productId == x.productId) {
                         c.currency = x.price_currency_code;
                         c.price = x.price;
+
                       }
                     });
                   });
-                  console.log(googleArr,'googleArr');
                   this.$store.dispatch("onStatistics", {
                     type: "custom",
                     event: "HC1000001",
@@ -166,10 +179,10 @@ export default {
                   });
                   this.DiamondList = arr2
                 } else {
-                  this.DiamondList = resd.items
+                  this.DiamondList = resd.data.items
                 }
               } else {
-                this.DiamondList = resd.items;
+                this.DiamondList = resd.data.items;
                 this.$store.dispatch("onStatistics", {
                   type: "custom",
                   event: "HC1100002",
@@ -180,32 +193,28 @@ export default {
                 });
               }
             });
+          } else {
+            Toast(resd.msg);
           }
         })
-    },
-    extInfo() {
-      networkRequest("v1", "/wallet/info/extInfo", {}).then((res) => {
-        console.log(res, '返回的数据')
-        this.walletamount = res.balance
-      })
     },
 
     // 点击商品]
     payClicks(val) {
-      console.log(val, '阿松大', this.jumpType)
       this.payClick(
         this.jumpType,
-        { ...val, ...this.defaultChannelConfig },
+        {
+          ...val, ...this.rechargesource
+        },
         1,
         'HP1401000'
       );
       this.$store.dispatch("onStatistics", {
         type: "click",
-        event: "HE0001003",
+        event: "HP1002000",
         remark: { productId: val.productId },
       });
-    },
-
+    }
   },
   watch: {
     "$store.state.balance"(newnew, oldold) {

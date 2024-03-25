@@ -1,8 +1,7 @@
 #about {
   width: 100%;
   height: 100%;
-  background: #0E061E;
-  overflow: hidden;
+  background: #FFFFFF;
 }
 #about .title {
   width: 100%;
@@ -26,7 +25,7 @@
   font-size: 18px;
   font-family: Arial;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #222;
 }
 #about .title .title-imgs {
   width: 30px;
@@ -48,7 +47,7 @@
 #about .record-top p {
   font-size: 17px;
   font-weight: 500;
-  color: #222222;
+  color: #222;
   line-height: 17.5px;
   margin-left: 110px;
   line-height: 44px;
@@ -56,12 +55,13 @@
 #about .edition {
   width: 100%;
   height: auto;
-  margin-top: 75px;
+  position: absolute;
+  top: 75px;
 }
 #about .edition .edition_logo {
   width: 90px;
   height: 90px;
-  background: #D8D8D8;
+  background: #fff;
   border-radius: 25px 25px 25px 25px;
   margin: 33px auto 0;
 }
@@ -70,13 +70,11 @@
   height: 100%;
   border-radius: 25px 25px 25px 25px;
 }
-#about .edition p {
-  color: #fff;
-}
 #about .edition p:nth-child(2) {
   width: 100%;
   font-size: 25px;
   font-weight: bold;
+  color: #222;
   margin-top: 25px;
   text-align: center;
 }
@@ -84,6 +82,7 @@
   width: 100%;
   font-size: 15px;
   font-weight: 500;
+  color: #222;
   text-align: center;
   margin-top: 10px;
 }
@@ -91,21 +90,21 @@
   width: 100%;
   font-size: 15px;
   font-weight: 500;
+  color: #222;
   text-align: center;
   margin-top: 10px;
 }
 #about .agreement {
   width: 96%;
   height: auto;
-  margin: 40px auto 0;
+  margin: 291px auto 0;
 }
 #about .agreement p {
   height: 55px;
-  border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+  border-top: solid 1px #eee;
   line-height: 55px;
   font-size: 17px;
   font-family: Arial-Regular, Arial;
   font-weight: 400;
-  color: #fff;
-  padding-left: 16px;
+  color: #222;
 }/*# sourceMappingURL=index.css.map */

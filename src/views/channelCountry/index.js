@@ -1,15 +1,18 @@
 import { Toast } from "vant";
 import {
     close,
+    JumpH5external,
     outerBrowser,
     networkRequest,
     closeNative,
-    setTitleBars
+    setTitleBar,
 } from "../../api/inedx";
 import { getQueryString } from "../../utils/index";
 import { redirectToCheckout, loadAirwallex } from "airwallex-payment-elements";
 import getEnv from "../../config/getEnv";
 import { getProductlayout } from "../../api/paymenrt.js"
+import Title from "../../components/title.vue"
+
 let env = "demo";
 if (getEnv() == "production") {
     env = "prod";
@@ -21,7 +24,7 @@ loadAirwallex({
     env: env, // Can choose other production environments, 'staging | 'demo' | 'prod'
 });
 export default {
-    components: {},
+    components: { Title },
     data() {
         return {
             /**渠道列表展示*/
@@ -40,22 +43,39 @@ export default {
             loading: false,
             time: null,
             paymentSuccessful: false, // 支付成功弹框
-            formData: {}
+            dsBridge: require("dsbridge"),
+            formData: {},
+            style: {},
+            titlecen: 'Payment',
+            rechargesource: {
+                source: "",
+                subSource: "",
+                bizId: "",
+                providerId: "",
+                ext: "",
+                orderType: "",
+            },
         };
     },
-   async created() {
-        await this.$store.dispatch("appLanguages");
-        // console.log(params, '语言');params.language
-        this.$i18n.locale = this.$store.state.appLanguage
+    created() {
+        setTitleBar("", false, true);
+        let asd = require('../../JSON/public.json')
+        this.style = asd
         this.priceInfo =
             getQueryString("params") != undefined
                 ? JSON.parse(decodeURIComponent(getQueryString("params")))
                 : {};
+        this.rechargesource.source = getQueryString("source")
+        this.rechargesource.subSource = getQueryString("subSource")
+        this.rechargesource.bizId = getQueryString("bizId")
+        this.rechargesource.ext = getQueryString("ext")
+        this.rechargesource.providerId = getQueryString("providerId")
+        this.rechargesource.orderType = getQueryString("orderType")
         this.time = new Date().getTime();
-        setTitleBars(this.$t('channelCountry.Payment'), false, false); 
-        this.channelList();
     },
     mounted() {
+        this.channelList();
+        let that = this
         let totalTmie = new Date().getTime()
         this.$store.dispatch("onStatistics", {
             type: "load",
@@ -64,31 +84,51 @@ export default {
             totalCost: totalTmie,
             remark: this.priceInfo.Pcode
         });
+        dsBridge.registerAsyn("jsCall", function (url, callback) {
+            //解析url，执行动作
+            if (url == "/intercept") {
+                that.goBack()
+            } else {
+                console.log("不必运行");
+            }
+            callback(""); //返回一个带 code 、msg、data的json
+        });
+        networkRequest("v1", "/wallet/payOrder/source/save", this.rechargesource)
     },
     methods: {
         /**获取渠道 */
         channelList() {
             // 获取支付渠道
             networkRequest("v7", "/wallet/pay/channelList", {}).then((res) => {
-                console.log(res.configList, '支付渠道');
-                this.$store.dispatch("onStatistics", {
-                    type: "custom",
-                    event: "HC1400001",
-                });
-                this.payList = res.configList;
-                console.log(this.payList)
-                if (this.payList.length == 0) {
-                    this.selestShowData = true;
+                console.log(res);
+                if (res.code == 200) {
+                    this.$store.dispatch("onStatistics", {
+                        type: "custom",
+                        event: "HC1400001",
+                    });
+                    this.payList = res.data.configList;
+                    if (this.payList.length == 0) {
+                        this.selestShowData = true;
+                    } else {
+                        this.selestShowData = false;
+                    }
+                    this.channelData = this.payList[0];
+                    this.payRadio = 0;
                 } else {
-                    this.selestShowData = false;
+                    Toast(res.msg);
                 }
-                this.channelData = this.payList[0];
-                this.payRadio = 0;
             });
         },
         /**返回 */
         goBack() {
-            close();
+            if (getQueryString("closeParentActivity") == "1") {
+                closeNative(getQueryString("pcode"));
+                setTimeout(() => {
+                    close();
+                }, 20);
+            } else {
+                close();
+            }
             this.$store.dispatch("onStatistics", {
                 type: "click",
                 event: "HE0008003",
@@ -97,6 +137,7 @@ export default {
         // 选择支付渠道
         pays(x, i) {
             this.payRadio = i;
+            console.log('选择', this.payRadio)
             this.giveDiamonds = x.rewardDesc;
             this.channelData = x;
             this.$store.dispatch("onStatistics", {
@@ -107,6 +148,7 @@ export default {
         },
         /**去支付 */
         Gopay() {
+            console.log(this.channelData, '点击')
             this.$store.dispatch("onStatistics", {
                 type: "click",
                 event: "HE0008002",
@@ -125,16 +167,24 @@ export default {
                 browserState: this.channelData.browserState,
                 payChannelCode: this.channelData.payChannelCode, // 支付渠道code
                 skuId: this.priceInfo.productId, // 商品id
+                source: this.rechargesource.source,
+                subSource: this.rechargesource.subSource,
+                bizId: this.rechargesource.bizId,
+                ext: this.rechargesource.ext,
+                providerId: this.rechargesource.providerId,
             };
-
+            this.loading = true
             if (this.channelData.payChannelCode == "GOOGLE_PAY") {
                 if (this.priceInfo.itemType == 1) {
-                    this.getPhoneType(this.priceInfo);
+                    this.loading = false
+                    this.getPhoneType({ ...this.priceInfo, ...this.rechargesource });
                 } else {
-                    this.googleappPayVip({ ...this.priceInfo, ...this.channelData });
+                    this.loading = false
+                    this.googleappPayVip({ ...this.priceInfo, ...this.channelData, ...this.rechargesource });
                 }
             } else if (this.channelData.payChannelCode == "AIRWALLEX_PAY") {
-                this.init(formData);
+                this.loading = false
+                this.airwallex(formData, this.priceInfo.itemType);
             } else {
                 if (this.priceInfo.itemType == 1) {
                     this.placeOrder(formData);
@@ -153,17 +203,21 @@ export default {
                 val
             ).then((res) => {
                 console.log(res, "下单");
-                if (typeof (res.code) != 'number') {
+                if (res.code == 200) {
                     this.$store.dispatch("onStatistics", {
                         type: "custom",
                         event: "HC1400006",
                         remark: {
-                            code: 200,
+                            code: res.code,
                         },
                     });
-                    this.loading = false;
-                    outerBrowser(res.outPaymentUrl);
-                    close()
+                    // 判断内置外置浏览器
+                    if (this.channelData.browserState == 1) {
+                        this.loading = false;
+                        outerBrowser(res.data.outPaymentUrl);
+                    } else {
+                        JumpH5external(res.data.outPaymentUrl, "fullScreen");
+                    }
                 } else {
                     Toast(res.msg);
                     this.loading = false;
@@ -181,14 +235,19 @@ export default {
         placeOrderVip(val) {
             this.loading = true;
             networkRequest("v2", "/up/vipOrder/buyVipItem", val).then((res) => {
-                console.log(res, res.code, typeof (res.code) == 'number', "下单");
-                if (typeof (res.code) != 'number') {
+                console.log(res, "下单");
+                if (res.code == 200) {
                     this.$store.dispatch("onStatistics", {
                         type: "custom",
                         event: "HC1400005",
                     });
                     this.loading = false;
-                    outerBrowser(res.body);
+                    // 内置或外置浏览器
+                    if (this.channelData.browserState == 1) {
+                        outerBrowser(res.data.body);
+                    } else {
+                        JumpH5external(res.data.body, "fullScreen");
+                    }
                 } else {
                     Toast(res.msg);
                     this.loading = false;

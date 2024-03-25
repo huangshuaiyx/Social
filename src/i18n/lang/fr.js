@@ -40,7 +40,7 @@ module.exports = {
         Nickname: "Pseudo",
         Gender: "Genre",
         Age: "Âge",
-        Region: "Pays",
+        Region: "Mon id",
         Language: "Langue",
         Second: "Deuxième langue",
         Sure: "Confirmer",
