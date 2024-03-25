@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0"> -->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" type="image/x-icon" href="/public/mcsg.ico">
+  <title>米橙省购</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+ 
+    #div {
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>
+<script>
+  // 三个步骤:
+  // 1.获取html的宽,
+  let htmlwidth = document.documentElement.clientWidth || document.body
+  .clientWidth; //有些浏览器documentElement获取不到,那就使用后面的body
+
+  // 2.htmlDom
+  let htmlDom = document.getElementsByTagName("html")[0]
+
+  //3.设置根元素样式
+  htmlDom.style.fontSize = htmlwidth / 23.4375 + 'px'; //记住这个20是等份的意思,这样每一份是16px,即1rem=16px;
+
+
+  window.onload = function () {
+    function IEVersion() {
+      var userAgent = navigator.userAgent; //取得浏览器的userAgent字 符串  
+      var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器  
+      var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器  
+      var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
+      if (isIE) {
+        var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+        reIE.test(userAgent);
+        var fIEVersion = parseFloat(RegExp["$1"]);
+        if (fIEVersion == 7) {
+          return 7;
+        } else if (fIEVersion == 8) {
+          return 8;
+        } else if (fIEVersion == 9) {
+          return 9;
+        } else if (fIEVersion == 10) {
+          return 10;
+        } else {
+          return 6; //IE版本<=7
+        }
+      } else if (isEdge) {
+        return 'edge'; //edge
+      } else if (isIE11) {
+        return 11; //IE11  
+      } else {
+        return -1; //不是ie浏览器
+      }
+    }
+    var a = IEVersion();
+
+    if (a != -1) {
+      alert("系统检测到您的浏览器版本过低，可能造成页面无法正常显示，请尝试使用其他浏览器打开！")
+      this.$router.push({
+        name: 'err404'
+      })
+    }
+  }
+</script>
