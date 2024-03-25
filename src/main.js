@@ -1,54 +1,75 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import "vant/lib/index.css";
-import "./utils/vant";
+import Vue from 'vue'
 
-Vue.prototype.bus = new Vue();
-// Vue.prototype.pay = new Vue();
-import "default-passive-events"; //添加事件管理者'passive'，来阻止'touchstart'事件，
+import Cookies from 'js-cookie'
 
-Vue.prototype.dsBridge = require("dsbridge");
-// 清除默认样式
-import "../src/assets/style/index.scss";
-// 引入rem依赖
-import "lib-flexible";
+import Element from 'element-ui'
+import './assets/styles/element-variables.scss'
 
-/* 引入公共函数 */
-import common from "./commin/common.js";
-Vue.use(common);
+import '@/assets/styles/index.scss' // global css
+import '@/assets/styles/ruoyi.scss' // ruoyi css
+import App from './App'
+import store from './store'
+import router from './router'
+import directive from './directive' //directive
 
-// Vue.config.productionTip = false;
+import './assets/icons' // icon
+import './permission' // permission control
+import { getDicts } from "@/api/system/dict/data";
+import { getConfigKey } from "@/api/system/config";
+import { parseTime, resetForm, addDateRange, selectDictLabel, selectDictLabels, download, handleTree } from "@/utils/ruoyi";
+import Pagination from "@/components/Pagination";
 
-// 重复点击导航路由报错
-import Router from "vue-router";
-const originalPush = Router.prototype.push;
-Router.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch((err) => err);
-};
+// 自定义表格工具组件
+import RightToolbar from "@/components/RightToolbar"
+// 富文本组件
+import Editor from "@/components/Editor"
+// 文件上传组件
+import FileUpload from "@/components/FileUpload"
+// 图片上传组件
+import ImageUpload from "@/components/ImageUpload"
+// 字典标签组件
+import DictTag from '@/components/DictTag'
+// 头部标签组件
+import VueMeta from 'vue-meta'
 
-// 多语言引入
-import VueI18n from "vue-i18n";
-Vue.use(VueI18n);
-// 多语言切换
-const i18n = new VueI18n({
-  locale: "", //设置浏览器默认语言 window.navigator.language
-  messages: {
-    en: require("../src/i18n/lang/en"),
-    fr: require("../src/i18n/lang/fr"),
-    ar: require("../src/i18n/lang/ar"),
-    hi: require("../src/i18n/lang/hi"),
-    es: require("../src/i18n/lang/es"),
-    ru: require("../src/i18n/lang/ru"),
-    vi: require("../src/i18n/lang/vi"),
-    pt: require("../src/i18n/lang/pt"),
-    ur: require("../src/i18n/lang/ur"),
-    ta: require("../src/i18n/lang/ta"),
-    id: require("../src/i18n/lang/id"),
-  },
-  silentTranslationWarn: true, // 去除警告
-});
+import $ from 'jquery'
+Vue.prototype.$ = $
+
+Vue.prototype.radio = 1
+
+// 全局方法挂载
+Vue.prototype.getDicts = getDicts
+Vue.prototype.getConfigKey = getConfigKey
+Vue.prototype.parseTime = parseTime
+Vue.prototype.resetForm = resetForm
+Vue.prototype.addDateRange = addDateRange
+Vue.prototype.selectDictLabel = selectDictLabel
+Vue.prototype.selectDictLabels = selectDictLabels
+Vue.prototype.download = download
+Vue.prototype.handleTree = handleTree
+
+Vue.prototype.msgSuccess = function (msg) {
+  this.$message({ showClose: true, message: msg, type: "success" });
+}
+
+Vue.prototype.msgError = function (msg) {
+  this.$message({ showClose: true, message: msg, type: "error" });
+}
+
+Vue.prototype.msgInfo = function (msg) {
+  this.$message.info(msg);
+}
+
+// 全局组件挂载
+Vue.component('DictTag', DictTag)
+Vue.component('Pagination', Pagination)
+Vue.component('RightToolbar', RightToolbar)
+Vue.component('Editor', Editor)
+Vue.component('FileUpload', FileUpload)
+Vue.component('ImageUpload', ImageUpload)
+
+Vue.use(directive)
+Vue.use(VueMeta)
 
 // 防重复点击
 Vue.directive("preventReClick", {
@@ -66,22 +87,34 @@ Vue.directive("preventReClick", {
   },
 });
 
-// 真机测试
-import VConsole from "vconsole";
-// Vue.use(new VConsole());
-if (process.env.NODE_ENV !== "production") {
- Vue.use(new VConsole());
-}
+/* 引入公共函数 */
+import common from "./commin/common.js";
+Vue.use(common);
 
-// es6
-import "babel-polyfill";
-import Es6Promise from "es6-promise";
-require("es6-promise").polyfill();
-Es6Promise.polyfill();
+/**
+ * If you don't want to use mock-server
+ * you want to use MockJs for mock api
+ * you can execute: mockXHR()
+ *
+ * Currently MockJs will be used in the production environment,
+ * please remove it before going online! ! !
+ */
+
+import Router from "vue-router";
+const originalPush = Router.prototype.push;
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch((err) => err);
+};
+
+Vue.use(Element, {
+  size: Cookies.get('size') || 'medium' // set element-ui default size
+})
+
+Vue.config.productionTip = false
 
 new Vue({
+  el: '#app',
   router,
   store,
-  i18n,
-  render: (h) => h(App),
-}).$mount("#app");
+  render: h => h(App)
+})

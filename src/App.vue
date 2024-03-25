@@ -1,60 +1,38 @@
 <template>
   <div id="app">
-    <!-- <transition :name="transitionName">
-      <router-view />
-    </transition> -->
-    <keep-alive>
-      <router-view v-if="$route.meta.keepAlive" />
-    </keep-alive>
-    <router-view v-if="!$route.meta.keepAlive" />
-    <loading></loading>
+    <router-view v-if="isRouterAlive" />
   </div>
 </template>
 
 <script>
-import loading from "./components/loading.vue";
-import "babel-polyfill";
+// import ReviewList from '../src/views/operate/anchorReview/reviewList/index.vue'
 export default {
+  name: 'App',
   provide() {
     return {
-      reload: this.reload,
-    };
+      reload: this.reload
+    }
   },
-
-  components: { loading },
   data() {
     return {
-      transitionName: "",
+      isRouterAlive: true
     };
   },
-  mounted() {
-    // this.bus.$emit("loading", true);
-    // setTimeout(() => {
-    //   this.bus.$emit("loading", false);
-    // }, 1000);
+  methods: {
+    reload() { 
+      this.isRouterAlive = false
+      this.$nextTick(function () {
+        this.isRouterAlive = true
+      })
+    }
   },
-  methods: {},
-};
+  metaInfo() {
+    return {
+      title: this.$store.state.settings.dynamicTitle && this.$store.state.settings.title,
+      titleTemplate: title => {
+        return title ? `${title} - ${process.env.VUE_APP_TITLE}` : process.env.VUE_APP_TITLE
+      }
+    }
+  }
+}
 </script>
-
-<style lang="scss">
-#app {
-  width: 100%;
-  height: 100%;
-  background: none;
-}
-// 隐藏滚动条
-#app::-webkit-scrollbar {
-  display: none;
-  -ms-overflow-style: none;
-}
-
-#app {
-  -webkit-touch-callout: none; /*系统默认菜单被禁用*/
-  -webkit-user-select: none; /*webkit浏览器*/
-  -khtml-user-select: none; /*早期浏览器*/
-  -moz-user-select: none; /*火狐*/
-  -ms-user-select: none; /*IE10*/
-  user-select: none;
-}
-</style>

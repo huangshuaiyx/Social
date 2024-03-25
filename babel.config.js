@@ -1,43 +1,13 @@
-// module.exports = {
-//   presets: ["@vue/cli-plugin-babel/preset"],
-//   // 按需引入
-//   plugins: [
-//     [
-//       "import",
-//       {
-//         libraryName: "vant",
-//         libraryDirectory: "es",
-//         style: true,
-//       },
-//       "vant",
-//     ],
-//   ],
-// };
-
-var plugins = [
-  [
-    "import",
-    {
-      libraryName: "vant",
-      libraryDirectory: "es",
-      style: true,
-    },
-    "vant",
-  ],
-];
-// if (process.env.NODE_ENV === "production") {
-//   plugins.push("transform-remove-console");
-// }
-
 module.exports = {
   presets: [
-    [
-      "@vue/app",
-      {
-        useBuiltIns: "entry",
-        polyfills: ["es6.promise", "es6.symbol"],
-      },
-    ],
+    // https://github.com/vuejs/vue-cli/tree/master/packages/@vue/babel-preset-app
+    '@vue/cli-plugin-babel/preset'
   ],
-  plugins: plugins,
-};
+  'env': {
+    'development': {
+      // babel-plugin-dynamic-import-node plugin only does one thing by converting all import() to require().
+      // This plugin can significantly increase the speed of hot updates, when you have a large number of pages.
+      'plugins': ['dynamic-import-node']
+    }
+  }
+}
