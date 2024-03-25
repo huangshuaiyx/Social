@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>balance</title>
+    <link rel="stylesheet" type="text/css" href="./css/public.css">
+    <link rel="stylesheet" type="text/css" href="./css/balance/balance.css">
+    <link rel="stylesheet" type="text/css" href="./css/vant.css">
+
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <!-- vue -->
+    <script src="./js/vue2.js"></script>
+    <!-- api协议 -->
+    <script src="./js/api.js"></script>
+    <!-- dsbridge-->
+    <script src="./js/dsbridge.js"></script>
+    <!-- 公共方法 -->
+    <script src="./js/enclosure.js"></script>
+    <!-- vant -->
+    <script src="./js/vant.js"></script>
+    <!--vconsole  -->
+    <!-- <script src="./js/vconsole.js"></script> -->
+    <script src="./js/publicmethods.js"></script>
+</head>
+
+
+<body>
+    <div id="app">
+        <div class="app_balance">
+            <div class="app_balance_top">
+                <div class="app_balance_top_one">
+                    <p>My coins: {{balance}}</p>
+                    <img src="./img/balance.png" alt="">
+                </div>
+            </div>
+
+            <div class="app_balance_list">
+                <div class="app_balance_list_everyone" v-for="(x,i) in balanceList" :key="i" @click="shopClick(x,i)">
+                    <div class="app_balance_list_everyone_titletop" v-show="i == 0 || i == 1">Limited-time</div>
+                    <div class="app_balance_list_everyone_titlebottom" v-show="i == balanceList.length - 1 -1">Save 20%
+                    </div>
+                    <div class="app_balance_list_everyone_species"><img src="./img/species.png" alt=""></div>
+                    <div class="app_balance_list_everyone_amount">{{x.name}}</div>
+                    <div class="app_balance_list_everyone_discount">
+                        <p class="app_balance_list_everyone_discount_p1" v-show="x.discountPrice != null">
+                            {{x.discountPrice}}</p>
+                        <p
+                            :class="x.discountPrice != null?'app_balance_list_everyone_discount_p2':'app_balance_list_everyone_discount_p3'">
+                            {{x.price}}</p>
+                    </div>
+                </div>
+                <van-loading size="30px" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);"
+                    v-show="balanceList.length <= 0 "></van-loading>
+            </div>
+        </div>
+        <div class="loding" v-if="lodingShow">
+            <van-loading size="30px"
+                style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);"></van-loading>
+        </div>
+
+    </div>
+</body>
+
+<script>
+    new Vue(
+        {
+            el: '#app',
+            data: {
+                balance: 0,
+                balanceList: [],
+                jumpType: null,
+                defaultChannelConfig: {},
+                lodingShow: false,
+                notWork: true,
+            },
+            methods: {
+                shopClick(x) {
+                    console.log('111', x)
+                    let params = {
+                        productId: x.productId,
+                        price: x.price,
+                        name: x.name,
+                        subscribeType: x.subscribeType,
+                        type: 1,
+                        currency: x.currency,
+                        ...this.defaultChannelConfig
+                    }
+                    this.lodingShow = true
+                    if (this.jumpType == 1) {
+                        public.googlepays(params)
+                    } else {
+                        // window.location.href = `payment.html?params=${encodeURIComponent(JSON.stringify(params))}`;
+                        api.JumpH5(`/payment.html`, params)
+                    }
+                    setTimeout(() => {
+                        this.lodingShow = false
+                    }, 2000);
+
+                    public.onStatistics({ event: 'HE1002003', bizId: 'asdas', type: "click", })
+
+                },
+                balancequery() {
+                    api.networkRequest('/v1/wallet/info/extInfo', { itemType: 1 }).then(res => {
+                        console.log(res, res.code, 'extInfo参数,', typeof (res.data))
+                        if (res.code == 200) {
+                            this.balance = res.data.balance
+                        }
+                    })
+                    public.onStatistics({ event: 'HC1002001', bizId: 'asdas', type: "custom", })
+                },
+                balanceListS() {
+                    api.networkRequest('/v8/wallet/pay/items', { "itemType": 1 }).then(res => {
+                        console.log(res, res.code, '是参数,', typeof (res.data))
+                        api.networkRequest('/v8/wallet/pay/items', { itemType: 1 }).then(resd => {
+                            if (resd.code == 200) {
+                                let art = [];
+                                this.balanceList = resd.data.items
+                                this.jumpType = resd.data.jumpType
+                                this.defaultChannelConfig = resd.data.defaultChannelConfig
+                                console.log(resd, "服务器数据")
+                                resd.data.items.map((w, i) => {
+                                    let subscribe = {};
+                                    subscribe.sku = w.productId;
+                                    if (w.subscribeType == 1) {
+                                        subscribe.skuType = "inapp";
+                                    } else {
+                                        subscribe.skuType = "subs";
+                                    }
+                                    art.push(subscribe);
+                                });
+                                public.onStatistics({ event: 'HC1002002', bizId: 'asdas', type: "custom", })
+                                api.getGoodsListSkus(art).then((res) => {
+                                    console.log(res, "获取谷歌商品");
+                                    if (res.code == 200) {
+                                        let googleArr = [];
+                                        if (res.data.length != 0) {
+                                            let arr1 = res.data;
+                                            let arr2 = resd.data.items;
+                                            arr1.map((x) => {
+                                                googleArr.push(x.productId);
+                                                arr2.map((c) => {
+                                                    if (c.productId == x.productId) {
+                                                        c.currency = x.priceCurrencyCode;
+                                                        c.price = x.price;
+                                                    }
+                                                });
+                                            });
+                                            public.onStatistics({ event: 'HC1000001', bizId: 'asdas', type: "custom", })
+                                            this.balanceList = arr2
+                                        } else {
+                                            this.balanceList = resd.data.items
+                                        }
+                                    } else {
+                                        this.balanceList = resd.data.items;
+                                        public.onStatistics({ event: 'HC1100002', bizId: 'asdas', type: "custom", })
+                                    }
+                                });
+                            } else {
+                                Toast(resd.msg);
+                            }
+                        })
+                    })
+                },
+            },
+            mounted() {
+
+                this.balancequery()
+                this.balanceListS()
+            },
+            created() { },
+            watch: {
+                notWork(news, old) {
+                    console.log(news, '-----------', old)
+                }
+            },
+        }
+    )
+</script>
+
+</html>

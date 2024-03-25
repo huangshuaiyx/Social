@@ -1,0 +1,241 @@
+#app {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    // background: url('../../img/bg.png') no-repeat #000;
+    // background-size: contain;
+
+    .app_box {
+        width: 100%;
+        height: 6.1rem;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        .van-swipe {
+            width: 100%;
+            height: 2.23rem;
+            color: #fff;
+            overflow: hidden;
+            margin-top: .18rem;
+
+            .van-swipe-item {
+                width: 80%;
+                margin: 0 auto;
+
+                img {
+                    width: 2.4rem;
+                    height: 1.25rem;
+                    margin: 0 auto 0.18rem;
+                    display: block;
+                }
+
+                .swipe_p1 {
+                    text-align: center;
+                    width: 100%;
+                    color: #fff;
+                }
+
+                .swipe_p2 {
+                    text-align: center;
+                    width: 2.69rem;
+                    color: rgba(255, 255, 255, 0.3);
+                    margin-top: .1rem;
+                    margin-left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+
+            .van-swipe__indicator {
+                width: 0.2rem;
+                height: 0.03rem;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
+            }
+
+        }
+
+        .app_commodity {
+            width: 100%;
+            height: 2.4rem;
+
+            .app_commodity_div {
+                width: 3.47rem;
+                height: 0.7rem;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 0.2rem 0.2rem 0.2rem 0.2rem;
+                border: 0.01rem solid #FFFFFF;
+                margin: .15rem auto 0;
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+
+                .app_commodity_div_viptitletop {
+                    width: 0.92rem;
+                    height: 0.22rem;
+                    position: absolute;
+                    top: -.1rem;
+                    left: .12rem;
+                    background: url('../../img/viptitletop.png') no-repeat;
+                    background-size: cover;
+                    text-align: center;
+                    line-height: .22rem;
+                    color: #fff;
+                    font-weight: 700;
+
+                }
+
+                .app_commodity_div_name {
+                    width: 1.07rem;
+                    height: 0.7rem;
+                    font-size: 0.2rem;
+                    font-weight: 700;
+                    color: #FFFFFF;
+                    line-height: .7rem;
+                    margin-left: .16rem;
+                }
+
+                .app_commodity_div_price {
+                    min-width: 0.87rem;
+                    width: auto;
+                    height: 0.37rem;
+                    background: linear-gradient(270deg, #7550D3 0%, #BE52F3 100%);
+                    border-radius: 0.12rem 0.12rem 0.12rem 0.12rem;
+                    margin-top: .17rem;
+                    margin-right: .15rem;
+                    line-height: .37rem;
+                    text-align: center;
+                    font-size: 0.18rem;
+                    color: #fff;
+                    font-weight: 700;
+                    font-style: italic;
+                    padding: 0 0.11rem;
+                }
+            }
+
+            .app_commodity_notdiv {
+                width: 3.47rem;
+                height: 0.7rem;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 0.2rem 0.2rem 0.2rem 0.2rem;
+                border: 0.01rem solid rgba(255, 255, 255, 0.3);
+                margin: .15rem auto 0;
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+
+                .app_commodity_div_viptitletop {
+                    width: 0.92rem;
+                    height: 0.22rem;
+                    position: absolute;
+                    top: -.1rem;
+                    left: .12rem;
+                    background: url('../../img/viptitletop.png') no-repeat;
+                    background-size: cover;
+                    text-align: center;
+                    line-height: .22rem;
+                    color: #fff;
+                    font-weight: 700;
+
+                }
+
+                .app_commodity_div_name {
+                    width: 1.07rem;
+                    height: 0.7rem;
+                    font-size: 0.2rem;
+                    font-weight: 700;
+                    color: #FFFFFF;
+                    line-height: .7rem;
+                    margin-left: .16rem;
+                }
+
+                .app_commodity_div_price {
+                    min-width: 0.87rem;
+                    width: auto;
+                    height: 0.37rem;
+                    background: linear-gradient(270deg, #7550D3 0%, #BE52F3 100%);
+                    border-radius: 0.12rem 0.12rem 0.12rem 0.12rem;
+                    margin-top: .17rem;
+                    margin-right: .15rem;
+                    line-height: .37rem;
+                    text-align: center;
+                    font-size: 0.18rem;
+                    color: #fff;
+                    font-weight: 700;
+                    font-style: italic;
+                    padding: 0 0.5rem;
+                    padding: 0 0.11rem;
+                }
+            }
+        }
+
+        .app_text {
+            width: 100%;
+            text-align: center;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: .4rem;
+
+            .app_text_one {
+                width: 100%;
+                text-align: center;
+                font-size: 0.12rem;
+                font-weight: 700;
+                color: rgba(255, 255, 255, 0.3);
+                margin-top: .32rem;
+            }
+
+            .app_text_two {
+                width: 3.32rem;
+                height: auto;
+                font-size: 0.11rem;
+                font-weight: 400;
+                color: rgba(255, 255, 255, 0.3);
+                margin: .1rem auto .02rem;
+            }
+
+            .app_text_botomimg {
+                width: .2rem;
+                height: .2rem;
+            }
+
+            .app_text_topimg {
+                width: .2rem;
+                height: .2rem;
+            }
+        }
+    }
+
+
+    .app_button {
+        width: 100%;
+        height: .78rem;
+        position: fixed;
+        bottom: 0;
+        overflow: hidden;
+        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #000000 100%);
+
+        .app_button_div {
+            width: 3rem;
+            height: 0.44rem;
+            background: linear-gradient(90deg, #9B61FF 0%, #DF53FE 100%);
+            border-radius: 0.15rem 0.15rem 0.15rem 0.15rem;
+            font-size: 0.15rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            line-height: .44rem;
+            text-align: center;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+
+
+    }
+
+    .loding {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        position: fixed;
+        top: 0;
+    }
+}

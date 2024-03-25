@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" type="text/css" href="./css/public.css">
+    <link rel="stylesheet" type="text/css" href="./css/payment/payment.css">
+    <link rel="stylesheet" type="text/css" href="./css/vant.css">
+
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <!-- vue -->
+    <script src="./js/vue2.js"></script>
+    <!-- api协议 -->
+    <script src="./js/api.js"></script>
+    <!-- dsbridge-->
+    <script src="./js/dsbridge.js"></script>
+    <!-- 公共方法 -->
+    <script src="./js/enclosure.js"></script>
+    <!-- vant -->
+    <script src="./js/vant.js"></script>
+    <!--vconsole  -->
+    <!-- <script src="./js/vconsole.js"></script> -->
+    <!-- <script src="./js/publicmethods.js"></script> -->
+</head>
+
+
+<body>
+    <div id="app">
+        <div class="app_Product">
+            <p>Product</p>
+            <p>{{priceInfo.name}}</p>
+        </div>
+        <div class="app_Price">
+            <p>Price</p>
+            <p class="app_Price_two">{{priceInfo.price}}</p>
+        </div>
+        <div class="app_Payment">Payment</div>
+        <div class="app_Payment_list">
+            <div v-for="(x,i) in  paymentList" :key="i" class="app_Payment_list_div" @click="paymentClick(x,i)">
+                <div class="app_Payment_list_div_one">
+                    <img :src="x.payTypeLogo" alt="">
+                    <p>{{x.payTypeFullName}}</p>
+                </div>
+                <div class="app_Payment_list_div_two">
+                    <img v-if="indexs != i" src="./img/paySelected.png" alt="">
+                    <img v-else src="./img/paynotSelected.png" alt="">
+                </div>
+            </div>
+
+            <div class="loding" v-if="paymentList.length <= 0">
+                <van-loading size="30px"
+                    style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);"></van-loading>
+            </div>
+        </div>
+        <div class="app_Confirm" v-if="paymentList.length > 0" @click="payClick()">
+            <div>Confirm</div>
+        </div>
+        <div class="loding" v-if="lodingShow">
+            <van-loading size="30px"
+                style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);"></van-loading>
+        </div>
+    </div>
+</body>
+
+<script>
+    new Vue(
+        {
+            el: '#app',
+            data: {
+                indexs: 0,
+                paymentList: [{},{},{},{},{}],
+                priceInfo: {},
+                lodingShow: false
+            },
+            methods: {
+                paymentClick(x, i) {
+                    this.indexs = i
+                    this.channelData = x
+                },
+                payClick() {
+                    this.lodingShow = true
+                    setTimeout(() => {
+                        this.lodingShow = false
+                    }, 2000);
+                    let asd = String(this.priceInfo.name);
+                    let formData = {
+                        itemId: this.priceInfo.productId, //商品id
+                        platformCoins: asd.replace(/[^0-9]/gi, ""), // 金币数量
+                        payAmountTitle: this.priceInfo.name, // 标题
+                        payChannelConfigId: this.channelData.payChannelConfigId,
+                        currency: this.priceInfo.currency, // 币种
+                        browserState: this.channelData.browserState,
+                        payChannelCode: this.channelData.payChannelCode, // 支付渠道code
+                        skuId: this.priceInfo.productId, // 商品id
+                    };
+                    if (this.channelData.payChannelCode == "GOOGLE_PAY") {
+                        public.googlepays({ ...this.priceInfo, ...this.channelData, ...this.rechargesource });
+                    } else {
+                        if (this.priceInfo.type == 1) {
+                            public.placeOrder(formData);
+                        } else {
+                            public.placeOrderVip(formData);
+                        }
+                    }
+                },
+                //渠道获取
+                paymentLists() {
+                    api.networkRequest('/v7/wallet/pay/channelList', {}).then((res) => {
+                        console.log(res);
+                        if (res.code == 200) {
+                            this.paymentList = res.data.configList;
+                            this.channelData = this.paymentList[0];
+                            this.payRadio = 0;
+                        } else {
+                            Toast(res.msg);
+                        }
+                    });
+                }
+            },
+            mounted() {
+                this.paymentLists()
+                const searchParams = new URL(window.location).searchParams;
+                let target = searchParams.get('params');
+                let asd = decodeURIComponent(target)
+                let qwe = public.getQueryString('params')
+                console.log('mounted', asd, '-------', JSON.parse(asd))
+
+                this.priceInfo = JSON.parse(asd)
+            },
+            created() { },
+        }
+    )
+
+    Vue.use(vant)
+</script>
+
+</html>

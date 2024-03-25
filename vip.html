@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP</title>
+    <link rel="stylesheet" type="text/css" href="./css/public.css">
+    <link rel="stylesheet" type="text/css" href="./css/vip/vip.css">
+    <link rel="stylesheet" type="text/css" href="./css/vant.css">
+
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <!-- vue -->
+    <script src="./js/vue2.js"></script>
+    <!-- api协议 -->
+    <script src="./js/api.js"></script>
+    <!-- dsbridge-->
+    <script src="./js/dsbridge.js"></script>
+    <!-- 公共方法 -->
+    <script src="./js/enclosure.js"></script>
+    <!-- vant -->
+    <script src="./js/vant.js"></script>
+    <!--vconsole  -->
+    <!-- <script src="./js/vconsole.js"></script> -->
+    <script src="./js/publicmethods.js"></script>
+</head>
+
+
+<body>
+    <div id="app">
+
+        <div class="app_box">
+            <van-swipe :autoplay="3000" indicator-color="#fff">
+                <van-swipe-item v-for="(x, index) in images" :key="index">
+                    <img v-lazy="x.src" :src="x.src" />
+                    <p class="swipe_p1">{{x.text1}}</p>
+                    <p class="swipe_p2">{{x.text2}}</p>
+                </van-swipe-item>
+            </van-swipe>
+
+            <div class="app_commodity">
+                <div :class="i == indexs?'app_commodity_div':'app_commodity_notdiv'" @click="commodityClick(x,i)"
+                    v-for="(x,i) in commodity" :key="1">
+                    <div class="app_commodity_div_viptitletop" v-for="(v,n) in bgList" v-show="n == i" :key="n">
+                        {{v.table}}
+                    </div>
+                    <div class="app_commodity_div_name">{{x.name}}</div>
+                    <div class="app_commodity_div_price" v-for="(v,n) in bgList" v-show="n == i" :key="n"
+                        :style="{background: v.bg }">{{x.price}}</div>
+                </div>
+                <van-loading size="30px" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);"
+                    v-show="commodity.length <= 0"></van-loading>
+            </div>
+
+            <div class="app_text">
+                <p class="app_text_one">Recurring billing, cancel anytime.</p>
+                <p ref="texttwo" class="app_text_two">By tapping Continue, your payment will be charged to your iTunes
+                    account, and vour
+                    subscription will automaticallv renew for the same package length at the same price until you cancel
+                    in
+                    settings in the iTunes store at least 24 hours prior to the end of the current period. By tapping
+                    Continue, you agree to our Privacy Policy, and Terms of Use</p>
+                <img v-if="imgShow == 1" @click="imgClicks(0)" class="app_text_botomimg" src="./img/bottom.png" alt="">
+                <img v-else @click="imgClicks(1)" class="app_text_topimg" src="./img/top.png" alt="">
+            </div>
+        </div>
+
+
+        <div class="app_button" v-show="commodity.length > 0">
+            <div class="app_button_div" @click="vipClick">Become Vip</div>
+        </div>
+
+        <div class="loding" v-if="lodingShow">
+            <van-loading size="30px"
+                style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);"></van-loading>
+        </div>
+
+
+    </div>
+</body>
+
+<script>
+
+    new Vue(
+        {
+            el: '#app',
+            data: {
+                indexs: 0,
+                commodity: [],
+                images: [
+                    { src: './img/chatting.png', text1: "Stay chatting", text2: "No need to  ! Upgrade to VIP now and start messaging *hostName*" },
+                    { src: './img/week!.png', text1: "1week：Bonus Coins Every week!", text2: "1week：Get 500 coins every week" },
+                    { src: './img/Messages.png', text1: "Unlimited Messages", text2: "Feel free to send messages to anyone you desire." },
+                    { src: './img/Badge.png', text1: "Exclusive VIP Badge", text2: "Make you stand out from the crowd" },
+                    { src: './img/Visibility.png', text1: "Enhanced Visibility", text2: "Stand out at the top and be easily discovered by potential connections." }
+                ],
+                bgList: [
+                    { bg: 'linear-gradient(270deg, #7550D3 0%, #BE52F3 100%)', table: 'SILVER' },
+                    { bg: 'linear-gradient(270deg, #F49827 0%, #EDAB11 100%)', table: 'GOLD' },
+                    { bg: 'linear-gradient(270deg, #EE3F82 0%, #FF8B38 100%)', table: 'BRONZE' }],
+                imgShow: 1,
+                commoditysingle: {},
+                jumpType: null,
+                defaultChannelConfig: {},
+                lodingShow:false
+            },
+            methods: {
+                commodityClick(x, i) {
+                    this.indexs = i
+                    this.commoditysingle = x
+                    console.log('111', this.commoditysingle)
+                    // public.onStatistics({})
+                    // public.getPay({ productId: '1' })
+                    public.onStatistics({ event: 'HE1401002', bizId: 'asdas', type: "custom", })
+                },
+                imgClicks(val) {
+                    this.imgShow = val
+                    if (val == 0) {
+                        this.$refs.texttwo.style.height = '.25rem'
+                        this.$refs.texttwo.style.overflow = 'hidden'
+                        this.$refs.texttwo.style.wordbreak = 'break-all'
+                        this.$refs.texttwo.style.textOverflow = 'ellipsis'
+                        this.$refs.texttwo.style.webkitLineClamp = '2'
+                        this.$refs.texttwo.style.display = '-webkit-box'
+                        this.$refs.texttwo.style.webkitBoxOrient = 'vertical'
+
+                    } else {
+                        this.$refs.texttwo.style.height = '.75rem'
+                        this.$refs.texttwo.style.overflow = 'hidden'
+                        this.$refs.texttwo.style.whiteSpace = 'initial'
+                        this.$refs.texttwo.style.display = 'flex'
+                    }
+                },
+                vipClick() {
+                    let params = {
+                        productId: this.commoditysingle.productId,
+                        price: this.commoditysingle.price,
+                        name: this.commoditysingle.name,
+                        subscribeType: this.commoditysingle.subscribeType,
+                        type: 2,
+                        currency: this.commoditysingle.currency,
+                        ...this.defaultChannelConfig
+                    }
+                    this.lodingShow = true 
+                    if (this.jumpType == 1) {  
+                        public.googlepays(params)
+                    } else {
+                        window.location.href = `payment.html?params=${encodeURIComponent(JSON.stringify(params))}`;
+                        // api.JumpH5(`/payment.html?params=${JSON.stringify(params)}`)
+                    }
+                    setTimeout(() => {
+                        this.lodingShow = false
+                    }, 2000);
+                    public.onStatistics({ event: 'HE1401003', bizId: 'asdas', type: "custom", })
+                },
+                vipsList() { 
+                    api.networkRequest('/v8/wallet/pay/items', { itemType: 2 }).then(resd => {
+                        if (resd.code == 200) {
+                            let art = [];
+                            this.commodity = resd.data.items
+                            this.commoditysingle = resd.data.items[0]
+                            this.jumpType = resd.data.jumpType
+                            this.defaultChannelConfig = resd.data.defaultChannelConfig != undefined ? resd.data.defaultChannelConfig : {}
+                            console.log(resd.data, "服务器数据")
+                            resd.data.items.map((w, i) => {
+                                let subscribe = {};
+                                subscribe.sku = w.productId;
+                                if (w.subscribeType == 1) {
+                                    subscribe.skuType = "inapp";
+                                } else {
+                                    subscribe.skuType = "subs";
+                                }
+                                art.push(subscribe);
+                            });
+                            public.onStatistics({ event: 'HC1401001', bizId: 'asdas', type: "custom", })
+                            api.getGoodsListSkus(art).then((res) => {
+                                console.log(res, "获取谷歌商品");
+                                if (res.code == 200) {
+                                    let googleArr = [];
+                                    if (res.data.length != 0) {
+                                        let arr1 = res.data;
+                                        let arr2 = resd.data.items;
+                                        arr1.map((x) => {
+                                            googleArr.push(x.productId);
+                                            arr2.map((c) => {
+                                                if (c.productId == x.productId) {
+                                                    c.currency = x.priceCurrencyCode;
+                                                    c.price = x.price;
+                                                }
+                                            });
+                                        });
+                                        public.onStatistics({ event: 'HC1000001', bizId: 'asdas', type: "custom", })
+                                        this.commodity = arr2
+                                    } else {
+                                        this.commodity = resd.data.items
+                                    }
+                                } else {
+                                    this.commodity = resd.data.items;
+                                    public.onStatistics({ event: 'HC1100002', bizId: 'asdas', type: "custom", })
+                                }
+                            });
+                        } else {
+                            Toast(resd.msg);
+                        }
+
+                    })
+
+                }
+            },
+            mounted() {
+                this.vipsList()
+            },
+            created() { },
+        }
+    )
+
+    Vue.use(vant)
+</script>
+
+</html>
