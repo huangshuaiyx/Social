@@ -1,0 +1,348 @@
+#blacklist {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #0E061E;
+    overflow-y: auto;
+
+    .title {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: space-around;
+        background: #5D3AB8;
+        padding-top: 20px;
+        position: fixed;
+        top: 0;
+
+        .title-img {
+            width: 30px;
+            height: 30px;
+        }
+
+        p {
+            width: calc(100% - 120px);
+            height: 50px;
+            text-align: center;
+            line-height: 40px;
+            // margin-left: (230px/2);
+            font-size: 18px;
+            font-family: Arial;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+
+        .title-imgs {
+            width: 30px;
+            height: 30px;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    /deep/.van-pull-refresh {
+        width: 100%;
+        height: 100%;
+    }
+
+    .pullRefresh {
+        overflow-y: auto;
+
+    }
+
+    .left {
+        .blacklistdiv {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: flex-start;
+            overflow-x: hidden;
+            padding-top: 10px;
+
+            .blacklistdiv-img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                margin: 0 16px 0 (40px/2);
+                position: relative;
+
+                .van-image {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    overflow: hidden;
+
+                    /deep/.van-icon__image {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .blacklistdiv_online {
+                    width: 50px;
+                    height: 16px;
+                    background: #31D15D;
+                    border-radius: 25px 25px 25px 25px;
+                    opacity: 1;
+                    border: 1px solid #FFFFFF;
+                    font-size: 11px;
+                    font-family: Arial-Regular, Arial;
+                    font-weight: 400;
+                    color: #FFFFFF;
+                    position: absolute;
+                    bottom: 0;
+                    z-index: 1;
+                    text-align: center;
+                    line-height: 16px;
+                }
+
+                .blacklistdiv_offline {
+                    width: 50px;
+                    height: 16px;
+                    background: #999DB9;
+                    border-radius: 25px 25px 25px 25px;
+                    opacity: 1;
+                    border: 1px solid #FFFFFF;
+                    font-size: 11px;
+                    font-family: Arial-Regular, Arial;
+                    font-weight: 400;
+                    color: #FFFFFF;
+                    position: absolute;
+                    bottom: 0;
+                    z-index: 1;
+                    text-align: center;
+                    line-height: 16px;
+                }
+
+
+            }
+
+            .blacklistdiv_div {
+                width: 200px;
+                overflow-x: hidden;
+
+                p:nth-child(2) {
+                    color: #999DB9;
+                    font-size: 11px;
+                    display: flex;
+
+                    .van-image {
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 50%;
+                        vertical-align: sub;
+                        overflow: hidden;
+                    }
+
+                    span {
+                        font-size: 12px;
+                        font-weight: 500;
+                        color: #999DB9;
+                        margin-left: 5.5px;
+                    }
+                }
+
+                p:nth-child(1) {
+                    margin-top: 5px;
+                    margin-bottom: 10px;
+                    overflow: hidden; //超出的文本隐藏
+                    text-overflow: ellipsis; //溢出用省略号显示
+                    white-space: nowrap; //溢出不换行
+                    margin-top: 15px;
+
+                    .blacklistdiv-s {
+                        width: 255px;
+                        font-size: 14px;
+                        color: #fff;
+
+                    }
+
+
+                }
+            }
+
+            .blacklistdiv-button {
+                width: 75px;
+                height: 30px;
+                background: linear-gradient(135deg, #E4F8BB 0%, #81FAF3 100%);
+                border-radius: 25px 25px 25px 25px;
+                line-height: 29px;
+                text-align: center;
+                font-size: 12px;
+                font-family: Arial-Bold, Arial;
+                font-weight: 700;
+                color: #222222;
+                margin-top: 10px;
+
+                .main_in {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 8px;
+                    color: #222222;
+                }
+            }
+
+        }
+    }
+
+    .right {
+        .blacklistdiv {
+            padding-left: 10px;
+            box-sizing: border-box;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            overflow-x: hidden;
+            padding-top: 10px;
+
+            .blacklistdiv-button {
+                width: 75px;
+                height: 30px;
+                background: linear-gradient(135deg, #E4F8BB 0%, #81FAF3 100%);
+                border-radius: 25px 25px 25px 25px;
+                line-height: 29px;
+                text-align: center;
+                font-size: 12px;
+                font-family: Arial-Bold, Arial;
+                font-weight: 700;
+                color: #222222;
+                margin-top: 10px;
+
+                .main_in {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 8px;
+                    color: #222222;
+                }
+            }
+
+
+
+            .blacklistdiv-img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                margin: 0 16px 0 (40px/2);
+
+                .van-image {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    overflow: hidden;
+
+                    /deep/.van-icon__image {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .blacklistdiv_online {
+                    width: 50px;
+                    height: 16px;
+                    background: #31D15D;
+                    border-radius: 25px 25px 25px 25px;
+                    opacity: 1;
+                    border: 1px solid #FFFFFF;
+                    font-size: 11px;
+                    font-family: Arial-Regular, Arial;
+                    font-weight: 400;
+                    color: #FFFFFF;
+                }
+
+                .blacklistdiv_offline {
+                    width: 50px;
+                    height: 16px;
+                    background: #999DB9;
+                    border-radius: 25px 25px 25px 25px;
+                    opacity: 1;
+                    border: 1px solid #FFFFFF;
+                    font-size: 11px;
+                    font-family: Arial-Regular, Arial;
+                    font-weight: 400;
+                    color: #FFFFFF;
+                    position: absolute;
+                    bottom: 0;
+                    z-index: 1;
+                    text-align: center;
+                    line-height: 16px;
+                }
+
+            }
+
+            .blacklistdiv_div {
+                width: 255px;
+                overflow-x: hidden;
+
+                p:nth-child(2) {
+                    color: #999DB9;
+                    font-size: 11px;
+                    display: flex;
+                    justify-content: flex-end;
+
+                    .van-image {
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 50%;
+                        vertical-align: sub;
+                        overflow: hidden;
+                    }
+
+                    span {
+                        font-size: 12px;
+                        font-weight: 500;
+                        color: #999DB9;
+                        margin-right: 5.5px;
+                    }
+                }
+
+                p:nth-child(1) {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    overflow: hidden; //超出的文本隐藏
+                    text-overflow: ellipsis; //溢出用省略号显示
+                    white-space: nowrap; //溢出不换行
+                    // flex-direction: row-reverse; // 反向排序
+                    text-align: right;
+                    margin-top: 15px;
+
+                    .blacklistdiv-s {
+                        width: 255px;
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: #282E5E;
+                        text-align: right;
+
+                    }
+
+
+                }
+            }
+        }
+    }
+
+    .quest {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 160px;
+            height: 160px;
+        }
+
+        p {
+            width: 100%;
+            text-align: center;
+            font-size: (28px/2);
+            font-weight: bold;
+            color: #222222;
+        }
+    }
+}
