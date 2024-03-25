@@ -1,0 +1,249 @@
+@charset "UTF-8";
+.member {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background: #222;
+  /**蒙层*/
+}
+.member .vip_card {
+  width: 343px;
+  height: 85px;
+  background: url("../../assets/vip/vipTop.png") no-repeat #AC29FB;
+  background-size: contain;
+  background-position: 100%;
+  border-radius: 15px 15px 15px 15px;
+  margin: 10px auto 0;
+  display: flex;
+  justify-content: flex-start;
+}
+.member .vip_card .vip_card_img {
+  width: 60px;
+  height: 60px;
+  margin: 13px 13px 0 15px;
+  vertical-align: bottom;
+  border-radius: 50%;
+}
+.member .vip_card .vip_card_div {
+  margin-top: 20px;
+}
+.member .vip_card .vip_card_div p:nth-child(1) {
+  height: 23px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 23px;
+}
+.member .vip_card .vip_card_div p:nth-child(1) img {
+  width: 23px;
+  height: 23px;
+  vertical-align: unset;
+}
+.member .vip_card .vip_card_div p:nth-child(2) {
+  font-size: 14px;
+  font-family: Arial-Regular, Arial;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 16px;
+  margin-top: 8px;
+}
+.member .commodity {
+  width: 93%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  margin: 33px auto 0;
+}
+.member .commodity .vipStop {
+  width: 109px;
+  height: 179px;
+  border-radius: 15px;
+  position: relative;
+  background: #fff;
+  background: linear-gradient(135deg, #E233FA 0%, #5137FC 49%, #34D0FF 100%);
+}
+.member .commodity .vipStop .vipStop_p0 {
+  width: 100%;
+  height: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  margin: 11px 0 0;
+}
+.member .commodity .vipStop .vipStop_div0 {
+  width: 97px;
+  height: 90px;
+  background: #FFFFFF;
+  border-radius: 15px 15px 15px 15px;
+  margin: 10px auto;
+  overflow: hidden;
+}
+.member .commodity .vipStop .vipStop_div0 .vipStop_div {
+  width: 100%;
+  height: auto;
+  border-radius: 0px 0px 18px 18px;
+  color: rgba(34, 34, 34, 0.5);
+}
+.member .commodity .vipStop .vipStop_div0 .vipStop_div .vipShop_div_p4 {
+  text-align: center;
+  margin: 5px auto 0;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.member .commodity .vipStop .vipStop_div0 .vipStop_p1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+}
+.member .commodity .vipStop .vipStop_div0 .vipStop_p1 span {
+  display: block;
+}
+.member .commodity .vipStop .vipStop_div0 .vipStop_p1 span:nth-child(1) {
+  font-size: 30px;
+  color: #FF4687;
+}
+.member .commodity .vipStop .vipStop_div0 .vipStop_p1 span:nth-child(2) {
+  font-size: 12px;
+}
+.member .commodity .vipStop .vipStop_p2 {
+  width: 88px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 25px 25px 25px 25px;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  line-height: 28px;
+  margin: 16px auto;
+}
+.member .commodity .vipStop .vipStop_p2 span {
+  display: block;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.member .commodity .vipStop .vipStop_p3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+  margin-top: 41px;
+  text-align: center;
+  width: 100%;
+}
+.member .commodity .vipStopa {
+  width: 109px;
+  height: 179px;
+  background: linear-gradient(180deg, #E8DEFA 0%, #EBEAF1 100%);
+  border-radius: 15px;
+  position: relative;
+}
+.member .commodity .vipStopa .vipStop_p0 {
+  width: 100%;
+  height: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  color: #222;
+  margin: 11px 0 0;
+}
+.member .commodity .vipStopa .vipStop_div0 {
+  width: 97px;
+  height: 90px;
+  background: #FFFFFF;
+  border-radius: 15px 15px 15px 15px;
+  margin: 10px auto;
+  overflow: hidden;
+}
+.member .commodity .vipStopa .vipStop_div0 .vipStop_div {
+  width: 100%;
+  height: auto;
+  border-radius: 0px 0px 18px 18px;
+  color: rgba(34, 34, 34, 0.5);
+}
+.member .commodity .vipStopa .vipStop_div0 .vipStop_div .vipShop_div_p4 {
+  text-align: center;
+  margin: 5px auto 0;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.member .commodity .vipStopa .vipStop_div0 .vipStop_p1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+}
+.member .commodity .vipStopa .vipStop_div0 .vipStop_p1 span {
+  display: block;
+}
+.member .commodity .vipStopa .vipStop_div0 .vipStop_p1 span:nth-child(1) {
+  font-size: 30px;
+  color: #FF4687;
+}
+.member .commodity .vipStopa .vipStop_div0 .vipStop_p1 span:nth-child(2) {
+  font-size: 12px;
+}
+.member .commodity .vipStopa .vipStop_img {
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.member .commodity .vipStopa .vipStop_p1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+}
+.member .commodity .vipStopa .vipStop_p1 span {
+  display: block;
+}
+.member .commodity .vipStopa .vipStop_p1 span:nth-child(1) {
+  font-size: 35px;
+}
+.member .commodity .vipStopa .vipStop_p1 span:nth-child(2) {
+  font-size: 18px;
+}
+.member .commodity .vipStopa .vipStop_p2 {
+  width: 88px;
+  height: 28px;
+  background: #271E31;
+  border-radius: 25px 25px 25px 25px;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  line-height: 28px;
+  margin: 16px auto;
+}
+.member .commodity .vipStopa .vipStop_p2 span {
+  display: block;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.member .mengceng {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3000000119);
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=index.css.map */

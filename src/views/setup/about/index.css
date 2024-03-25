@@ -1,0 +1,110 @@
+#about {
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+}
+#about .title {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  background: #5D3AB8;
+  padding-top: 20px;
+  position: fixed;
+  top: 0;
+}
+#about .title .title-img {
+  width: 30px;
+  height: 30px;
+}
+#about .title p {
+  width: calc(100% - 120px);
+  height: 50px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: Arial;
+  font-weight: bold;
+  color: #222;
+}
+#about .title .title-imgs {
+  width: 30px;
+  height: 30px;
+}
+#about .title .title-imgs img {
+  width: 100%;
+  height: 100%;
+}
+#about .record-top {
+  width: 100%;
+  height: 44px;
+  display: flex;
+  justify-content: flex-start;
+}
+#about .record-top img {
+  width: 40px;
+}
+#about .record-top p {
+  font-size: 17px;
+  font-weight: 500;
+  color: #222;
+  line-height: 17.5px;
+  margin-left: 110px;
+  line-height: 44px;
+}
+#about .edition {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 75px;
+}
+#about .edition .edition_logo {
+  width: 90px;
+  height: 90px;
+  background: #fff;
+  border-radius: 25px 25px 25px 25px;
+  margin: 33px auto 0;
+}
+#about .edition .edition_logo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px 25px 25px 25px;
+}
+#about .edition p:nth-child(2) {
+  width: 100%;
+  font-size: 25px;
+  font-weight: bold;
+  color: #222;
+  margin-top: 25px;
+  text-align: center;
+}
+#about .edition p:nth-child(3) {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+  text-align: center;
+  margin-top: 10px;
+}
+#about .edition p:nth-child(4) {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+  text-align: center;
+  margin-top: 10px;
+}
+#about .agreement {
+  width: 96%;
+  height: auto;
+  margin: 291px auto 0;
+}
+#about .agreement p {
+  height: 55px;
+  border-top: solid 1px #eee;
+  line-height: 55px;
+  font-size: 17px;
+  font-family: Arial-Regular, Arial;
+  font-weight: 400;
+  color: #222;
+}/*# sourceMappingURL=index.css.map */

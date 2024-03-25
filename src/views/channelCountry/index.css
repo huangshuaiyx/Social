@@ -1,0 +1,321 @@
+#chaChan {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+#chaChan .div_paro {
+  width: 90%;
+  height: 55px;
+  line-height: 55px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  font-size: 17px;
+  font-family: Arial-Regular, Arial;
+  font-weight: 400;
+  color: #222;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+}
+#chaChan .div_paro .div_paro_p2 {
+  font-size: 17px;
+  font-family: Arial-Regular, Arial;
+  font-weight: 400;
+  color: #999DB9;
+}
+#chaChan .div_paro .div_paro_p4 {
+  font-size: 17px;
+  font-family: Arial-Regular, Arial;
+  font-weight: 400;
+  color: #FF3E3E;
+}
+#chaChan .chaChanTitle {
+  width: 90%;
+  height: auto;
+  position: absolute;
+  top: 227px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+}
+#chaChan .chaChanTitle p {
+  height: 33px;
+  font-size: 17px;
+  font-family: Arial;
+  font-weight: 400;
+  color: #222;
+  line-height: 33px;
+}
+#chaChan .chaChanTitle .chaChanTitle-tops {
+  height: 34px;
+  background: #f5f4fa;
+  border-radius: 10px;
+  line-height: 35px;
+  padding: 0 10px;
+  max-width: 152px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+}
+#chaChan .chaChanTitle .chaChanTitle-tops .img {
+  width: 10px;
+  height: 10px;
+  margin-left: 5px;
+  margin: 12px 5px 0 2px;
+}
+#chaChan .chaChanTitle .chaChanTitle-tops img {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin: 10px 5px 0 0;
+}
+#chaChan .chaChanTitle .chaChanTitle-tops span {
+  font-size: 14px;
+  font-family: Arial;
+  font-weight: 400;
+  max-width: 115px;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+#chaChan .chaChan-guo {
+  width: 157px;
+  height: 211.5px;
+  background: #f5f4fa;
+  border: 1px solid #e3e0ef;
+  box-shadow: 0px 5px 9px 1px rgba(49, 4, 99, 0.15);
+  border-radius: 10px;
+  position: absolute;
+  top: 231.5px;
+  right: 24.5px;
+  z-index: 100;
+  overflow: auto;
+}
+#chaChan .chaChan-guo .bottomDiv-bottom:nth-child(1) {
+  margin-top: 17px;
+}
+#chaChan .chaChan-guo .bottomDiv-bottom:nth-last-child(1) {
+  margin-bottom: 17px;
+}
+#chaChan .chaChan-guo .bottomDiv-bottom {
+  width: 116.5px;
+  height: auto;
+  margin: 19px auto 0;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+#chaChan .chaChan-guo .bottomDiv-bottom img {
+  width: 15px;
+  height: 15px;
+  margin: 0 2px;
+  border-radius: 50%;
+  vertical-align: text-top;
+}
+#chaChan .chaChan-guo .bottomDiv-bottom .disImg {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+#chaChan .chaChan-guo .bottomDiv-bottom .distitle {
+  width: 80px;
+  height: auto;
+  display: block;
+  margin-left: 5px;
+  word-break: break-all;
+}
+#chaChan .chaChanPayList {
+  width: 100%;
+  height: calc(100% - 250px);
+  position: absolute;
+  top: 270px;
+  overflow: auto;
+}
+#chaChan .chaChanPayList .van-loading {
+  margin-top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+#chaChan .chaChanPayList .payList-div {
+  width: 335px;
+  min-height: 62px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  margin: 19px auto;
+}
+#chaChan .chaChanPayList .payList-div .payList-p1 {
+  width: 60px;
+  height: 60px;
+  border-radius: 25px;
+}
+#chaChan .chaChanPayList .payList-div .payList-p1 img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+#chaChan .chaChanPayList .payList-div .payList-divP {
+  width: 190px;
+  font-size: 17px;
+  font-family: Arial;
+  font-weight: 400;
+  color: #222;
+  margin: auto 21px;
+  word-break: break-all;
+}
+#chaChan .chaChanPayList .payList-div .payList-div-P {
+  width: 190px;
+  font-size: 17px;
+  font-family: Arial;
+  font-weight: 400;
+  color: #222;
+  margin: auto 20px;
+  word-break: break-all;
+}
+#chaChan .chaChanPayList .payList-div .payList-p4 {
+  width: 17.5px;
+  height: 17.5px;
+  margin: auto 10px;
+}
+#chaChan .chaChanPayList .payList-div .payList-p4 img {
+  width: 17.5px;
+  height: 17.5px;
+  vertical-align: middle;
+}
+#chaChan .chaChanPayList .payList-div:nth-last-child(1) {
+  margin-bottom: 100px;
+}
+#chaChan .button {
+  width: 280px;
+  height: 50px;
+  background: url("../../assets/public/button.png") no-repeat;
+  background-size: cover;
+  border-radius: 25px;
+  font-size: 15px;
+  font-family: Arial;
+  font-weight: bold;
+  color: #fff;
+  line-height: 50px;
+  text-align: center;
+  border: none;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+}
+#chaChan .buttons {
+  width: 280px;
+  height: 50px;
+  background: url("../../assets/public/button.png") no-repeat;
+  background-size: cover;
+  border-radius: 25px;
+  font-size: 15px;
+  font-family: Arial;
+  font-weight: bold;
+  color: #fff;
+  line-height: 50px;
+  text-align: center;
+  border: none;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  opacity: 0.5;
+}
+#chaChan .markbox {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 2003;
+}
+#chaChan .markbox .sun-loading {
+  width: 75px;
+  height: 75px;
+  display: block;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 15px;
+}
+#chaChan .markbox .sun-loading .img {
+  width: 32px;
+  height: 32px;
+  animation: sunLoading 1s steps(12, end) infinite;
+  background: url("../../assets/jiazai.png");
+  background-size: 100%;
+  animation: load 2s linear infinite;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#chaChan .successfu-markbox {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2003;
+  position: fixed;
+  top: 0;
+}
+#chaChan .successfu-markbox .successfu {
+  width: 326px;
+  height: 250px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px 20px 20px 20px;
+}
+#chaChan .successfu-markbox .successfu p:nth-child(1) {
+  font-size: 18px;
+  font-family: Arial-Bold, Arial;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-top: 35px;
+}
+#chaChan .successfu-markbox .successfu p:nth-child(2) {
+  width: 200px;
+  font-size: 18px;
+  font-family: Arial-Bold, Arial;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin: 40px auto 0;
+}
+#chaChan .successfu-markbox .successfu button {
+  width: 240px;
+  height: 43px;
+  background: linear-gradient(270deg, #7F66FF 0%, #36BBF0 100%);
+  border-radius: 15px 15px 15px 15px;
+  margin-top: 48px;
+  font-size: 14px;
+  font-family: Arial-Bold, Arial;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 43px;
+  text-align: center;
+  border: none;
+}/*# sourceMappingURL=index.css.map */
